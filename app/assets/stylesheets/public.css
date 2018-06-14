@@ -12,8 +12,7 @@
  *
  *= require global/reset.css
  *= require global/standards.css
- *= require application/layout.css
- *= require application/home.css
- *= require application/sidebar.css
+ *= require public/index.css
+ *= require public/login.css
  *= require_self
  */
