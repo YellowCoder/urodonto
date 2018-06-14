@@ -5,6 +5,7 @@
     <p><%= patient.name %></p>
     <div>
       <%= link_to "Detalhes", patient_path(patient) %>
+      <%= link_to "Alterar", edit_patient_path(patient) %>
       <%= link_to "Deletar", patient_path(patient), method: :delete %>
     </div>
   </div>
