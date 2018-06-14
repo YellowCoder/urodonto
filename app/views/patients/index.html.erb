@@ -1,0 +1,11 @@
+<%= link_to "Novo", new_patient_path %>
+
+<% @patients.each do |patient| %>
+  <div class="patientList__item">
+    <p><%= patient.name %></p>
+    <div>
+      <%= link_to "Detalhes", patient_path(patient) %>
+      <%= link_to "Deletar", patient_path(patient), method: :delete %>
+    </div>
+  </div>
+<% end %>

@@ -2,7 +2,9 @@
   <ul>
     <li>Home</li>
     <li>Agendamento</li>
-    <li>Pacientes</li>
+    <li>
+      <%= link_to 'Pacientes', patients_path %>
+    </li>
     <li>Fluxo de caixa</li>
     <li>
       <%= link_to 'logout', destroy_user_session_path, method: :delete %>
