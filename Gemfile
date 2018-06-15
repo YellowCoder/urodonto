@@ -24,6 +24,8 @@ gem 'simple_form', '4.0.1'
 gem 'fullcalendar-rails', '3.9.0.0'
 gem 'momentjs-rails', '2.20.1'
 
+gem 'ice_cube', '0.16.2'
+
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
