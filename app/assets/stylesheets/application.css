@@ -15,5 +15,6 @@
  *= require application/layout.css
  *= require application/home.css
  *= require application/sidebar.css
+ *= require fullcalendar
  *= require_self
  */
