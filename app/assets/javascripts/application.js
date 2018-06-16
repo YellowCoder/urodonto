@@ -17,4 +17,6 @@
 //= require turbolinks
 //= require moment
 //= require fullcalendar
+//= require fullcalendar/locale-all
+//= require daterangepicker
 //= require_tree .

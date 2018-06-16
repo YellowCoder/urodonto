@@ -6,4 +6,21 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create(email: 'adrianotadao@gmail.com', password: '123123')
+user = User.new(email: 'adrianotadao@gmail.com', password: '123123')
+user.save
+
+doctor = Doctor.new(active: true, name: 'Mônica')
+doctor.save
+
+patient = Patient.new(name: 'Adriano')
+patient.save
+
+event = Event.new(
+  user: user, 
+  patient: patient, 
+  doctor: doctor, 
+  title: 'Retorno',
+  start: DateTime.now,
+  end: DateTime.now + 2.hours
+)
+event.save

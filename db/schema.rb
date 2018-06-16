@@ -40,7 +40,8 @@ ActiveRecord::Schema.define(version: 6) do
     t.bigint "doctor_id", null: false
     t.bigint "patient_id"
     t.bigint "user_id"
-    t.date "date"
+    t.datetime "start"
+    t.datetime "end"
     t.string "title"
     t.string "type"
     t.string "status"
@@ -71,8 +72,8 @@ ActiveRecord::Schema.define(version: 6) do
   end
 
   create_table "patients", force: :cascade do |t|
-    t.boolean "active"
-    t.boolean "temporary"
+    t.boolean "active", default: true
+    t.boolean "temporary", default: false
     t.string "name", null: false
     t.string "birthday"
     t.string "sex"

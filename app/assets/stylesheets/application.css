@@ -16,5 +16,6 @@
  *= require application/home.css
  *= require application/sidebar.css
  *= require fullcalendar
+ *= require daterangepicker
  *= require_self
  */

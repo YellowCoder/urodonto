@@ -1,6 +1,11 @@
 <div>
   <ul>
-    <li>Home</li>
+    <li>
+      <%= link_to 'Home', root_path %>
+    </li>
+    <li>
+      <%= link_to 'Agenda', events_path %>
+    </li>
     <li>
       <%= link_to 'Agendamento', scheduler_events_path %>
     </li>
