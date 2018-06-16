@@ -1,4 +1,6 @@
 class PatientsController < ApplicationController
+  autocomplete :patient, :name, additional_data: [:id], label_method: :test, full_model: true
+
   def index
     @patients = Patient.all
   end

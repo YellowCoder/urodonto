@@ -1,7 +1,10 @@
 <%= simple_form_for @event, remote: true do |f| %>
   <div class="form-inputs">
+    <%= text_field_tag :patient_search, params[:search], data: { field: 'event_patient_id', autocomplete: autocomplete_patient_name_patients_path } %>
+    <%= f.input :doctor_id, collection: Doctor.all %>
     <%= f.input :title %>
     <%= f.input :date_range, input_html: { class: "date-range-picker" } %>
+    <%= f.input_field :patient_id, as: :hidden %>
     <%= f.input_field :start, as: :hidden, value: Date.today, class: 'form-control input-sm start_hidden' %>
     <%= f.input_field :end, as: :hidden, value: Date.today, class: 'form-control input-sm end_hidden' %>
     <%= f.input :color, as: :select, collection: [['Black','black'], ['Green','green'], ['Red','red']] %>

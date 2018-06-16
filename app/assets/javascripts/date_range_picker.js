@@ -1,17 +1,18 @@
 var date_range_picker;
 date_range_picker = function () {
   $('.date-range-picker').daterangepicker({
-    "showDropdowns": true,
-    "locale": {
-      "format": "DD/MM/YYYY",
-      "separator": " - ",
-      "applyLabel": "Aplicar",
-      "cancelLabel": "Cancelar",
-      "fromLabel": "De",
-      "toLabel": "Até",
-      "customRangeLabel": "Personalizado",
-      "weekLabel": "W",
-      "daysOfWeek": [
+    timePicker: true,
+    showDropdowns: true,
+    locale: {
+      format: "DD/MM/YYYY",
+      separator: " - ",
+      applyLabel: "Aplicar",
+      cancelLabel: "Cancelar",
+      fromLabel: "De",
+      toLabel: "Até",
+      customRangeLabel: "Personalizado",
+      weekLabel: "W",
+      daysOfWeek: [
         "Dom",
         "Seg",
         "Ter",
@@ -20,7 +21,7 @@ date_range_picker = function () {
         "Sex",
         "Sab"
       ],
-      "monthNames": [
+      monthNames: [
         "Janeiro",
         "Fevereiro",
         "Março",
@@ -34,9 +35,9 @@ date_range_picker = function () {
         "Novembro",
         "Dezembro"
       ],
-      "firstDay": 1
+      firstDay: 1
     },
-    "opens": "right"
+    opens: "right"
   }, function (start, end, label) {
     $('.start_hidden').val(start.format('YYYY-MM-DD HH:mm'));
     $('.end_hidden').val(end.format('YYYY-MM-DD HH:mm'));

@@ -1,1 +1,13 @@
 <%= link_to 'Criar novo', new_event_path %>
+
+<% @events.each do |event| %>
+  <div class="eventList__item">
+    <p><%= event.title %></p>
+    <p><%= event.patient.name %></p>
+    <div>
+      <%= link_to "Detalhes", event_path(event) %>
+      <%= link_to "Alterar", edit_event_path(event) %>
+      <%= link_to "Deletar", event_path(event), method: :delete %>
+    </div>
+  </div>
+<% end %>

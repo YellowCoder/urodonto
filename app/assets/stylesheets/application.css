@@ -17,5 +17,7 @@
  *= require application/sidebar.css
  *= require fullcalendar
  *= require daterangepicker
+ *= require jquery-ui/autocomplete
+ *= require jquery-ui/core
  *= require_self
  */

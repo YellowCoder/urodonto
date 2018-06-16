@@ -1,6 +1,7 @@
 var initialize_calendar;
 initialize_calendar = function () {
-  $('.full_calendar').fullCalendar({
+  var calendar = $('.full_calendar');
+  calendar.fullCalendar({
     header: {
       left: 'prev,next today',
       center: 'title',
