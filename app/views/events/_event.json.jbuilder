@@ -1,4 +1,4 @@
-date_format = event.all_day_event? ? '%d-%m-%Y' : '%d-%m-%YT%H:%M:%S'
+date_format = '%Y-%m-%dT%H:%M:%S'
 
 json.id "event_#{event.id}"
 json.title event.title

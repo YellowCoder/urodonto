@@ -1,0 +1,7 @@
+$('.full_calendar').fullCalendar('removeEvent', '<%= "event_#{@event.id}" %>');
+$('.full_calendar').fullCalendar(
+  'renderEvent', 
+  $.parseJSON("<%=j render(@event, format: :json).html_safe %>"), 
+  true
+);
+$('.modal').dialog('destroy').remove()

@@ -65,7 +65,7 @@ initialize_calendar = function () {
           }
         };
       }
-      
+
       $.ajax({
         url: event.update_url,
         data: event_data,
@@ -79,6 +79,11 @@ initialize_calendar = function () {
         date_range_picker();
         $('.start_hidden').val(moment(event.start).format('YYYY-MM-DD HH:mm'));
         $('.end_hidden').val(moment(event.end).format('YYYY-MM-DD HH:mm'));
+        $('.modal').dialog({
+          close: function () {
+            $(this).dialog('destroy').remove()
+          }
+        })
       });
     }
   });

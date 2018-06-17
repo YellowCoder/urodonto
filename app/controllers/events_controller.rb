@@ -7,25 +7,29 @@ class EventsController < ApplicationController
     @event = Event.new
   end
 
+  def edit
+    @event = Event.find(params[:id])
+  end
+
   def create
     @event = Event.new(event_params)
     @event.user = current_user
-
-    if @event.save
-      redirect_to events_path
-    else
-      render :new
-    end
+    @event.save
+    # if @event.save
+    #   redirect_to events_path
+    # else
+    #   render :new
+    # end
   end
 
   def update
     @event = Event.find(params[:id])
-
-    if @event.update(event_params)
-      redirect_to events_path
-    else
-      render :new
-    end
+    @event.update(event_params)
+    # if @event.update(event_params)
+    #   redirect_to events_path
+    # else
+    #   render :new
+    # end
   end
 
   private
