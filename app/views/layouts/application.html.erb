@@ -17,6 +17,9 @@
     </aside>
     <article class="content__wrapper">
       <%= yield %>
+      <div id='modal_container'></div>
     </article>
+
+    <%= yield :javascript %>
   </body>
 </html>

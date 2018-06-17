@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   resources :events do
     get :scheduler, on: :collection
   end
+  resources :scheduler, only: :index
 end

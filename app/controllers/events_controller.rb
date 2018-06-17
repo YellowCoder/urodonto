@@ -1,7 +1,6 @@
 class EventsController < ApplicationController
   def index
-    @events = Event.where(start: params[:start]..params[:end])
-    # @events = Event.all
+    @events = Event.all
   end
 
   def new
@@ -19,7 +18,14 @@ class EventsController < ApplicationController
     end
   end
 
-  def scheduler
+  def update
+    @event = Event.find(params[:id])
+
+    if @event.update(event_params)
+      redirect_to events_path
+    else
+      render :new
+    end
   end
 
   private

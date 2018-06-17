@@ -18,6 +18,7 @@
  *= require fullcalendar
  *= require daterangepicker
  *= require jquery-ui/autocomplete
+ *= require jquery-ui/dialog
  *= require jquery-ui/core
  *= require_self
  */
