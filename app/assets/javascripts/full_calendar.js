@@ -12,9 +12,36 @@ initialize_calendar = function () {
     selectHelper: true,
     editable: true,
     eventLimit: true,
+    defaultView: 'agendaDay',
     eventSources: [
       '/scheduler.json',
     ],
+    eventResize: function (event, delta, revertFunc) {
+      var event_data
+      if (event.allDay) {
+        event_data = {
+          event: {
+            id: event.id,
+            start: moment(event.start.format()).startOf('day'),
+            end: moment(event.start.format()).endOf('day')
+          }
+        };
+      } else {
+        event_data = {
+          event: {
+            id: event.id,
+            start: event.start.format(),
+            end: event.end.format()
+          }
+        };
+      }
+
+      $.ajax({
+        url: event.update_url,
+        data: event_data,
+        type: 'PATCH'
+      });
+    },
     select: function (start, end) {
       $.getScript('/events/new', function () {
         $('#event_date_range').val(moment(start).format("DD/MM/YYYY HH:mm") + ' - ' + moment(end).format("DD/MM/YYYY HH:mm"))
@@ -49,14 +76,19 @@ initialize_calendar = function () {
     eventDrop: function (event, delta, revertFunc) {
       var event_data
       if (event.allDay) {
+        var start = 
         event_data = {
           event: {
             id: event.id,
-            start: moment(event.start.format()).startOf('day'),
-            end: moment(event.start.format()).endOf('day')
+            start: event.start.format('YYYY-MM-DD 00:00'),
+            end: event.start.format('YYYY-MM-DD 00:00')
           }
         };
       } else {
+        if (!event.end) {
+          event.end = event.start.clone().add(1, 'hour')
+        }
+
         event_data = {
           event: {
             id: event.id,
