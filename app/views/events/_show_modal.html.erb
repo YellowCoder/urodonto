@@ -1,8 +1,8 @@
-<div class="modal">
+<div class="modal" title=<%= @event.title%>>
   <p><%= @event.title %></p>
   <p><%= @event.patient.name %></p>
   <p><%= @event.doctor.name %></p>
-  <p><%= @event.start %></p>
-  <p><%= @event.end %></p>
+  <p><%= @event.start.strftime('%d/%m/%Y - %H:%M') %></p>
+  <p><%= @event.end.strftime('%d/%m/%Y - %H:%M') %></p>
   <%= link_to "Deletar", event_path(@event), method: :delete, remote: true %>
 </div>
