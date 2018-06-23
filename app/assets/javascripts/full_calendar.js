@@ -51,6 +51,7 @@ initialize_calendar = function () {
         $('.time_picker_end').pickatime('picker').set('select', moment(end).format("HH-mm"), { format: 'H-i' })
 
         $('.modal').dialog({
+          closeText: '',
           close: function() {
             $(this).dialog('destroy').remove()
           }
@@ -115,6 +116,7 @@ initialize_calendar = function () {
         // $('#start_time').val(moment(event.start).format('YYYY-MM-DD HH:mm'));
         // $('.end_hidden').val(moment(event.end).format('YYYY-MM-DD HH:mm'));
         $('.modal').dialog({
+          closeText: '',
           close: function () {
             $(this).dialog('destroy').remove()
           }
