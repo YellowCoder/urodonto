@@ -1,0 +1,8 @@
+<div class="modal">
+  <p><%= @event.title %></p>
+  <p><%= @event.patient.name %></p>
+  <p><%= @event.doctor.name %></p>
+  <p><%= @event.start %></p>
+  <p><%= @event.end %></p>
+  <%= link_to "Deletar", event_path(@event), method: :delete, remote: true %>
+</div>

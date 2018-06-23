@@ -1,2 +1,2 @@
 <h1>NEW</h1>
-<%= render 'form', event: @event %>
+<%= render partial: 'form', locals: { event: @event, remote: false } %>

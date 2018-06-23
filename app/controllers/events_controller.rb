@@ -11,15 +11,17 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
+  def show
+    @event = Event.find(params[:id])
+  end
+
   def create
     @event = Event.new(event_params)
     @event.user = current_user
-    @event.save
-    # if @event.save
-    #   redirect_to events_path
-    # else
-    #   render :new
-    # end
+    
+    unless @event.save
+      render :new
+    end
   end
 
   def update
@@ -35,7 +37,7 @@ class EventsController < ApplicationController
   def destroy
     @event = Event.find(params[:id])
     @event.destroy
-    redirect_to events_path
+    # redirect_to events_path
   end
 
   private

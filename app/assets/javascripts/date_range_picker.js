@@ -1,17 +1,26 @@
 var date_range_picker;
 date_range_picker = function () {
-  var datePicker = $('.date-range-picker').pickadate({
+  var datePicker = $('.date_picker').pickadate({
     format: 'dd/mm/yyyy',
     onStart: function() {
       var date = new Date()
       this.set('select', [date.getFullYear(), date.getMonth(), date.getDate()]);
     },
     onSet: function(context) {
+      var selectedDate = this.get("select", "yyyy-mm-dd")
+
+      var currentStartTime = moment($('.start_hidden').val()).format('HH:mm')
+      var newStartTime = selectedDate + ' ' + currentStartTime
+
+      var currentEndTime = moment($('.end_hidden').val()).format('HH:mm')
+      var newEndTime = selectedDate + ' ' + currentEndTime
       
+      $('.start_hidden').val(newStartTime)
+      $('.end_hidden').val(newEndTime)
     }
   })
 
-  var startTimePicker = $('.date-time-start').pickatime({
+  var startTimePicker = $('.time_picker_start').pickatime({
     format: 'H:i',
     formatLabel: '<b>H</b>:i',
     onStart: function () {
@@ -24,7 +33,7 @@ date_range_picker = function () {
     }
   })
 
-  var endTimePicker = $('.date-time-end').pickatime({
+  var endTimePicker = $('.time_picker_end').pickatime({
     format: 'H:i',
     formatLabel: '<b>H</b>:i',
     onStart: function () {
