@@ -44,10 +44,12 @@ initialize_calendar = function () {
     },
     select: function (start, end) {
       $.getScript('/events/new', function () {
-        $('#event_date_range').val(moment(start).format("DD/MM/YYYY HH:mm") + ' - ' + moment(end).format("DD/MM/YYYY HH:mm"))
         date_range_picker();
-        $('.start_hidden').val(moment(start).format('YYYY-MM-DD HH:mm'));
-        $('.end_hidden').val(moment(end).format('YYYY-MM-DD HH:mm'));
+
+        $('.date-range-picker').pickadate().pickadate('picker').set('select', moment(start).format("YYYY-MM-DD"), { format: 'yyyy-mm-dd' })
+        $('.date-time-start').pickatime('picker').set('select', moment(start).format("HH-mm"), { format: 'H-i' })
+        $('.date-time-end').pickatime('picker').set('select', moment(end).format("HH-mm"), { format: 'H-i' })
+
         $('.modal').dialog({
           close: function() {
             $(this).dialog('destroy').remove()
@@ -107,9 +109,10 @@ initialize_calendar = function () {
 
     eventClick: function (event, jsEvent, view) {
       $.getScript(event.edit_url, function () {
-        $('#event_date_range').val(moment(event.start).format("DD/MM/YYYY HH:mm") + ' - ' + moment(event.end).format("DD/MM/YYYY HH:mm"))
+        $('#date_range').val(moment(event.start).format("DD/MM/YYYY"))
         date_range_picker();
-        $('.start_hidden').val(moment(event.start).format('YYYY-MM-DD HH:mm'));
+
+        $('#start_time').val(moment(event.start).format('YYYY-MM-DD HH:mm'));
         $('.end_hidden').val(moment(event.end).format('YYYY-MM-DD HH:mm'));
         $('.modal').dialog({
           close: function () {
