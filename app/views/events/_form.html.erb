@@ -1,7 +1,7 @@
 <%= simple_form_for @event, remote: remote do |f| %>
   <div class="form-inputs">
     <%= text_field_tag :patient_search, params[:search], data: { field: 'event_patient_id', autocomplete: autocomplete_patient_name_patients_path } %>
-    <%= f.input :doctor_id, collection: Doctor.all %>
+    <%= f.input_field :doctor_id, as: :hidden, value: 1 %>
     <%= f.input :title %>
     <%= text_field_tag :date_range, nil, class: "date_picker"  %>
     <%= text_field_tag :start_time, nil,class: "time_picker_start" %>

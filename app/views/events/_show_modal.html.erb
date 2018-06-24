@@ -1,8 +1,12 @@
 <div class="modal" title=<%= @event.title%>>
-  <p><%= @event.title %></p>
-  <p><%= @event.patient.name %></p>
-  <p><%= @event.doctor.name %></p>
-  <p><%= @event.start.strftime('%d/%m/%Y - %H:%M') %></p>
-  <p><%= @event.end.strftime('%d/%m/%Y - %H:%M') %></p>
+  <p>Título: <%= @event.title %></p>
+  <p>Paciente: <%= @event.patient.name %></p>
+  <p>Doutor: <%= @event.doctor.name %></p>
+  <p>Data de início: <%= @event.start.strftime('%d/%m/%Y - %H:%M') %></p>
+  <p>Data de término: <%= @event.end.strftime('%d/%m/%Y - %H:%M') %></p>
+  <p>Agendado por: <%= @event.user.email %></p>
+  <p>Data de agendamento: <%= @event.created_at.strftime('%d/%m/%Y - %H:%M') %></p>
+  <p>Data Da última atualização: <%= @event.updated_at.strftime('%d/%m/%Y - %H:%M') %></p>
+  
   <%= link_to "Deletar", event_path(@event), method: :delete, remote: true %>
 </div>

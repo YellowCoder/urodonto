@@ -5,7 +5,7 @@ class Event < ApplicationRecord
 
   attr_accessor :date_range
 
-  validates :title, :doctor, :patient, :user, :start, :end, presence: true
+  validates :doctor, :patient, :user, :start, :end, presence: true
 
   def all_day_event?
     self.start == self.start.midnight && self.end == self.end.midnight ? true : false
