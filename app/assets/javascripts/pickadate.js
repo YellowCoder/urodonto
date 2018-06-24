@@ -1,5 +1,5 @@
-var date_range_picker;
-date_range_picker = function () {
+var pickADate;
+pickADate = function () {
   var datePicker = $('.date_picker').pickadate({
     format: 'dd/mm/yyyy',
     onStart: function() {
@@ -58,4 +58,4 @@ var formatedDate = function(timer, date) {
   return moment(finalDate).format('YYYY-MM-DD HH:mm')
 }
 
-$(document).on('turbolinks:load', date_range_picker);
+$(document).on('turbolinks:load', pickADate);
