@@ -6,7 +6,7 @@
     <p><%= event.patient.name %></p>
     <div>
       <%= link_to "Detalhes", event_path(event) %>
-      <%= link_to "Alterar", edit_event_path(event) %>
+      <%= link_to "Alterar", edit_event_path(event, search: event.patient.name) %>
       <%= link_to "Deletar", event_path(event), method: :delete %>
     </div>
   </div>

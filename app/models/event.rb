@@ -3,8 +3,6 @@ class Event < ApplicationRecord
   belongs_to :patient
   belongs_to :doctor
 
-  attr_accessor :date_range
-
   validates :doctor, :patient, :user, :start, :end, presence: true
 
   def all_day_event?

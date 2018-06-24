@@ -9,4 +9,5 @@
   <p>Data Da última atualização: <%= @event.updated_at.strftime('%d/%m/%Y - %H:%M') %></p>
   
   <%= link_to "Deletar", event_path(@event), method: :delete, remote: true %>
+  <%= link_to "Alterar", edit_event_path(@event), remote: false %>
 </div>

@@ -15,6 +15,8 @@ doctor.save
 patient = Patient.new(name: 'Adriano')
 patient.save
 
+Patient.new(name: 'Bart').save
+
 event = Event.new(
   user: user, 
   patient: patient, 
