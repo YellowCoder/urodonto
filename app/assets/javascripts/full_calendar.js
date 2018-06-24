@@ -43,8 +43,8 @@ initialize_calendar = function () {
       });
     },
     select: function (start, end) {
-      $.getScript('/events/new', function () {
-        date_range_picker();
+      $.getScript('/scheduler/new', function () {
+        pickADate();
 
         $('.date_picker').pickadate().pickadate('picker').set('select', moment(start).format("YYYY-MM-DD"), { format: 'yyyy-mm-dd' })
         $('.time_picker_start').pickatime('picker').set('select', moment(start).format("HH-mm"), { format: 'H-i' })
@@ -111,7 +111,7 @@ initialize_calendar = function () {
     eventClick: function (event, jsEvent, view) {
       $.getScript(event.show_url, function () {
         // $('#date_range').val(moment(event.start).format("DD/MM/YYYY"))
-        // date_range_picker();
+        // pickADate();
 
         // $('#start_time').val(moment(event.start).format('YYYY-MM-DD HH:mm'));
         // $('.end_hidden').val(moment(event.end).format('YYYY-MM-DD HH:mm'));

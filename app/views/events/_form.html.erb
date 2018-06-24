@@ -1,4 +1,4 @@
-<%= simple_form_for @event, remote: remote do |f| %>
+<%= simple_form_for @event do |f| %>
   <div class="form-inputs">
     <%= text_field_tag :patient_search, params[:search], data: { field: 'event_patient_id', autocomplete: autocomplete_patient_name_patients_path } %>
     <%= f.input_field :doctor_id, as: :hidden, value: 1 %>
@@ -15,7 +15,7 @@
   <div class="form-actions">
     <%= f.button :submit %>
     <%= link_to 'Delete', 
-                event, 
+                @event, 
                 method: :delete, 
                 class: 'btn btn-danger', 
                 data: { confirm: 'Are you sure?' }, 

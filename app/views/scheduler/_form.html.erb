@@ -1,0 +1,26 @@
+<div class="modal">
+  <%= simple_form_for @event, remote: true do |f| %>
+    <div class="form-inputs">
+      <%= text_field_tag :patient_search, params[:search], data: { field: 'event_patient_id', autocomplete: autocomplete_patient_name_patients_path } %>
+      <%= f.input_field :doctor_id, as: :hidden, value: 1 %>
+      <%= f.input :title %>
+      <%= text_field_tag :date_range, nil, class: "date_picker"  %>
+      <%= text_field_tag :start_time, nil,class: "time_picker_start" %>
+      <%= text_field_tag :end_time, nil,class: "time_picker_end" %>
+      <%= f.input_field :patient_id, as: :hidden %>
+      <%= f.input_field :start, as: :hidden, value: Date.today, class: 'form-control input-sm start_hidden' %>
+      <%= f.input_field :end, as: :hidden, value: Date.today, class: 'form-control input-sm end_hidden' %>
+      <%= f.input :color, as: :select, collection: [['Black','black'], ['Green','green'], ['Red','red']] %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit %>
+      <%= link_to 'Delete', 
+                  event, 
+                  method: :delete, 
+                  class: 'btn btn-danger', 
+                  data: { confirm: 'Are you sure?' }, 
+                  remote: true unless @event.new_record? %>
+    </div>
+  <% end %>
+</div>
