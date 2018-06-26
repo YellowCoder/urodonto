@@ -1,13 +1,30 @@
-<%= link_to 'Criar novo', new_event_path %>
+<table id="datatable">
+  <thead>
+      <tr>
+          <th>Título</th>
+          <th>Paciente</th>
+          <th>Ações</th>
+      </tr>
+  </thead>
+  <tbody>
+    <% @events.each do |event| %>
+      <tr>
+        <td><%= event.title %></td>
+        <td><%= event.patient.name %></td>
+        <td>
+          <%= link_to "Detalhes", event_path(event) %>
+          <%= link_to "Alterar", edit_event_path(event, search: event.patient.name) %>
+          <%= link_to "Deletar", event_path(event), method: :delete %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<% @events.each do |event| %>
-  <div class="eventList__item">
-    <p><%= event.title %></p>
-    <p><%= event.patient.name %></p>
-    <div>
-      <%= link_to "Detalhes", event_path(event) %>
-      <%= link_to "Alterar", edit_event_path(event, search: event.patient.name) %>
-      <%= link_to "Deletar", event_path(event), method: :delete %>
-    </div>
-  </div>
+<% content_for(:javascript) do %>
+  <script type='text/javascript'>
+    $(document).ready( function () {
+      $('#datatable').DataTable();
+    } );
+  </script>
 <% end %>

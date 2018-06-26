@@ -25,5 +25,8 @@
  *= require jquery-ui/autocomplete
  *= require jquery-ui/dialog
  *= require jquery-ui/core
+
+ *= require datatables/datatables.min.css
+
  *= require_self
  */

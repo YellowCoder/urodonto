@@ -25,4 +25,6 @@
 //= require pickdate/picker.time.js
 //= require pickdate/languages/pt_BR.js
 
+//= require datatables/datatables.min.js
+
 //= require_tree .
