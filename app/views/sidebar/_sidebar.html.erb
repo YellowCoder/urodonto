@@ -1,18 +1,16 @@
 <ul>
-  <li>
-    <%= link_to 'Home', root_path %>
-  </li>
-  <li>
-    <%= link_to 'Agenda', events_path %>
-  </li>
-  <li>
-    <%= link_to 'Agendamento', scheduler_index_path %>
-  </li>
-  <li>
-    <%= link_to 'Pacientes', patients_path %>
-  </li>
-  <li>Fluxo de caixa</li>
-  <li>
-    <%= link_to 'logout', destroy_user_session_path, method: :delete %>
-  </li>
+  <li class='sidebar__title'><%= link_to 'Urodonto', root_path %></li>
+
+  <li class='sidebar__label'>Consultas</li>
+  <li class='sidebar__item'><%= link_to 'Agendamento', scheduler_index_path %></li>
+  <li class='sidebar__item'><%= link_to 'Todos agendamentos', events_path %></li>
+  <li class='sidebar__item'><%= link_to 'Pacientes', patients_path %></li>
+  
+  <li class='sidebar__label'>Fluxo de caixa</li>
+  <li class='sidebar__item'><%= link_to 'Lista de pagamentos', patients_path %></li>
+  <li class='sidebar__item'><%= link_to 'Novo pagamento', patients_path %></li>
+
+  <li class='sidebar__label'>Perfil do usuário</li>
+  <li class='sidebar__item'><%= link_to 'Alterar informações', destroy_user_session_path, method: :delete %></li>
+  <li class='sidebar__item'><%= link_to 'logout', destroy_user_session_path, method: :delete %></li>
 </ul>

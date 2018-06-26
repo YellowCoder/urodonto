@@ -10,5 +10,9 @@ html, body {
 body {
   font-family: 'Open Sans', Helvetica, sans-serif;
   display: flex;
-  padding: 10px;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
 }

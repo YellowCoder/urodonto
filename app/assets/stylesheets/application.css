@@ -15,6 +15,7 @@
  *= require application/layout.css
  *= require application/home.css
  *= require application/sidebar.css
+ *= require application/navbar.css
  *= require fullcalendar
 
  *= require pickdate/default

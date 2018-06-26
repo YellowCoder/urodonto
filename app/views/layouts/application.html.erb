@@ -15,10 +15,15 @@
     <aside class="sidebar__wrapper">
       <%= render 'sidebar/sidebar' %>
     </aside>
-    <article class="content__wrapper">
-      <%= yield %>
-      <div id='modal_container'></div>
-    </article>
+    <div class="page__wrapper">
+      <div class="navbar__wrapper">
+        <span class="navbar__title">Page title</span>
+      </div>
+      <article class="content__wrapper">
+        <%= yield %>
+        <div id='modal_container'></div>
+      </article>
+    </div> 
 
     <%= yield :javascript %>
   </body>

@@ -1,0 +1,9 @@
+.navbar__title {
+  display: flex;
+  padding: 20px;
+  font-weight: 600;
+  font-size: 20px;
+  color: #607d8b;
+  border-bottom: 1px solid #cfcfca;
+  background-color: #FFFFFF;
+}
