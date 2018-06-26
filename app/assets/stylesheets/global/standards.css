@@ -16,3 +16,38 @@ a {
   color: inherit;
   text-decoration: inherit;
 }
+
+button {
+  background-color: #429cb6;
+  border-color: #429cb6;
+  font-weight: 600;
+  color: #FFFFFF;
+  padding: 10px;
+  font-size: 14px;
+}
+
+button:focus {
+  outline: 0;
+}
+
+input {
+  box-shadow: none;
+  display: block;
+  width: 100%;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #e7e7e7;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+input:focus {
+  color: #495057;
+  border-color: #878787;
+  background-color: #fff;
+  outline: 0;
+}

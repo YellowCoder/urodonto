@@ -9,6 +9,10 @@ class PatientsController < ApplicationController
     @patient = Patient.new
   end
 
+  def show
+    @patient = Patient.find(params[:id])
+  end
+
   def edit
     @patient = Patient.find(params[:id])
   end

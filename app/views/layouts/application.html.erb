@@ -17,7 +17,9 @@
     </aside>
     <div class="page__wrapper">
       <div class="navbar__wrapper">
-        <span class="navbar__title">Page title</span>
+        <span class="navbar__title">
+          <%= yield(:page_title) %>
+        </span>
       </div>
       <article class="content__wrapper">
         <%= yield %>

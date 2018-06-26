@@ -1,30 +1,49 @@
-<table id="datatable">
-  <thead>
-      <tr>
-          <th>Título</th>
-          <th>Paciente</th>
-          <th>Ações</th>
-      </tr>
-  </thead>
-  <tbody>
-    <% @events.each do |event| %>
-      <tr>
-        <td><%= event.title %></td>
-        <td><%= event.patient.name %></td>
-        <td>
-          <%= link_to "Detalhes", event_path(event) %>
-          <%= link_to "Alterar", edit_event_path(event, search: event.patient.name) %>
-          <%= link_to "Deletar", event_path(event), method: :delete %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% page_title 'Todos agendamentos' %>
+
+<button>
+  <%= link_to 'Agendar novo paciente', new_event_path, class: 'button' %>
+</button>
+
+<div class="events__wrapper">
+  <table id="datatable" class="stripe">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Paciente</th>
+            <th>Data</th>
+            <th>Horário</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+      <% @events.each do |event| %>
+        <tr>
+          <td><%= event.title %></td>
+          <td><%= event.patient.name %></td>
+          <td><%= event.start.strftime('%d %b %Y') %></td>
+          <td>
+            <%= event.start.strftime('%H:%M') %>
+            -
+            <%= event.end.strftime('%H:%M') %>
+          </td>
+          <td>
+            <%= link_to "Detalhes", event_path(event) %>
+            <%= link_to "Alterar", edit_event_path(event, search: event.patient.name) %>
+            <%= link_to "Deletar", event_path(event), method: :delete %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <% content_for(:javascript) do %>
   <script type='text/javascript'>
     $(document).ready( function () {
-      $('#datatable').DataTable();
+      $('#datatable').DataTable({
+        order: [[2, 'desc']],
+        pageLength: 25
+      });
     } );
   </script>
 <% end %>

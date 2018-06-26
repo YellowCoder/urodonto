@@ -1,16 +1,29 @@
-<%= simple_form_for patient, remote: true do |f| %>
-  <%= f.input :active %>
-  <%= f.input :temporary %>
-  <%= f.input :name %>
-  <%= f.input :birthday %>
-  <%= f.input :sex %>
-  <%= f.input :email %>
-  <%= f.input :phone %>
-  <%= f.input :cell_phone %>
-  <%= f.input :email %>
-  <%= f.input :address %>
-  <%= f.input :city %>
-  <%= f.input :state %>
-  <%= f.input :zip_code %>
-  <%= f.button :submit %>
-<% end %>
+<div class="patient__form">
+  <%= simple_form_for patient, remote: true do |f| %>
+    <div class="patient__formGroup">
+      <%= f.input :active %>
+      <%= f.input :temporary %>
+    </div>
+
+    <div class="patient__formGroup">
+      <%= f.input :name %>
+      <%= f.input :birthday %>
+      <%= f.input :sex %>
+    </div>
+    
+    <div class="patient__formGroup">
+      <%= f.input :email %>
+      <%= f.input :phone %>
+      <%= f.input :cell_phone %>
+    </div>
+
+    <div class="patient__formGroup">
+      <%= f.input :address %>
+      <%= f.input :city %>
+      <%= f.input :state %>
+      <%= f.input :zip_code %>
+    </div>
+
+    <%= f.button :submit %>
+  <% end %>
+</div>
