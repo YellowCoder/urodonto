@@ -1,38 +1,45 @@
 <% page_title 'Pacientes' %>
 
-<%= link_to "Novo", new_patient_path %>
+<button>
+  <%= link_to "Novo paciente", new_patient_path %>
+</button>
 
-<table id="datatable" class="stripe">
-  <thead>
-      <tr>
-          <th>Nome</th>
-          <th>Telefone</th>
-          <th>Última consulta</th>
-          <th>Ações</th>
-      </tr>
-  </thead>
-  <tbody>
-    <% @patients.each do |patient| %>
-      <tr>
-        <td><%= patient.name %></td>
-        <td><%= patient.cell_phone %></td>
-        <td><%= patient.events.last.start.strftime('%d %b %Y - %H:%M') %></td>
-        <td>
-          <%= link_to "Detalhes", patient_path(patient) %>
-          <%= link_to "Alterar", edit_patient_path(patient) %>
-          <%= link_to "Deletar", patient_path(patient), method: :delete %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="patients__wrapper">
+  <table id="datatable" class="stripe">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Telefone</th>
+            <th>Última consulta</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+      <% @patients.each do |patient| %>
+        <tr>
+          <td><%= patient.name %></td>
+          <td><%= patient.cell_phone %></td>
+          <td><%= patient.events.last.start.strftime('%d %b %Y - %H:%M') %></td>
+          <td>
+            <%= link_to "Detalhes", patient_path(patient) %>
+            <%= link_to "Alterar", edit_patient_path(patient) %>
+            <%= link_to "Deletar", patient_path(patient), method: :delete %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <% content_for(:javascript) do %>
   <script type='text/javascript'>
     $(document).ready( function () {
       $('#datatable').DataTable({
         order: [[0, 'asc']],
-        pageLength: 25
+        pageLength: 25,
+        language: {
+          url: "//cdn.datatables.net/plug-ins/1.10.19/i18n/Portuguese-Brasil.json"
+        }
       });
     } );
   </script>

@@ -3,14 +3,14 @@ Rails.application.routes.draw do
   
   root to: "application#index"
 
-  resources :patients, path: 'pacientes' do
+  resources :patients do
     get :autocomplete_patient_name, on: :collection
   end
-  resources :doctors, path: 'doutores' do
+  resources :doctors do
     get :autocomplete_doctor_name, on: :collection
   end
-  resources :events, path: 'agendamentos' do
+  resources :events do
     get :scheduler, on: :collection
   end
-  resources :scheduler, path: 'agendamento'
+  resources :scheduler
 end
