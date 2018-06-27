@@ -17,11 +17,6 @@ class SchedulerController < ApplicationController
     @event.save
   end
 
-  def update
-    @event = Event.find(params[:id])
-    @event.update(event_params)
-  end
-
   def destroy
     @event = Event.find(params[:id])
     @event.destroy
