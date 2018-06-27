@@ -11,9 +11,9 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery_ujs
 //= require jquery-ui/widgets/autocomplete
 //= require jquery-ui/widgets/dialog
-//= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require moment

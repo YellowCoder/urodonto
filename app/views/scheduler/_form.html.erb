@@ -1,7 +1,9 @@
 <div class="modal">
   <%= simple_form_for @event, url: '/scheduler', remote: true do |f| %>
     <div class="form-inputs">
-      <%= text_field_tag :patient_search, params[:search], data: { field: 'event_patient_id', autocomplete: autocomplete_patient_name_patients_path } %>
+      <div class='form-group'>
+        <%= text_field_tag :patient, params[:search], name: 'event[patient]', data: { field: 'event_patient_id', autocomplete: autocomplete_patient_name_patients_path } %>
+      </div>
       <%= f.input_field :doctor_id, as: :hidden, value: 1 %>
       <%= f.input :title %>
       <%= f.input_field :start, as: :datetime %>

@@ -14,7 +14,17 @@ class SchedulerController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.user = current_user
-    @event.save
+    unless @event.save
+      render json: @event.errors, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    @event = Event.find(params[:id])
+    @event.update(event_params)
+    unless @event.save
+      render json: @event.errors, status: :unprocessable_entity
+    end
   end
 
   def destroy

@@ -141,11 +141,6 @@ initialize_calendar = function () {
 
     eventClick: function (event, jsEvent, view) {
       $.getScript(event.show_url, function () {
-        // $('#date_range').val(moment(event.start).format("DD/MM/YYYY"))
-        // pickADate();
-
-        // $('#start_time').val(moment(event.start).format('YYYY-MM-DD HH:mm'));
-        // $('.end_hidden').val(moment(event.end).format('YYYY-MM-DD HH:mm'));
         $('.modal').dialog({
           closeText: '',
           close: function () {

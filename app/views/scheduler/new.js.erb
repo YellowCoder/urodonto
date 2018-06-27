@@ -1,1 +1,6 @@
+$('.modal').dialog().remove()
 $('#modal_container').html('<%= j render(partial: "form", event: @event) %>');
+
+$("#new_event").on("ajax:error", function(e, data, status, xhr) {
+  $("#new_event").render_form_errors('event', data.responseJSON)
+})

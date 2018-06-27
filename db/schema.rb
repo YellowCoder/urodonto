@@ -72,10 +72,8 @@ ActiveRecord::Schema.define(version: 6) do
   end
 
   create_table "patients", force: :cascade do |t|
-    t.boolean "active", default: true
-    t.boolean "temporary", default: false
     t.string "name", null: false
-    t.string "birthday"
+    t.date "birthday"
     t.string "sex"
     t.string "phone"
     t.string "cell_phone"
