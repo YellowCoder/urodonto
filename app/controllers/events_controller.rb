@@ -21,6 +21,8 @@ class EventsController < ApplicationController
     
     unless @event.save
       render :new
+    else
+      redirect_to events_path
     end
   end
 

@@ -44,11 +44,42 @@ initialize_calendar = function () {
     },
     select: function (start, end) {
       $.getScript('/scheduler/new', function () {
-        pickADate();
+        var startDay = start.date()
+        var startMonth = start.month() + 1
+        var startYear = start.year()
+        var startHour = start.hour()
+        if (startHour < 10) {
+          startHour = '0' + startHour
+        }
+        var startMinute = start.minute()
+        if (startMinute === 0) {
+          startMinute = '00'
+        }
 
-        $('.date_picker').pickadate().pickadate('picker').set('select', moment(start).format("YYYY-MM-DD"), { format: 'yyyy-mm-dd' })
-        $('.time_picker_start').pickatime('picker').set('select', moment(start).format("HH-mm"), { format: 'H-i' })
-        $('.time_picker_end').pickatime('picker').set('select', moment(end).format("HH-mm"), { format: 'H-i' })
+        var endDay = end.date()
+        var endMonth = end.month() + 1
+        var endYear = end.year()
+        var endHour = end.hour()
+        if (endHour < 10) {
+          endHour = '0' + endHour
+        }
+        var endMinute = end.minute()
+        if (endMinute === 0) {
+          endMinute = '00'
+        }
+
+        $('#event_start_3i').val(startDay)
+        $('#event_start_2i').val(startMonth)
+        $('#event_start_1i').val(startYear)
+        $('#event_start_4i').val(startHour)
+        $('#event_start_5i').val(startMinute)
+
+        $('#event_end_3i').val(endDay)
+        $('#event_end_2i').val(endMonth)
+        $('#event_end_1i').val(endYear)
+        $('#event_end_4i').val(endHour)
+        $('#event_end_5i').val(endMinute)
+
 
         $('.modal').dialog({
           closeText: '',

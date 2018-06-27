@@ -19,12 +19,6 @@
 //= require moment
 //= require fullcalendar
 //= require fullcalendar/locale-all
-
-//= require pickdate/picker.js
-//= require pickdate/picker.date.js
-//= require pickdate/picker.time.js
-//= require pickdate/languages/pt_BR.js
-
 //= require datatables/datatables.min.js
 
 //= require_tree .
