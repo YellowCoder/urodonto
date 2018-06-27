@@ -30,11 +30,14 @@ button:focus {
   outline: 0;
 }
 
-input {
+input[type=submit] {
+  margin-top: 20px;
+}
+
+input[type=text] {
   box-shadow: none;
   display: block;
-  width: 100%;
-  padding: .375rem .75rem;
+  padding: 5px;
   font-size: 1rem;
   line-height: 1.5;
   color: #495057;
@@ -43,6 +46,12 @@ input {
   border: 1px solid #e7e7e7;
   border-radius: .25rem;
   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  margin-bottom: 20px;
+}
+
+select {
+  margin-bottom: 20px;
+  height: 30px;
 }
 
 input:focus {
@@ -50,4 +59,13 @@ input:focus {
   border-color: #878787;
   background-color: #fff;
   outline: 0;
+}
+
+fieldset > div {
+  display: flex;
+  flex-direction: column;
+}
+
+fieldset div > label {
+  margin-bottom: 10px;
 }

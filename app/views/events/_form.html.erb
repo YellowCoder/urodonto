@@ -1,20 +1,36 @@
-<%= simple_form_for @event do |f| %>
-  <div class="form-inputs">
-    <%= f.association :patient, collection: Patient.all %>
-    <%= f.association :doctor, collection: Doctor.all %>
-    <%= f.input :title %>
-    <%= f.input_field :start, as: :datetime %>
-    <%= f.input_field :end, as: :datetime %>
-    <%= f.input :color, as: :select, collection: [['Black','black'], ['Green','green'], ['Red','red']] %>
-  </div>
+<div class="event_form__wrapper">
+  <%= simple_form_for @event do |f| %>
+    <fieldset>
+      <%= f.association :patient, collection: Patient.all %>
+      <%= f.association :doctor, collection: Doctor.all %>
+      <%= f.input :color, as: :select, collection: [['Black','black'], ['Green','green'], ['Red','red']] %>
+    </fieldset>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-    <%= link_to 'Delete', 
-                @event, 
-                method: :delete, 
-                class: 'btn btn-danger', 
-                data: { confirm: 'Are you sure?' }, 
-                remote: true unless @event.new_record? %>
-  </div>
-<% end %>
+    <fieldset>
+      <%= f.input :title %>
+      <div class="">
+        <label class="select required">Começa</label>
+        <div class='event_selects'>
+          <%= f.input_field :start, as: :datetime %>
+        </div>
+      </div>
+      
+      <div>
+        <label>Termina</label>
+        <div class='event_selects'>
+          <%= f.input_field :end, as: :datetime %>
+        </div>
+      </div>
+    </fieldset>
+
+    <div class="form-actions">
+      <%= f.button :submit %>
+      <%= link_to 'Delete', 
+                  @event, 
+                  method: :delete, 
+                  class: 'btn btn-danger', 
+                  data: { confirm: 'Are you sure?' }, 
+                  remote: true unless @event.new_record? %>
+    </div>
+  <% end %>
+</div>

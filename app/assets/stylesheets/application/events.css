@@ -1,3 +1,11 @@
 .events__wrapper {
   margin-top: 20px;
 }
+
+.event_form__wrapper {
+  width: 500px;
+}
+
+.event_selects {
+  flex-direction: row;
+}
