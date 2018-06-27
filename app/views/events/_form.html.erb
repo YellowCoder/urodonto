@@ -2,13 +2,16 @@
   <%= simple_form_for @event do |f| %>
     <fieldset>
       <%= f.association :patient, collection: Patient.all %>
-      <%= f.association :doctor, collection: Doctor.all %>
-      <%= f.input :color, as: :select, collection: [['Black','black'], ['Green','green'], ['Red','red']] %>
+      <%= f.input_field :doctor_id, as: :hidden, value: 1 %>
     </fieldset>
 
     <fieldset>
       <%= f.input :title %>
-      <div class="">
+      <div>
+        <label>Cor</label>
+        <input type="color" name="event[color]" value=<%= @event.color || "#429cb6" %>>
+      </div>
+      <div>
         <label class="select required">Começa</label>
         <div class='event_selects'>
           <%= f.input_field :start, as: :datetime %>
