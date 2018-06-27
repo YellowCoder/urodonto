@@ -14,10 +14,7 @@ class SchedulerController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.user = current_user
-    
-    unless @event.save
-      render :new
-    end
+    @event.save
   end
 
   def update
