@@ -5,6 +5,15 @@ pt-BR:
       patient: Paciente
       event: Agendamento
     attributes:
+      patient:
+        name: Nome
+        birthday: Data de Nascimento
+        sex: Sexo
+        phone: Telefone
+        cell_phone: Celular
+        address: Endereço
+        state: Estado
+        zip_code: CEP
       event:
         patient: Paciente
         doctor: Doutor

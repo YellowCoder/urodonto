@@ -34,7 +34,9 @@ input[type=submit] {
   margin-top: 20px;
 }
 
-input[type=text] {
+input[type=text],
+input[type=email],
+input[type=tel] {
   box-shadow: none;
   display: block;
   padding: 5px;

@@ -1,28 +1,34 @@
-<div class="patient__form">
+<div class='patient__formWrapper'>
   <%= simple_form_for patient, remote: true do |f| %>
-    <div class="patient__formGroup">
-      <%= f.input :active %>
-      <%= f.input :temporary %>
-    </div>
-
-    <div class="patient__formGroup">
+    <fieldset>
       <%= f.input :name %>
-      <%= f.input :birthday %>
-      <%= f.input :sex %>
-    </div>
+
+      <div>
+        <label>Data de Nascimento</label>
+        <div class='patient__selects'>
+          <%= f.input_field :birthday, as: :date %>
+        </div>
+      </div>
+      <div>
+        <label>Sexo</label>
+        <div class='patient__selects'>
+          <%= f.select :sex, collection: [['Masculino', 'male'], ['Feminino', 'female']] %>
+        </div>
+      </div>
+    </fieldset>
     
-    <div class="patient__formGroup">
+    <fieldset>
       <%= f.input :email %>
       <%= f.input :phone %>
       <%= f.input :cell_phone %>
-    </div>
+    </fieldset>
 
-    <div class="patient__formGroup">
+    <fieldset>
       <%= f.input :address %>
       <%= f.input :city %>
       <%= f.input :state %>
       <%= f.input :zip_code %>
-    </div>
+    </fieldset>
 
     <%= f.button :submit %>
   <% end %>

@@ -1,9 +1,6 @@
 class CreatePatients < ActiveRecord::Migration[5.2]
   def change
     create_table :patients do |t|
-      t.boolean :active, default: true
-      t.boolean :temporary, default: false
-
       t.string :name, null: false
       t.string :birthday
       t.string :sex
