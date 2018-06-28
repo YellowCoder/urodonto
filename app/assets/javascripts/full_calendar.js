@@ -82,6 +82,11 @@ initialize_calendar = function () {
 
 
         $('.modal').dialog({
+          title: 'Novo agendamento',
+          maxWidth:600,
+          maxHeight: 550,
+          width: 600,
+          height: 550,
           closeText: '',
           close: function() {
             $(this).dialog('destroy').remove()

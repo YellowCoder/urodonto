@@ -23,7 +23,7 @@ $.fn.render_form_errors = function(model_name, errors){
       }
     })[0]
     
-    $(input).closest('.form-group').addClass('has-error')
+    $(input).closest('fieldset').addClass('has-error')
     $(input).parent().append('<span class="help-block">' + $.map(messages, function(m){ return m.charAt(0).toUpperCase() + m.slice(1)}).join('<br />') + '</span>')
   })
 }

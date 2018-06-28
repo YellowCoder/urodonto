@@ -1,19 +1,40 @@
 <div class="modal">
   <%= simple_form_for @event, url: '/scheduler', remote: true do |f| %>
-    <div class="form-inputs">
-      <div class='form-group'>
+    <fieldset>
+      <div>
+        <label>Paciente</label>
         <%= text_field_tag :patient, params[:search], name: 'event[patient]', data: { field: 'event_patient_id', autocomplete: autocomplete_patient_name_patients_path } %>
       </div>
+    </fieldset>
+
+    <fieldset>
       <%= f.input_field :doctor_id, as: :hidden, value: 1 %>
       <%= f.input :title %>
-      <%= f.input_field :start, as: :datetime %>
-      <%= f.input_field :end, as: :datetime %>
-      <%= f.input_field :patient_id, as: :hidden %>
+    </fieldset>
+
+    <fieldset>
+      <div>
+        <label>Começa</label>
+        <div class='scheduler__dateSelects'>
+          <%= f.input_field :start, as: :datetime %>
+        </div>
+      </div>
+      <div>
+        <label>Termina</label>
+        <div class='scheduler__dateSelects'>
+          <%= f.input_field :end, as: :datetime %>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
       <div>
         <label>Cor</label>
         <input type="color" name="event[color]" value=<%= @event.color || "#429cb6" %>>
       </div>
-    </div>
+    </fieldset>
+
+    <%= f.input_field :patient_id, as: :hidden %>
 
     <div class="form-actions">
       <%= f.button :submit %>

@@ -18,6 +18,7 @@
  *= require application/navbar.css
  *= require application/events.css
  *= require application/patients.css
+ *= require application/scheduler_form.css
  *= require fullcalendar
 
  *= require jquery-ui/autocomplete
