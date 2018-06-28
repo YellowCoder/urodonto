@@ -1,0 +1,20 @@
+.scheduler__dateSelects {
+  flex-direction: row;
+}
+
+.ui-menu-item {
+  padding: 10px;
+}
+
+.scheduler__detailsWrapper {
+  margin-top: 10px;
+}
+
+.scheduler__detailsWrapper ul li {
+  padding: 5px 0;
+}
+
+.scheduler__buttonsWrapper {
+  margin-top: 10px;
+  text-align: right;
+}

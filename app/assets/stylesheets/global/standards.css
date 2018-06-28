@@ -18,6 +18,10 @@ a {
   text-decoration: inherit;
 }
 
+strong {
+  font-weight: 600;
+}
+
 button {
   background-color: #429cb6;
   border-color: #429cb6;
@@ -29,6 +33,11 @@ button {
 
 button:focus {
   outline: 0;
+}
+
+button.red {
+  background-color: #ef5350;
+  border-color: #ef5350;
 }
 
 input[type=submit] {

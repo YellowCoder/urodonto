@@ -148,6 +148,11 @@ initialize_calendar = function () {
       $.getScript(event.show_url, function () {
         $('.modal').dialog({
           closeText: '',
+          title: 'Detalhes do Agendamento',
+          maxWidth:600,
+          maxHeight: 550,
+          width: 600,
+          height: 360,
           close: function () {
             $(this).dialog('destroy').remove()
           }
