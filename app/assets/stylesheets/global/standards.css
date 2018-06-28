@@ -10,6 +10,7 @@ html, body {
 body {
   font-family: 'Open Sans', Helvetica, sans-serif;
   display: flex;
+  justify-content: center;
 }
 
 a {
