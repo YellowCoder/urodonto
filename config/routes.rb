@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'registrations' }
   
-  root to: "application#index"
+  root to: "scheduler#index"
 
   resources :patients do
     get :autocomplete_patient_name, on: :collection
