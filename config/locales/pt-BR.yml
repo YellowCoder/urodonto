@@ -4,6 +4,7 @@ pt-BR:
     models:
       patient: Paciente
       event: Agendamento
+      user: Usuário
     attributes:
       patient:
         name: Nome
@@ -19,6 +20,11 @@ pt-BR:
         doctor: Doutor
         color: Cor
         title: Título
+      user:
+        name: Nome
+        password: Senha
+        password_confirmation: Confirmação da senha
+        current_password: Senha atual
     errors:
       messages:
         record_invalid: 'A validação falhou: %{errors}'
