@@ -16,29 +16,29 @@ initialize_calendar = function () {
     eventSources: [
       '/scheduler.json',
     ],
-    eventResize: function (event, delta, revertFunc) {
-      var event_data
-      if (event.allDay) {
-        event_data = {
-          event: {
-            id: event.id,
-            start: moment(event.start.format()).startOf('day'),
-            end: moment(event.start.format()).endOf('day')
+    eventResize: function (appointment, delta, revertFunc) {
+      var appointment_data
+      if (appointment.allDay) {
+        appointment_data = {
+          appointment: {
+            id: appointment.id,
+            start: moment(appointment.start.format()).startOf('day'),
+            end: moment(appointment.start.format()).endOf('day')
           }
         };
       } else {
-        event_data = {
-          event: {
-            id: event.id,
-            start: event.start.format(),
-            end: event.end.format()
+        appointment_data = {
+          appointment: {
+            id: appointment.id,
+            start: appointment.start.format(),
+            end: appointment.end.format()
           }
         };
       }
 
       $.ajax({
-        url: event.update_url,
-        data: event_data,
+        url: appointment.update_url,
+        data: appointment_data,
         type: 'PATCH'
       });
     },
@@ -68,17 +68,17 @@ initialize_calendar = function () {
           endMinute = '00'
         }
 
-        $('#event_start_3i').val(startDay)
-        $('#event_start_2i').val(startMonth)
-        $('#event_start_1i').val(startYear)
-        $('#event_start_4i').val(startHour)
-        $('#event_start_5i').val(startMinute)
+        $('#appointment_start_3i').val(startDay)
+        $('#appointment_start_2i').val(startMonth)
+        $('#appointment_start_1i').val(startYear)
+        $('#appointment_start_4i').val(startHour)
+        $('#appointment_start_5i').val(startMinute)
 
-        $('#event_end_3i').val(endDay)
-        $('#event_end_2i').val(endMonth)
-        $('#event_end_1i').val(endYear)
-        $('#event_end_4i').val(endHour)
-        $('#event_end_5i').val(endMinute)
+        $('#appointment_end_3i').val(endDay)
+        $('#appointment_end_2i').val(endMonth)
+        $('#appointment_end_1i').val(endYear)
+        $('#appointment_end_4i').val(endHour)
+        $('#appointment_end_5i').val(endMinute)
 
 
         $('.modal').dialog({
@@ -97,10 +97,10 @@ initialize_calendar = function () {
           var field = $(this).data('field')
           $(this).autocomplete({
             source: url,
-            select: function (event, ui) {
+            select: function (appointment, ui) {
               $("#" + field).val(ui.item.id)
             },
-            change: function (event, ui) {
+            change: function (appointment, ui) {
               if (!ui.item) {
                 $("#" + field).val(null)
               }
@@ -112,40 +112,40 @@ initialize_calendar = function () {
       calendar.fullCalendar('unselect');
     },
 
-    eventDrop: function (event, delta, revertFunc) {
-      var event_data
-      if (event.allDay) {
+    eventDrop: function (appointment, delta, revertFunc) {
+      var appointment_data
+      if (appointment.allDay) {
         var start = 
-        event_data = {
-          event: {
-            id: event.id,
-            start: event.start.format('YYYY-MM-DD 00:00'),
-            end: event.start.format('YYYY-MM-DD 00:00')
+        appointment_data = {
+          appointment: {
+            id: appointment.id,
+            start: appointment.start.format('YYYY-MM-DD 00:00'),
+            end: appointment.start.format('YYYY-MM-DD 00:00')
           }
         };
       } else {
-        if (!event.end) {
-          event.end = event.start.clone().add(1, 'hour')
+        if (!appointment.end) {
+          appointment.end = appointment.start.clone().add(1, 'hour')
         }
 
-        event_data = {
-          event: {
-            id: event.id,
-            start: event.start.format(),
-            end: event.end.format()
+        appointment_data = {
+          appointment: {
+            id: appointment.id,
+            start: appointment.start.format(),
+            end: appointment.end.format()
           }
         };
       }
 
       $.ajax({
-        url: event.update_url,
-        data: event_data,
+        url: appointment.update_url,
+        data: appointment_data,
         type: 'PATCH'
       });
     },
 
-    eventClick: function (event, jsEvent, view) {
-      $.getScript(event.show_url, function () {
+    eventClick: function (appointment, jsEvent, view) {
+      $.getScript(appointment.show_url, function () {
         $('.modal').dialog({
           closeText: '',
           title: 'Detalhes do Agendamento',

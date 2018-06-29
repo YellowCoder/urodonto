@@ -19,7 +19,7 @@
         <tr>
           <td><%= patient.name %></td>
           <td><%= patient.cell_phone %></td>
-          <td><%= patient.events&.last&.start&.strftime('%d %b %Y - %H:%M') %></td>
+          <td><%= patient.appointments&.last&.start&.strftime('%d %b %Y - %H:%M') %></td>
           <td>
             <%= link_to "Detalhes", patient_path(patient) %>
             <%= link_to "Alterar", edit_patient_path(patient) %>

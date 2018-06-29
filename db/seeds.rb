@@ -18,7 +18,7 @@ patient.save
 patient2 = Patient.new(name: 'Guilherme de Morais')
 patient2.save
 
-Event.create(
+Appointment.create(
   user: user, 
   patient: patient, 
   doctor: doctor, 
@@ -28,7 +28,7 @@ Event.create(
   color: '#429cb6'
 )
 
-Event.create(
+Appointment.create(
   user: user, 
   patient: patient2, 
   doctor: doctor, 

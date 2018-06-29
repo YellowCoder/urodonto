@@ -19,9 +19,13 @@ ActiveRecord::Schema.define(version: 6) do
     t.bigint "doctor_id", null: false
     t.bigint "patient_id"
     t.bigint "user_id"
-    t.date "date"
-    t.integer "status"
+    t.string "status"
+    t.string "title"
+    t.string "type"
+    t.string "color"
     t.text "observations"
+    t.datetime "start"
+    t.datetime "end"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["doctor_id"], name: "index_appointments_on_doctor_id"
@@ -37,19 +41,12 @@ ActiveRecord::Schema.define(version: 6) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.bigint "doctor_id", null: false
-    t.bigint "patient_id"
     t.bigint "user_id"
-    t.datetime "start"
-    t.datetime "end"
-    t.string "title"
-    t.string "type"
-    t.string "status"
-    t.string "color"
+    t.integer "status", default: 0
+    t.json "info"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["doctor_id"], name: "index_events_on_doctor_id"
-    t.index ["patient_id"], name: "index_events_on_patient_id"
+    t.index ["status"], name: "index_events_on_status"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
@@ -108,8 +105,6 @@ ActiveRecord::Schema.define(version: 6) do
   add_foreign_key "appointments", "doctors"
   add_foreign_key "appointments", "patients"
   add_foreign_key "appointments", "users"
-  add_foreign_key "events", "doctors"
-  add_foreign_key "events", "patients"
   add_foreign_key "events", "users"
   add_foreign_key "financial_records", "appointments"
   add_foreign_key "financial_records", "doctors"

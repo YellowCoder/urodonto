@@ -16,7 +16,7 @@
  *= require application/home.css
  *= require application/sidebar.css
  *= require application/navbar.css
- *= require application/events.css
+ *= require application/appointments.css
  *= require application/patients.css
  *= require application/scheduler.css
  *= require fullcalendar

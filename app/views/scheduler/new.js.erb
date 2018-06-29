@@ -1,6 +1,6 @@
 $('.modal').dialog().remove()
-$('#modal_container').html('<%= j render(partial: "form", event: @event) %>');
+$('#modal_container').html('<%= j render(partial: "form", appointment: @appointment) %>');
 
-$("#new_event").on("ajax:error", function(e, data, status, xhr) {
-  $("#new_event").render_form_errors('event', data.responseJSON)
+$("#new_appointment").on("ajax:error", function(e, data, status, xhr) {
+  $("#new_appointment").render_form_errors('event', data.responseJSON)
 })

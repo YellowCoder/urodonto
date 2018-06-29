@@ -1,10 +1,10 @@
-<% page_title 'Todos agendamentos' %>
+<% page_title 'Todas as consultas' %>
 
 <button>
-  <%= link_to 'Novo Agendamento', new_event_path, class: 'button' %>
+  <%= link_to 'Nova consulta', new_appointment_path, class: 'button' %>
 </button>
 
-<div class="events__wrapper">
+<div class="appointments__wrapper">
   <table id="datatable" class="stripe">
     <thead>
         <tr>
@@ -16,20 +16,20 @@
         </tr>
     </thead>
     <tbody>
-      <% @events.each do |event| %>
+      <% @appointments.each do |appointment| %>
         <tr>
-          <td><%= event.title %></td>
-          <td><%= event.patient.name %></td>
-          <td><%= event.start.strftime('%d %b %Y') %></td>
+          <td><%= appointment.title %></td>
+          <td><%= appointment.patient.name %></td>
+          <td><%= appointment.start.strftime('%d %b %Y') %></td>
           <td>
-            <%= event.start.strftime('%H:%M') %>
+            <%= appointment.start.strftime('%H:%M') %>
             -
-            <%= event.end.strftime('%H:%M') %>
+            <%= appointment.end.strftime('%H:%M') %>
           </td>
           <td>
-            <%= link_to "Detalhes", event_path(event) %>
-            <%= link_to "Alterar", edit_event_path(event, search: event.patient.name) %>
-            <%= link_to "Deletar", event_path(event), method: :delete %>
+            <%= link_to "Detalhes", appointment_path(appointment) %>
+            <%= link_to "Alterar", edit_appointment_path(appointment, search: appointment.patient.name) %>
+            <%= link_to "Deletar", appointment_path(appointment), method: :delete %>
           </td>
         </tr>
       <% end %>

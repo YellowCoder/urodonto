@@ -1,5 +1,5 @@
-<div class="event_form__wrapper">
-  <%= simple_form_for @event do |f| %>
+<div class="appointment_form__wrapper">
+  <%= simple_form_for @appointment do |f| %>
     <fieldset>
       <%= f.association :patient, collection: Patient.all %>
       <%= f.input_field :doctor_id, as: :hidden, value: 1 %>
@@ -9,18 +9,18 @@
       <%= f.input :title %>
       <div>
         <label>Cor</label>
-        <input type="color" name="event[color]" value=<%= @event.color || "#429cb6" %>>
+        <input type="color" name="appointment[color]" value=<%= @appointment.color || "#429cb6" %>>
       </div>
       <div>
         <label>Começa</label>
-        <div class='event_selects'>
+        <div class='appointment_selects'>
           <%= f.input_field :start, as: :datetime %>
         </div>
       </div>
       
       <div>
         <label>Termina</label>
-        <div class='event_selects'>
+        <div class='appointment_selects'>
           <%= f.input_field :end, as: :datetime %>
         </div>
       </div>
@@ -29,11 +29,11 @@
     <div class="form-actions">
       <%= f.button :submit %>
       <%= link_to 'Delete', 
-                  @event, 
+                  @appointment, 
                   method: :delete, 
                   class: 'btn btn-danger', 
                   data: { confirm: 'Are you sure?' }, 
-                  remote: true unless @event.new_record? %>
+                  remote: true unless @appointment.new_record? %>
     </div>
   <% end %>
 </div>

@@ -1,22 +1,22 @@
 <div class="modal">
   <div class="scheduler__detailsWrapper">
     <ul>
-      <li><strong>Título:</strong> <%= @event.title %></li>
-      <li><strong>Paciente:</strong> <%= @event.patient.name %></li>
-      <li><strong>Doutor:</strong> <%= @event.doctor.name %></li>
-      <li><strong>Data de início:</strong> <%= @event.start.strftime('%d/%m/%Y - %H:%M') %></li>
-      <li><strong>Data de término:</strong> <%= @event.end.strftime('%d/%m/%Y - %H:%M') %></li>
-      <li><strong>Agendado por:</strong> <%= @event.user.name %></li>
-      <li><strong>Data de agendamento:</strong> <%= @event.created_at.strftime('%d/%m/%Y - %H:%M') %></li>
-      <li><strong>Data Da última atualização:</strong> <%= @event.updated_at.strftime('%d/%m/%Y - %H:%M') %></li>
+      <li><strong>Título:</strong> <%= @appointment.title %></li>
+      <li><strong>Paciente:</strong> <%= @appointment.patient.name %></li>
+      <li><strong>Doutor:</strong> <%= @appointment.doctor.name %></li>
+      <li><strong>Data de início:</strong> <%= @appointment.start.strftime('%d/%m/%Y - %H:%M') %></li>
+      <li><strong>Data de término:</strong> <%= @appointment.end.strftime('%d/%m/%Y - %H:%M') %></li>
+      <li><strong>Agendado por:</strong> <%= @appointment.user.name %></li>
+      <li><strong>Data de agendamento:</strong> <%= @appointment.created_at.strftime('%d/%m/%Y - %H:%M') %></li>
+      <li><strong>Data Da última atualização:</strong> <%= @appointment.updated_at.strftime('%d/%m/%Y - %H:%M') %></li>
     </ul>
     
     <div class="scheduler__buttonsWrapper">
       <button>
-        <%= link_to "Alterar", edit_event_path(@event), remote: false %>
+        <%= link_to "Alterar", edit_appointment_path(@appointment), remote: false %>
       </button>
       <button class="red">
-        <%= link_to "Deletar", scheduler_path(@event), method: :delete, remote: true %>
+        <%= link_to "Deletar", scheduler_path(@appointment), method: :delete, remote: true %>
       </button>
     </div>
   </div>

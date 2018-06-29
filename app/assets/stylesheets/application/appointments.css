@@ -1,0 +1,11 @@
+.appointments__wrapper {
+  margin-top: 20px;
+}
+
+.appointment_form__wrapper {
+  width: 500px;
+}
+
+.appointment_selects {
+  flex-direction: row;
+}
