@@ -5,7 +5,7 @@
 </button>
 
 <div class="appointments__wrapper">
-  <table id="appointmentsDatatable" class="stripe">
+  <table id="datatable" class="stripe">
     <thead>
         <tr>
             <th>Cobrável</th>
@@ -43,18 +43,6 @@
 
 <% content_for(:javascript) do %>
   <script type='text/javascript'>
-    var dataTable = $('#appointmentsDatatable').DataTable({
-      order: [[2, 'desc']],
-      pageLength: 25,
-      language: {
-        url: "//cdn.datatables.net/plug-ins/1.10.19/i18n/Portuguese-Brasil.json"
-      }
-    });
-    document.addEventListener("turbolinks:before-cache", function() {
-      if (dataTable !== null) {
-        dataTable.destroy();
-        dataTable = null;
-      }
-    });
+    InitializeDataTables({ order: [[2, 'desc']] })
   </script>
 <% end %>
