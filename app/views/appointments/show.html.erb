@@ -1,18 +1,66 @@
-<% page_title 'Detalhes da consulta' %>
+<% page_title "Detalhes da consulta: #{ @appointment.patient.name }" %>
 
-<ul>
-  <li>Status: <%= @appointment.status %></li>
-  <li>Doutor: <%= @appointment.doctor.name %></li>
-  <li>Observações: <%= @appointment.observations %></li>
-  <li>Início: <%= @appointment.start %></li>
-  <li>Fim: <%= @appointment.end %></li>
-  <li>Pago? <%= @appointment.financial_record.present? %></li>
+<div class="infoDetail__groupWrapper">
+  <h2>Gerais</h2>
 
-  <% if @appointment.financial_record.present? %>
-    <li>Status: <%= @appointment.financial_record.status %></li>
-    <li>Data: <%= @appointment.financial_record.date %></li>
-    <li>Valor: <%= @appointment.financial_record.amount %></li>
-    <li>Observações: <%= @appointment.financial_record.observations %></li>
-  <% end %>
-</ul>
+  <div class="infoDetail__groupInfo">
+    <div class="infoDetail__groupInfo--title"><span>Cobrável:</span></div>
+    <div class="infoDetail__groupInfo--description"><span><%= @appointment.chargeable ? 'sim' : 'não' %></span></div>
+  </div>
 
+  <div class="infoDetail__groupInfo">
+    <div class="infoDetail__groupInfo--title"><span>Status:</span></div>
+    <div class="infoDetail__groupInfo--description"><span><%= t("activerecord.attributes.appointment.statuses.#{ @appointment.status }") %></span></div>
+  </div>
+
+  <div class="infoDetail__groupInfo">
+    <div class="infoDetail__groupInfo--title"><span>Doutor:</span></div>
+    <div class="infoDetail__groupInfo--description"><span><%= @appointment.doctor.name %></span></div>
+  </div>
+
+  <div class="infoDetail__groupInfo">
+    <div class="infoDetail__groupInfo--title"><span>Início:</span></div>
+    <div class="infoDetail__groupInfo--description"><span><%= @appointment.start.strftime('%d/%m/%Y %H:%M') %></span></div>
+  </div>
+
+  <div class="infoDetail__groupInfo">
+    <div class="infoDetail__groupInfo--title"><span>Fim:</span></div>
+    <div class="infoDetail__groupInfo--description"><span><%= @appointment.end.strftime('%d/%m/%Y %H:%M') %></span></div>
+  </div>
+
+  <div class="infoDetail__groupInfo">
+    <div class="infoDetail__groupInfo--title"><span>Observações:</span></div>
+    <div class="infoDetail__groupInfo--description"><span><%= @appointment.observations %></span></div>
+  </div>
+
+</div>
+
+<div class="infoDetail__groupWrapper">
+  <h2>Pagamento</h2>
+
+  <div class="infoDetail__groupInfo">
+    <div class="infoDetail__groupInfo--title"><span>Pagamento:</span></div>
+    <div class="infoDetail__groupInfo--description"><span><%= t("activerecord.attributes.financial_record.statuses.#{ @appointment.financial_record.status }") %></span></div>
+  </div>
+
+  <div class="infoDetail__groupInfo">
+    <div class="infoDetail__groupInfo--title"><span>Data:</span></div>
+    <div class="infoDetail__groupInfo--description"><span><%= @appointment.financial_record.date.strftime('%d/%m/%Y ') %></span></div>
+  </div>
+
+  <div class="infoDetail__groupInfo">
+    <div class="infoDetail__groupInfo--title"><span>Valor:</span></div>
+    <div class="infoDetail__groupInfo--description"><span><%= @appointment.financial_record.amount %></span></div>
+  </div>
+
+  <div class="infoDetail__groupInfo">
+    <div class="infoDetail__groupInfo--title"><span>Recebido por:</span></div>
+    <div class="infoDetail__groupInfo--description"><span><%= @appointment.financial_record.user.name %></span></div>
+  </div>
+
+  <div class="infoDetail__groupInfo">
+    <div class="infoDetail__groupInfo--title"><span>Observações:</span></div>
+    <div class="infoDetail__groupInfo--description"><span><%= @appointment.financial_record.observations %></span></div>
+  </div>
+
+</div>

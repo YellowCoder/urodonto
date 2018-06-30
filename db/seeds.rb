@@ -19,7 +19,7 @@ patient2 = Patient.new(name: 'Guilherme de Morais')
 patient2.save
 
 Appointment.create(
-  financial_record: FinancialRecord.new(status: 1, amount: 100, user: user),
+  financial_record: FinancialRecord.new(status: 1, amount: 100, user: user, date: DateTime.now),
   user: user, 
   patient: patient, 
   doctor: doctor, 
@@ -30,7 +30,7 @@ Appointment.create(
 )
 
 Appointment.create(
-  financial_record: FinancialRecord.new(status: 1, amount: 100, user: user),
+  financial_record: FinancialRecord.new(status: 1, amount: 100, user: user, date: DateTime.now),
   user: user, 
   patient: patient2, 
   doctor: doctor, 
