@@ -1,8 +1,6 @@
 <div class='financial_record__formWrapper'>
   <%= simple_form_for @financial_record do |f| %>
     <fieldset>
-      <%= f.association :patient, collection: Patient.all %>
-      <%= f.association :doctor, collection: Doctor.all %>
       <%= f.association :appointment, collection: Appointment.all %>
     </fieldset>
 

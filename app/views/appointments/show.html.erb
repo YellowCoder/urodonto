@@ -1,1 +1,18 @@
 <% page_title 'Detalhes da consulta' %>
+
+<ul>
+  <li>Status: <%= @appointment.status %></li>
+  <li>Doutor: <%= @appointment.doctor.name %></li>
+  <li>Observações: <%= @appointment.observations %></li>
+  <li>Início: <%= @appointment.start %></li>
+  <li>Fim: <%= @appointment.end %></li>
+  <li>Pago? <%= @appointment.financial_record.present? %></li>
+
+  <% if @appointment.financial_record.present? %>
+    <li>Status: <%= @appointment.financial_record.status %></li>
+    <li>Data: <%= @appointment.financial_record.date %></li>
+    <li>Valor: <%= @appointment.financial_record.amount %></li>
+    <li>Observações: <%= @appointment.financial_record.observations %></li>
+  <% end %>
+</ul>
+

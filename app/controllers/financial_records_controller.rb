@@ -36,8 +36,6 @@ class FinancialRecordsController < ApplicationController
 
   def financial_record_params
     params.require(:financial_record).permit(
-      :doctor_id,
-      :patient_id,
       :appointment_id,
       :status,
       :title,

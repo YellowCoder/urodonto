@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 6) do
     t.bigint "user_id"
     t.integer "status", default: 0
     t.string "title"
-    t.string "type"
     t.string "color"
     t.text "observations"
     t.datetime "start"
@@ -52,21 +51,17 @@ ActiveRecord::Schema.define(version: 6) do
   end
 
   create_table "financial_records", force: :cascade do |t|
-    t.bigint "doctor_id", null: false
-    t.bigint "patient_id"
     t.bigint "user_id"
     t.bigint "appointment_id"
     t.integer "status", default: 0
     t.string "title"
     t.integer "amount_cents", default: 0, null: false
-    t.string "amount_currency", default: "USD", null: false
+    t.string "amount_currency", default: "BRL", null: false
     t.date "date"
     t.text "observations"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["appointment_id"], name: "index_financial_records_on_appointment_id"
-    t.index ["doctor_id"], name: "index_financial_records_on_doctor_id"
-    t.index ["patient_id"], name: "index_financial_records_on_patient_id"
     t.index ["user_id"], name: "index_financial_records_on_user_id"
   end
 
@@ -109,7 +104,5 @@ ActiveRecord::Schema.define(version: 6) do
   add_foreign_key "appointments", "users"
   add_foreign_key "events", "users"
   add_foreign_key "financial_records", "appointments"
-  add_foreign_key "financial_records", "doctors"
-  add_foreign_key "financial_records", "patients"
   add_foreign_key "financial_records", "users"
 end

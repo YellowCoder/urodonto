@@ -4,6 +4,7 @@ class Appointment < ApplicationRecord
   belongs_to :user
   belongs_to :patient
   belongs_to :doctor
+  has_one :financial_record
 
   validates :doctor, :patient, :user, :start, :end, presence: true
 

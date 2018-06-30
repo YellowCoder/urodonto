@@ -1,1 +1,29 @@
 <% page_title 'Detalhes do paciente' %>
+
+
+<div class="patient__detailsWrapper">
+  <h2>Lista de consultas<h2>
+  <ul>
+    <% @patient.appointments.each do |appointment| %>
+      <li>Status: <%= appointment.status %></li>
+      <li>Doutor: <%= appointment.doctor.name %></li>
+      <li>Observações: <%= appointment.observations %></li>
+      <li>Início: <%= appointment.start %></li>
+      <li>Fim: <%= appointment.end %></li>
+      <li>Pago? <%= appointment.financial_record.present? %></li>
+    <% end %>
+  </ul>
+  </br>
+  </br>
+  </br>
+  <h2>Lista de pagamentos<h2>
+  <ul>
+    <% @patient.financial_records.each do |financial_record| %>
+      <li>Status: <%= financial_record.status %></li>
+      <li>Data: <%= financial_record.date %></li>
+      <li>Valor: <%= financial_record.amount %></li>
+      <li>Observações: <%= financial_record.observations %></li>
+    <% end %>
+  </ul>
+
+</div>

@@ -6,7 +6,6 @@ class CreateAppointments < ActiveRecord::Migration[5.2]
       t.references :user, index: true, foreign_key: true
       t.integer :status, index: true, default: 0
       t.string :title
-      t.string :type
       t.string :color
       t.text :observations
       t.datetime :start
