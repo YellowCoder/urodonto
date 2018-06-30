@@ -1,8 +1,18 @@
 <div class='patient__formWrapper'>
-  <%= simple_form_for patient, remote: true do |f| %>
-    <fieldset>
-      <%= f.input :name %>
+  <% if patient.errors.any? %>
+    <div id="error_explanation">
+      <h2>Lista de erros:</h2>
+      <ul>
+        <% patient.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
+  <%= simple_form_for patient do |f| %>
+    <fieldset>
+      <%= f.input :name, error: false %>
       <div>
         <label>Data de Nascimento</label>
         <div class='patient__selects'>

@@ -9,3 +9,17 @@
   padding: 20px;
   background-color: #FFFFFF;
 }
+
+#error_explanation h2 {
+  font-weight: bold;
+}
+
+#error_explanation {
+  border-left: 5px solid red;
+  margin: 20px 0;
+  padding-left: 10px;
+}
+
+#error_explanation ul li {
+  padding: 5px 0;
+}

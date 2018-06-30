@@ -4,6 +4,7 @@ pt-BR:
       patient: Paciente
       appointment: Consulta
       user: Usuário
+      financial_record: Registro financeiro
     attributes:
       patient:
         name: Nome
@@ -29,6 +30,7 @@ pt-BR:
           missed: Faltou
           canceled: Cancelado
       financial_record:
+        appointment: Consulta
         statuses:
           not_paid: Aberto
           paid: Pago

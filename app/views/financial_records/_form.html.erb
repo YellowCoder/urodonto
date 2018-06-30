@@ -1,8 +1,23 @@
 <div class='financial_record__formWrapper'>
-  <%= simple_form_for @financial_record do |f| %>
-    <%= f.text_field :appointment_id, placeholder: "Search", data: { behavior: "appointment_autocomplete" } %>
+  <% if @financial_record.errors.any? %>
+    <div id="error_explanation">
+      <h2>Lista de erros:</h2>
+      <ul>
+        <% @financial_record.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
+  <%= simple_form_for @financial_record do |f| %>
     <fieldset>
+      <div>
+        <label>Consulta</label>
+        <%= text_field_tag :search_appointment, @financial_record&.appointment&.label, name: 'financial_record[patient]', data: { field: 'financial_record_appointment_id', behavior: 'financial_record_autocomplete', autocomplete_url: search_appointments_path } %>
+        <%= f.input_field :appointment_id, as: :hidden %>
+      </div>
+
       <div>
         <label>Status</label>
         <div class='appointment_selects'>
@@ -26,19 +41,33 @@
 
 <% content_for(:javascript) do %>
   <script type='text/javascript'>
-    $input = $("[data-behavior='appointment_autocomplete']")
+    $input = $("[data-behavior='financial_record_autocomplete']")
+    var field = $input.data('field')
     var options = {
       url: function(phrase) {
-        return "/appointments/search.json?q=" + phrase;
+        return $input.data().autocompleteUrl + ".json?q=" + phrase;
       },
+      adjustWidth: false,
+      placeholder: 'Título da consulta ou nome do paciente...',
       getValue: "title",
       list: {	
         match: {
           enabled: true
+        },
+      },
+      requestDelay: 400,
+      list: {
+        onChooseEvent: function() {
+          var appointmentId = $input.getSelectedItemData().id
+          $("#" + field).val(appointmentId)
         }
       },
-      theme: "square",
-      requestDelay: 400
+      template: {
+        type: "description",
+        fields: {
+          description: "description"
+        }
+      }
     }
     $input.easyAutocomplete(options)
   </script>

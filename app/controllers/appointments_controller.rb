@@ -45,9 +45,7 @@ class AppointmentsController < ApplicationController
     @appointments = Appointment.search_by_title_and_patient_name(params[:q])
   
     respond_to do |format|
-      format.json {
-        @appointments = @appointments.limit(5)
-      }
+      format.json {}
     end
   end
 
@@ -55,6 +53,7 @@ class AppointmentsController < ApplicationController
 
   def appointment_params
     params.require(:appointment).permit(
+      :chargeable,
       :status,
       :doctor_id,
       :patient_id,

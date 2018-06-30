@@ -1,4 +1,16 @@
 <div class="appointment_form__wrapper">
+
+  <% if @appointment.errors.any? %>
+    <div id="error_explanation">
+      <h2>Lista de erros:</h2>
+      <ul>
+        <% @appointment.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <%= simple_form_for @appointment do |f| %>
     <fieldset>
       <div>
@@ -58,6 +70,7 @@
         url: function(phrase) {
           return $input.data().autocompleteUrl + ".json?q=" + phrase;
         },
+        placeholder: 'Nome do paciente...',
         getValue: "name",
         list: {	
           match: {
