@@ -1,4 +1,6 @@
 class Patient < ApplicationRecord
+  acts_as_paranoid
+  
   enum sex: [:male, :female]
 
   has_many :appointments

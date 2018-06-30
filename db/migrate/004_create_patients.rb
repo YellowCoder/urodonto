@@ -14,6 +14,8 @@ class CreatePatients < ActiveRecord::Migration[5.2]
       t.string :state
       t.string :zip_code
 
+      t.datetime :deleted_at
+
       t.timestamps null: false
     end
   end

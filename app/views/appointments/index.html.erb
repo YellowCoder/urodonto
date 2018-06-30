@@ -8,6 +8,9 @@
   <table id="datatable" class="stripe">
     <thead>
         <tr>
+            <th>Cobrável</th>
+            <th>Pago</th>
+            <th>Status</th>
             <th>Título</th>
             <th>Paciente</th>
             <th>Data</th>
@@ -18,6 +21,9 @@
     <tbody>
       <% @appointments.each do |appointment| %>
         <tr>
+          <td><%= appointment.chargeable %></td>
+          <td><%= appointment.financial_record.paid? %></td>
+          <td><%= t(appointment.status) %></td>
           <td><%= appointment.title %></td>
           <td><%= appointment.patient.name %></td>
           <td><%= appointment.start.strftime('%d %b %Y') %></td>

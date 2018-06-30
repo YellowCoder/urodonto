@@ -12,6 +12,7 @@ class CreateAppointments < ActiveRecord::Migration[5.2]
       t.datetime :start
       t.datetime :end
 
+      t.datetime :deleted_at
       t.timestamps null: false
     end
   end

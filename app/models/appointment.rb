@@ -1,4 +1,6 @@
 class Appointment < ApplicationRecord
+  acts_as_paranoid
+  
   enum status: [:scheduled, :confirmed, :missed, :canceled]
 
   belongs_to :user

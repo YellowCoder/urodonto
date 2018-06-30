@@ -1,4 +1,6 @@
 class FinancialRecord < ApplicationRecord
+  acts_as_paranoid
+  
   enum status: [:not_paid, :paid, :overdue, :free]
 
   belongs_to :user

@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 6) do
     t.text "observations"
     t.datetime "start"
     t.datetime "end"
+    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["doctor_id"], name: "index_appointments_on_doctor_id"
@@ -37,6 +38,7 @@ ActiveRecord::Schema.define(version: 6) do
   create_table "doctors", force: :cascade do |t|
     t.boolean "active"
     t.string "name", null: false
+    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -45,6 +47,7 @@ ActiveRecord::Schema.define(version: 6) do
     t.bigint "user_id"
     t.integer "status", default: 0
     t.json "info"
+    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["status"], name: "index_events_on_status"
@@ -60,6 +63,7 @@ ActiveRecord::Schema.define(version: 6) do
     t.string "amount_currency", default: "BRL", null: false
     t.date "date"
     t.text "observations"
+    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["appointment_id"], name: "index_financial_records_on_appointment_id"
@@ -77,6 +81,7 @@ ActiveRecord::Schema.define(version: 6) do
     t.string "city"
     t.string "state"
     t.string "zip_code"
+    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -96,6 +101,7 @@ ActiveRecord::Schema.define(version: 6) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

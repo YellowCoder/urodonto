@@ -9,6 +9,8 @@ class CreateFinancialRecords < ActiveRecord::Migration[5.2]
       t.date :date
       t.text :observations
       
+      t.datetime :deleted_at
+      
       t.timestamps null: false
     end
   end
