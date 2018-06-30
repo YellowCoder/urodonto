@@ -41,6 +41,16 @@ class AppointmentsController < ApplicationController
     redirect_to appointments_path
   end
 
+  def search
+    @appointments = Appointment.search_by_title_and_patient_name(params[:q])
+  
+    respond_to do |format|
+      format.json {
+        @appointments = @appointments.limit(5)
+      }
+    end
+  end
+
   private
 
   def appointment_params

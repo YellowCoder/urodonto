@@ -4,12 +4,14 @@ Rails.application.routes.draw do
   root to: "scheduler#index"
 
   resources :patients do
-    get :autocomplete_patient_name, on: :collection
+    get :search, on: :collection
   end
   resources :doctors do
-    get :autocomplete_doctor_name, on: :collection
+    get :search, on: :collection
   end
   resources :financial_records
-  resources :appointments
+  resources :appointments do
+    get :search, on: :collection
+  end
   resources :scheduler
 end

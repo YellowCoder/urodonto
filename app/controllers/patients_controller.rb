@@ -1,6 +1,4 @@
 class PatientsController < ApplicationController
-  autocomplete :patient, :name, additional_data: [:id], full_model: true
-
   def index
     @patients = Patient.all
   end
@@ -44,6 +42,16 @@ class PatientsController < ApplicationController
       redirect_to patients_path
     else
       render :index
+    end
+  end
+
+  def search
+    @patients = Patient.search_by_name(params[:q])
+  
+    respond_to do |format|
+      format.json {
+        @patients = @patients.limit(5)
+      }
     end
   end
 

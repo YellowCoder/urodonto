@@ -22,11 +22,12 @@
  *= require application/financial_records.css
  *= require fullcalendar
 
- *= require jquery-ui/autocomplete
  *= require jquery-ui/dialog
  *= require jquery-ui/core
 
  *= require datatables/datatables.min.css
+ 
+ *= require easy-autocomplete/easy-autocomplete.min.css
 
  *= require_self
  */

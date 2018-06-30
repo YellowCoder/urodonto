@@ -10,20 +10,13 @@
       <li>Observações: <%= appointment.observations %></li>
       <li>Início: <%= appointment.start %></li>
       <li>Fim: <%= appointment.end %></li>
-      <li>Pago? <%= appointment.financial_record.present? %></li>
-    <% end %>
-  </ul>
-  </br>
-  </br>
-  </br>
-  <h2>Lista de pagamentos<h2>
-  <ul>
-    <% @patient.financial_records.each do |financial_record| %>
-      <li>Status: <%= financial_record.status %></li>
-      <li>Data: <%= financial_record.date %></li>
-      <li>Valor: <%= financial_record.amount %></li>
-      <li>Observações: <%= financial_record.observations %></li>
-    <% end %>
-  </ul>
+      <li>Pago? <%= appointment.financial_record.paid? %></li>
 
+      <h2>Pagamento</h2>
+      <li>Status: <%= appointment.financial_record.status %></li>
+      <li>Data: <%= appointment.financial_record.date %></li>
+      <li>Valor: <%= appointment.financial_record.amount %></li>
+      <li>Observações: <%= appointment.financial_record.observations %></li>
+    <% end %>
+  </ul>
 </div>

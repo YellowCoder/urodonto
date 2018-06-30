@@ -1,8 +1,6 @@
 <div class='financial_record__formWrapper'>
   <%= simple_form_for @financial_record do |f| %>
-    <fieldset>
-      <%= f.association :appointment, collection: Appointment.all %>
-    </fieldset>
+    <%= f.text_field :appointment_id, placeholder: "Search", data: { behavior: "appointment_autocomplete" } %>
 
     <fieldset>
       <div>
@@ -25,3 +23,23 @@
     <%= f.button :submit %>
   <% end %>
 </div>
+
+<% content_for(:javascript) do %>
+  <script type='text/javascript'>
+    $input = $("[data-behavior='appointment_autocomplete']")
+    var options = {
+      url: function(phrase) {
+        return "/appointments/search.json?q=" + phrase;
+      },
+      getValue: "title",
+      list: {	
+        match: {
+          enabled: true
+        }
+      },
+      theme: "square",
+      requestDelay: 400
+    }
+    $input.easyAutocomplete(options)
+  </script>
+<% end %>

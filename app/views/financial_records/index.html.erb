@@ -19,7 +19,7 @@
       <% @financial_records.each do |financial_record| %>
         <tr>
           <td><%= financial_record.status %></td>
-          <td><%= financial_record.patient.name %></td>
+          <td><%= financial_record.appointment.patient.name %></td>
           <td><%= financial_record.date %></td>
           <td><%= financial_record.amount %></td>
           <td>

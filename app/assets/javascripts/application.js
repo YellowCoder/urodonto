@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery-ui/widgets/autocomplete
 //= require jquery-ui/widgets/dialog
 //= require activestorage
 //= require turbolinks
@@ -20,5 +19,6 @@
 //= require fullcalendar
 //= require fullcalendar/locale-all
 //= require datatables/datatables.min.js
+//= require easy-autocomplete/jquery.easy-autocomplete.min.js
 
 //= require_tree .

@@ -3,8 +3,8 @@
 <div class="financialRecord__detailsWrapper">
   <ul>
     <li><strong>Situação:</strong> <%= @financial_record.status %></li>
-    <li><strong>Paciente:</strong> <%= @financial_record.patient.name %></li>
-    <li><strong>Doutor:</strong> <%= @financial_record.doctor.name %></li>
+    <li><strong>Paciente:</strong> <%= @financial_record.appointment.patient.name %></li>
+    <li><strong>Doutor:</strong> <%= @financial_record.appointment.doctor.name %></li>
     <li><strong>Data de pagamento:</strong> <%= @financial_record.date.strftime('%d/%m/%Y') %></li>
     <li><strong>Data do registro do pagamento:</strong> <%= @financial_record.created_at.strftime('%d/%m/%Y - %H:%M') %></li>
     <li><strong>Usuário que registrou o pagamento:</strong> <%= @financial_record.user.name %></li>

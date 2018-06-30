@@ -92,21 +92,28 @@ initialize_calendar = function () {
             $(this).dialog('destroy').remove()
           }
         })
-        $("input[data-autocomplete]").each(function () {
-          var url = $(this).data('autocomplete')
-          var field = $(this).data('field')
-          $(this).autocomplete({
-            source: url,
-            select: function (appointment, ui) {
-              $("#" + field).val(ui.item.id)
-            },
-            change: function (appointment, ui) {
-              if (!ui.item) {
-                $("#" + field).val(null)
-              }
+        
+        $input = $("[data-behavior='patients_autocomplete']")
+        var field = $input.data('field')
+        var options = {
+          url: function(phrase) {
+            return $input.data().autocompleteUrl + ".json?q=" + phrase;
+          },
+          getValue: "name",
+          list: {	
+            match: {
+              enabled: true
             }
-          })
-        })
+          },
+          requestDelay: 400,
+          list: {
+            onChooseEvent: function() {
+              var patientId = $input.getSelectedItemData().id
+              $("#" + field).val(patientId)
+            }
+          }
+        }
+        $input.easyAutocomplete(options)
       });
 
       calendar.fullCalendar('unselect');

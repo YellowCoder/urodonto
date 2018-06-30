@@ -3,7 +3,8 @@
     <fieldset>
       <div>
         <label>Paciente</label>
-        <%= text_field_tag :patient, params[:search], name: 'appointment[patient]', data: { field: 'appointment_patient_id', autocomplete: autocomplete_patient_name_patients_path } %>
+        <%= text_field_tag :search_patient, params[:search], name: 'appointment[patient]', data: { field: 'appointment_patient_id', behavior: 'patients_autocomplete', autocomplete_url: search_patients_path } %>
+        <%= f.input_field :patient_id, as: :hidden %>
       </div>
     </fieldset>
 
@@ -33,8 +34,6 @@
         <input type="color" name="appointment[color]" value=<%= @appointment.color || "#429cb6" %>>
       </div>
     </fieldset>
-
-    <%= f.input_field :patient_id, as: :hidden %>
 
     <div class="form-actions">
       <%= f.button :submit %>

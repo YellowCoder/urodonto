@@ -13,11 +13,11 @@ gem 'fullcalendar-rails', '3.9.0.0'
 gem 'momentjs-rails', '2.20.1'
 gem 'jquery-rails', '4.3.3'
 gem 'jquery-ui-rails', '6.0.1'
-gem 'autocomplete_rails', '0.4.1'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'money-rails', '1.11.0'
 gem 'paranoia', '~> 2.2'
+gem 'pg_search', '2.1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
