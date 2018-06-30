@@ -80,18 +80,7 @@ initialize_calendar = function () {
         $('#appointment_end_4i').val(endHour)
         $('#appointment_end_5i').val(endMinute)
 
-
-        $('.modal').dialog({
-          title: 'Novo agendamento',
-          maxWidth:600,
-          maxHeight: 600,
-          width: 600,
-          height: 600,
-          closeText: '',
-          close: function() {
-            $(this).dialog('destroy').remove()
-          }
-        })
+        OpenModal({ title: 'Novo Agendamento' })
         
         $input = $("[data-behavior='patients_autocomplete']")
         var field = $input.data('field')
@@ -153,18 +142,8 @@ initialize_calendar = function () {
 
     eventClick: function (appointment, jsEvent, view) {
       $.getScript(appointment.show_url, function () {
-        $('.modal').dialog({
-          closeText: '',
-          title: 'Detalhes do Agendamento',
-          maxWidth:600,
-          maxHeight: 550,
-          width: 600,
-          height: 400,
-          close: function () {
-            $(this).dialog('destroy').remove()
-          }
-        })
-      });
+        OpenModal({ title: 'Detalhes do Agendamento' })
+      })
     }
   });
 };
