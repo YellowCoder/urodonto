@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 6) do
     t.bigint "doctor_id", null: false
     t.bigint "patient_id"
     t.bigint "user_id"
+    t.boolean "chargeable", default: true
     t.integer "status", default: 0
     t.string "title"
     t.string "color"
@@ -68,7 +69,7 @@ ActiveRecord::Schema.define(version: 6) do
   create_table "patients", force: :cascade do |t|
     t.string "name", null: false
     t.date "birthday"
-    t.string "sex"
+    t.integer "sex"
     t.string "phone"
     t.string "cell_phone"
     t.string "email"

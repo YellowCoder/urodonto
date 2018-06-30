@@ -1,5 +1,5 @@
 class FinancialRecord < ApplicationRecord
-  enum status: [:paid, :partial_paid, :overdue, :free]
+  enum status: [:not_paid, :paid, :overdue, :free]
 
   belongs_to :user
   belongs_to :appointment

@@ -4,6 +4,7 @@ class CreateAppointments < ActiveRecord::Migration[5.2]
       t.references :doctor, null: false, index: true, foreign_key: true
       t.references :patient, index: true, foreign_key: true
       t.references :user, index: true, foreign_key: true
+      t.boolean :chargeable, default: true
       t.integer :status, index: true, default: 0
       t.string :title
       t.string :color

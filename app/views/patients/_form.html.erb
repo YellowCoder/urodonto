@@ -12,7 +12,7 @@
       <div>
         <label>Sexo</label>
         <div class='patient__selects'>
-          <%= f.select :sex, collection: [['Masculino', 'male'], ['Feminino', 'female']] %>
+          <%= f.select :sex, Patient.sexes.map { |key, value| [I18n.t("activerecord.attributes.patient.sexes.#{ key }"), key] } %>
         </div>
       </div>
     </fieldset>

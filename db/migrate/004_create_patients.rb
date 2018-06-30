@@ -3,7 +3,7 @@ class CreatePatients < ActiveRecord::Migration[5.2]
     create_table :patients do |t|
       t.string :name, null: false
       t.date :birthday
-      t.string :sex
+      t.integer :sex
 
       t.string :phone
       t.string :cell_phone

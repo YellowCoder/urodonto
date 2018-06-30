@@ -1,4 +1,3 @@
----
 pt-BR:
   activerecord:
     models:
@@ -15,11 +14,26 @@ pt-BR:
         address: Endereço
         state: Estado
         zip_code: CEP
+        sexes:
+          male: Masculino
+          female: Feminino
       appointment:
+        chargeable: Será cobrado
         patient: Paciente
         doctor: Doutor
         color: Cor
         title: Título
+        statuses:
+          scheduled: Agendado
+          confirmed: Confirmado
+          missed: Faltou
+          canceled: Cancelado
+      financial_record:
+        statuses:
+          not_paid: Aberto
+          paid: Pago
+          overdue: Atrasado
+          free: Gratuito
       user:
         name: Nome
         password: Senha
