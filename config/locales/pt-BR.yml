@@ -3,7 +3,7 @@ pt-BR:
   activerecord:
     models:
       patient: Paciente
-      event: Agendamento
+      appointment: Consulta
       user: Usuário
     attributes:
       patient:
@@ -15,7 +15,7 @@ pt-BR:
         address: Endereço
         state: Estado
         zip_code: CEP
-      event:
+      appointment:
         patient: Paciente
         doctor: Doutor
         color: Cor

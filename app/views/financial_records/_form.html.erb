@@ -1,0 +1,23 @@
+<div class='financial_record__formWrapper'>
+  <%= simple_form_for @financial_record do |f| %>
+    <fieldset>
+      <%= f.association :patient, collection: Patient.all %>
+      <%= f.association :doctor, collection: Doctor.all %>
+      <%= f.association :appointment, collection: Appointment.all %>
+    </fieldset>
+
+    <fieldset>
+      <%= f.input :title %>
+      <div>
+        <label>Data</label>
+        <div class='financial_record_selects'>
+          <%= f.input_field :date, as: :date %>
+        </div>
+      </div>
+      <%= f.input :amount %>
+      <%= f.input :observations, as: :text %>
+    </fieldset>
+
+    <%= f.button :submit %>
+  <% end %>
+</div>

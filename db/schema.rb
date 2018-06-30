@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 6) do
     t.bigint "doctor_id", null: false
     t.bigint "patient_id"
     t.bigint "user_id"
-    t.string "status"
+    t.integer "status", default: 0
     t.string "title"
     t.string "type"
     t.string "color"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 6) do
     t.datetime "updated_at", null: false
     t.index ["doctor_id"], name: "index_appointments_on_doctor_id"
     t.index ["patient_id"], name: "index_appointments_on_patient_id"
+    t.index ["status"], name: "index_appointments_on_status"
     t.index ["user_id"], name: "index_appointments_on_user_id"
   end
 

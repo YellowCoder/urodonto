@@ -84,9 +84,9 @@ initialize_calendar = function () {
         $('.modal').dialog({
           title: 'Novo agendamento',
           maxWidth:600,
-          maxHeight: 550,
+          maxHeight: 600,
           width: 600,
-          height: 550,
+          height: 600,
           closeText: '',
           close: function() {
             $(this).dialog('destroy').remove()
@@ -152,7 +152,7 @@ initialize_calendar = function () {
           maxWidth:600,
           maxHeight: 550,
           width: 600,
-          height: 360,
+          height: 400,
           close: function () {
             $(this).dialog('destroy').remove()
           }

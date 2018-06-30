@@ -1,4 +1,6 @@
 class Appointment < ApplicationRecord
+  enum status: [:scheduled, :confirmed, :missed, :canceled]
+
   belongs_to :user
   belongs_to :patient
   belongs_to :doctor

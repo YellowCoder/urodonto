@@ -46,8 +46,10 @@ input[type=submit] {
 
 input[type=text],
 input[type=email],
+input[type=number],
 input[type=password],
-input[type=tel] {
+input[type=tel],
+textarea {
   box-shadow: none;
   display: block;
   padding: 5px;
@@ -65,7 +67,8 @@ select {
   height: 30px;
 }
 
-input:focus {
+input:focus,
+textarea:focus {
   color: #495057;
   border-color: #878787;
   background-color: #fff;

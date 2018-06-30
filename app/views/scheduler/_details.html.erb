@@ -1,6 +1,7 @@
 <div class="modal">
   <div class="scheduler__detailsWrapper">
     <ul>
+      <li><strong>Situação:</strong> <%= @appointment.status %></li>
       <li><strong>Título:</strong> <%= @appointment.title %></li>
       <li><strong>Paciente:</strong> <%= @appointment.patient.name %></li>
       <li><strong>Doutor:</strong> <%= @appointment.doctor.name %></li>
