@@ -15,6 +15,7 @@
             <th>Paciente</th>
             <th>Data</th>
             <th>Horário</th>
+            <th>Pagamento</th>
             <th>Ações</th>
         </tr>
     </thead>
@@ -31,6 +32,9 @@
             <%= appointment.start.strftime('%H:%M') %>
             -
             <%= appointment.end.strftime('%H:%M') %>
+          </td>
+          <td>
+            <%= link_to 'Ver', financial_record_path(appointment.financial_record) %>
           </td>
           <td>
             <%= link_to "Detalhes", appointment_path(appointment) %>

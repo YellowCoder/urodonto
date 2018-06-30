@@ -12,6 +12,7 @@
             <th>Paciente</th>
             <th>Data</th>
             <th>Valor</th>
+            <th>Consulta</th>
             <th>Ações</th>
         </tr>
     </thead>
@@ -22,6 +23,7 @@
           <td><%= financial_record.appointment.patient.name %></td>
           <td><%= financial_record.date %></td>
           <td><%= financial_record.amount %></td>
+          <td><%= link_to 'ver', appointment_path(financial_record.appointment) %></td>
           <td>
             <%= link_to "Detalhes", financial_record_path(financial_record) %>
             <%= link_to "Deletar", financial_record_path(financial_record), method: :delete %>
