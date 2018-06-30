@@ -8,9 +8,10 @@
   <table id="datatable" class="stripe">
     <thead>
         <tr>
-            <th>Nome</th>
-            <th>Telefone</th>
-            <th>Última consulta</th>
+            <th>Status</th>
+            <th>Paciente</th>
+            <th>Data</th>
+            <th>Valor</th>
             <th>Ações</th>
         </tr>
     </thead>
@@ -18,11 +19,11 @@
       <% @financial_records.each do |financial_record| %>
         <tr>
           <td><%= financial_record.status %></td>
-          <td></td>
-          <td></td>
+          <td><%= financial_record.patient.name %></td>
+          <td><%= financial_record.date %></td>
+          <td><%= financial_record.amount %></td>
           <td>
             <%= link_to "Detalhes", financial_record_path(financial_record) %>
-            <%= link_to "Alterar", edit_financial_record_path(financial_record) %>
             <%= link_to "Deletar", financial_record_path(financial_record), method: :delete %>
           </td>
         </tr>

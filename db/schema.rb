@@ -58,7 +58,8 @@ ActiveRecord::Schema.define(version: 6) do
     t.bigint "appointment_id"
     t.integer "status", default: 0
     t.string "title"
-    t.integer "amount"
+    t.integer "amount_cents", default: 0, null: false
+    t.string "amount_currency", default: "USD", null: false
     t.date "date"
     t.text "observations"
     t.datetime "created_at", null: false
