@@ -1,7 +1,11 @@
 <div class="appointment_form__wrapper">
   <%= simple_form_for @appointment do |f| %>
     <fieldset>
-      <%= f.association :patient, collection: Patient.all %>
+      <div>
+        <label>Paciente</label>
+        <%= text_field_tag :search_patient, @appointment&.patient&.name, name: 'appointment[patient]', data: { field: 'appointment_patient_id', behavior: 'patients_autocomplete', autocomplete_url: search_patients_path } %>
+        <%= f.input_field :patient_id, as: :hidden %>
+      </div>
       <%= f.input_field :doctor_id, as: :hidden, value: 1 %>
     </fieldset>
 
@@ -44,3 +48,31 @@
     </div>
   <% end %>
 </div>
+
+<% content_for(:javascript) do %>
+  <script type='text/javascript'>
+    $(document).on('turbolinks:load', function () {
+      $input = $("[data-behavior='patients_autocomplete']")
+      var field = $input.data('field')
+      var options = {
+        url: function(phrase) {
+          return $input.data().autocompleteUrl + ".json?q=" + phrase;
+        },
+        getValue: "name",
+        list: {	
+          match: {
+            enabled: true
+          }
+        },
+        requestDelay: 400,
+        list: {
+          onChooseEvent: function() {
+            var patientId = $input.getSelectedItemData().id
+            $("#" + field).val(patientId)
+          }
+        }
+      }
+      $input.easyAutocomplete(options)
+    })
+  </script>
+<% end %>
