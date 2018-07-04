@@ -1,4 +1,6 @@
 class SchedulerController < ApplicationController
+  include WithCurrentUser
+
   def index
     @appointments = Appointment.where(start: params[:start]..params[:end])
   end
@@ -12,8 +14,8 @@ class SchedulerController < ApplicationController
   end
 
   def create
-    @appointment = Appointment.new(appointment_params)
-    @appointment.user = current_user
+    @appointment = with_current_user(Appointment.new(appointment_params))
+    @appointment.extend(AppendFinancialRecord)
     unless @appointment.save
       render json: @appointment.errors, status: :unprocessable_entity
     end

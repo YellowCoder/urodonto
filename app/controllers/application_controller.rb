@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   layout :current_layout
 
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :set_paper_trail_whodunnit
 
   def index
   end

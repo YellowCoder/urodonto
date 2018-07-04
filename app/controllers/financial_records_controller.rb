@@ -1,4 +1,6 @@
 class FinancialRecordsController < ApplicationController
+  include WithCurrentUser
+
   def index
     @financial_records = FinancialRecord.all
   end
@@ -13,9 +15,7 @@ class FinancialRecordsController < ApplicationController
 
   def create
     @financial_record = FinancialRecord.new(financial_record_params)
-    @financial_record.user = current_user
-
-    if @financial_record.save
+    if with_current_user(@financial_record).save
       redirect_to financial_records_path
     else
       render :new

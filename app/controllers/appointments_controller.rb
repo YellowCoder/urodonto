@@ -1,4 +1,6 @@
 class AppointmentsController < ApplicationController
+  include WithCurrentUser
+
   def index
     @appointments = Appointment.all
   end
@@ -17,9 +19,8 @@ class AppointmentsController < ApplicationController
 
   def create
     @appointment = Appointment.new(appointment_params)
-    @appointment.user = current_user
-    
-    unless @appointment.save
+    @appointment.extend(AppendFinancialRecord)
+    unless with_current_user(@appointment).save
       render :new
     else
       redirect_to appointments_path

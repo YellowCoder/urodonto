@@ -1,5 +1,11 @@
 class Appointment < ApplicationRecord
+  # Includes
   include PgSearch
+
+  # Extensions
+  has_paper_trail
+  acts_as_paranoid
+  enum status: [:scheduled, :confirmed, :missed, :canceled]
 
   pg_search_scope :search_by_title_and_patient_name,
     against: :title,
@@ -8,9 +14,6 @@ class Appointment < ApplicationRecord
     },
     using: { trigram: { threshold: 0.1 } },
     ignoring: :accents
-  acts_as_paranoid
-
-  enum status: [:scheduled, :confirmed, :missed, :canceled]
 
   belongs_to :user
   belongs_to :patient
