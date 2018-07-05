@@ -2,21 +2,28 @@
 
 
 <div class="patient__detailsWrapper">
-  <h2>Lista de consultas<h2>
-  <ul>
-    <% @patient.appointments.each do |appointment| %>
-      <li>Status: <%= appointment.status %></li>
-      <li>Doutor: <%= appointment.doctor.name %></li>
-      <li>Observações: <%= appointment.observations %></li>
-      <li>Início: <%= appointment.start %></li>
-      <li>Fim: <%= appointment.end %></li>
-      <li>Pago? <%= appointment.financial_record.paid? %></li>
-
-      <h2>Pagamento</h2>
-      <li>Status: <%= appointment.financial_record.status %></li>
-      <li>Data: <%= appointment.financial_record.date %></li>
-      <li>Valor: <%= appointment.financial_record.amount %></li>
-      <li>Observações: <%= appointment.financial_record.observations %></li>
-    <% end %>
-  </ul>
+  <table class="standard">
+    <thead>
+      <tr>
+        <th>Status</th>
+        <th>Doutor</th>
+        <th>Data</th>
+        <th>Status Pgto</th>
+        <th>Data Pgto</th>
+        <th>Valor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @patient.appointments.each do |appointment| %>
+        <tr>
+          <td><%= t("activerecord.attributes.appointment.statuses.#{ appointment.status }") %></td>
+          <td><%= appointment.doctor.name %></td>
+          <td><%= appointment.start.strftime('%d %b %Y') %></td>
+          <td><%= t("activerecord.attributes.financial_record.statuses.#{ appointment.financial_record.status }") %></td>
+          <td><%= appointment.financial_record.date.strftime('%d %b %Y') %></td>
+          <td><%= appointment.financial_record.amount %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

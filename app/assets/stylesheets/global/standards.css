@@ -86,3 +86,34 @@ fieldset > div {
 fieldset div > label {
   margin-bottom: 10px;
 }
+
+table.standard {
+  table-layout: fixed;
+  width: 100%;
+}
+
+table.standard tr {
+  border-bottom: 1px solid #f2f2f2;
+}
+
+table.standard td {
+  padding: 16px 0;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+table.standard th {
+  font-size: 14px;
+  color: #333333;
+  line-height: 1.4;
+  text-transform: uppercase;
+  padding-top: 21px;
+  padding-bottom: 21px;
+  text-align: left;
+}
+
+table.standard thead {
+  display: table-header-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
