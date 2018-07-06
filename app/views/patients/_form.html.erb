@@ -41,5 +41,14 @@
     </fieldset>
 
     <%= f.button :submit %>
+
+    <% unless patient.new_record?%>
+      <button class="red">
+        <%= link_to 'Delete', 
+                    patient, 
+                    method: :delete, 
+                    data: { confirm: 'Você tem certeza?' } %>
+      </button>
+    <% end %>
   <% end %>
 </div>

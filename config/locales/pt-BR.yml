@@ -41,6 +41,7 @@ pt-BR:
         password: Senha
         password_confirmation: Confirmação da senha
         current_password: Senha atual
+        remember_me: manter conectado
     errors:
       messages:
         record_invalid: 'A validação falhou: %{errors}'

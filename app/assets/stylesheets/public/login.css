@@ -1,6 +1,29 @@
 .login__wrapper {
+  width: 560px;
+  background: #FFFFFF;
+  border-radius: 10px;
+  position: relative;
+  padding: 85px;
+}
+
+.login__wrapper h2 {
+  font-size: 30px;
+  color: #555555;
+  line-height: 1.2;
+  text-transform: uppercase;
+  text-align: left;
+  width: 100%;
+  display: block;
+}
+
+.login__wrapper form {
+  margin-top: 20px;
 }
 
 .login__wrapper form .field {
   padding-bottom: 20px;
+}
+
+.login__wrapper form .field label {
+  text-transform: uppercase;
 }

@@ -34,8 +34,13 @@
   </div>
 
   <div class="infoDetail__groupFooter">
-    <%= link_to 'Alterar', edit_appointment_path(@appointment) %>
-    <%= link_to 'Deletar', @appointment, method: :delete, data: { confirm: 'Tem certeza?' } %>
+    <button>
+      <%= link_to 'Alterar', edit_appointment_path(@appointment) %>
+    </button>
+
+    <button class="red">
+      <%= link_to 'Deletar', @appointment, method: :delete, data: { confirm: 'Tem certeza?' } %>
+    </button>
   </div>
 
 </div>

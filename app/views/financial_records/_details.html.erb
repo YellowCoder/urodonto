@@ -31,7 +31,12 @@
   </div>
 
   <div class="infoDetail__groupFooter">
-    <%= link_to 'Alterar', edit_financial_record_path(financial_record) %>
-    <%= link_to 'Deletar', financial_record, method: :delete, data: { confirm: 'Tem certeza?' } %>
+    <button>
+      <%= link_to 'Alterar', edit_financial_record_path(financial_record) %>
+    </button>
+
+    <button class="red">
+      <%= link_to 'Deletar', financial_record, method: :delete, data: { confirm: 'Tem certeza?' } %>
+    </button>    
   </div>
 </div>
