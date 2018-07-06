@@ -39,7 +39,6 @@
           <td>
             <%= link_to "Detalhes", appointment_path(appointment) %>
             <%= link_to "Alterar", edit_appointment_path(appointment, search: appointment.patient.name) %>
-            <%= link_to "Deletar", appointment_path(appointment), method: :delete %>
           </td>
         </tr>
       <% end %>

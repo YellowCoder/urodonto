@@ -11,6 +11,8 @@
         <th>Status Pgto</th>
         <th>Data Pgto</th>
         <th>Valor</th>
+        <th>Consulta</th>
+        <th>Pagamento</th>
       </tr>
     </thead>
     <tbody>
@@ -20,8 +22,10 @@
           <td><%= appointment.doctor.name %></td>
           <td><%= appointment.start.strftime('%d %b %Y') %></td>
           <td><%= t("activerecord.attributes.financial_record.statuses.#{ appointment.financial_record.status }") %></td>
-          <td><%= appointment.financial_record.date.strftime('%d %b %Y') %></td>
+          <td><%= appointment.financial_record.paid? ? appointment.financial_record.date.strftime('%d %b %Y') : '-' %></td>
           <td><%= appointment.financial_record.amount %></td>
+          <td><%= link_to 'Detalhes', appointment_path(appointment)  %></td>
+          <td><%= link_to 'Detalhes', financial_record_path(appointment.financial_record) %></td>
         </tr>
       <% end %>
     </tbody>
