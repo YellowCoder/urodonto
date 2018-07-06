@@ -42,7 +42,10 @@ initialize_calendar = function () {
         type: 'PATCH'
       });
     },
-    select: function (start, end) {
+    select: function (start, end, jsEvent, view) {
+      if (view.name === 'month') {
+        return
+      }
       $.getScript('/scheduler/new', function () {
         var startDay = start.date()
         var startMonth = start.month() + 1
@@ -140,10 +143,17 @@ initialize_calendar = function () {
       });
     },
 
-    eventClick: function (appointment, jsEvent, view) {
+    eventClick: function (appointment) {
       $.getScript(appointment.show_url, function () {
         OpenModal({ title: 'Detalhes do Agendamento' })
       })
+    },
+
+    dayClick: function (date, jsEvent, view) {
+      if (view.name === "month") {
+        calendar.fullCalendar('gotoDate', date)
+        calendar.fullCalendar('changeView', 'agendaDay')
+      }
     }
   });
 };
