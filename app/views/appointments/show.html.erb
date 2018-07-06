@@ -33,34 +33,11 @@
     <div class="infoDetail__groupInfo--description"><span><%= @appointment.observations %></span></div>
   </div>
 
-</div>
-
-<div class="infoDetail__groupWrapper">
-  <h2>Pagamento</h2>
-
-  <div class="infoDetail__groupInfo">
-    <div class="infoDetail__groupInfo--title"><span>Pagamento:</span></div>
-    <div class="infoDetail__groupInfo--description"><span><%= t("activerecord.attributes.financial_record.statuses.#{ @appointment.financial_record.status }") %></span></div>
-  </div>
-
-  <div class="infoDetail__groupInfo">
-    <div class="infoDetail__groupInfo--title"><span>Data:</span></div>
-    <div class="infoDetail__groupInfo--description"><span><%= "@appointment.financial_record.date.strftime('%d/%m/%Y ')" %></span></div>
-  </div>
-
-  <div class="infoDetail__groupInfo">
-    <div class="infoDetail__groupInfo--title"><span>Valor:</span></div>
-    <div class="infoDetail__groupInfo--description"><span><%= @appointment.financial_record.amount %></span></div>
-  </div>
-
-  <div class="infoDetail__groupInfo">
-    <div class="infoDetail__groupInfo--title"><span>Recebido por:</span></div>
-    <div class="infoDetail__groupInfo--description"><span><%= @appointment.financial_record.user.name %></span></div>
-  </div>
-
-  <div class="infoDetail__groupInfo">
-    <div class="infoDetail__groupInfo--title"><span>Observações:</span></div>
-    <div class="infoDetail__groupInfo--description"><span><%= @appointment.financial_record.observations %></span></div>
+  <div class="infoDetail__groupFooter">
+    <%= link_to 'Alterar', edit_appointment_path(@appointment) %>
+    <%= link_to 'Deletar', @appointment, method: :delete, data: { confirm: 'Tem certeza?' } %>
   </div>
 
 </div>
+
+<%= render partial: 'financial_records/details', locals: { financial_record: @appointment.financial_record } %>

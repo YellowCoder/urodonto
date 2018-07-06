@@ -1,0 +1,37 @@
+<div class="infoDetail__groupWrapper">
+  <h2>Pagamento</h2>
+
+  <div class="infoDetail__groupInfo">
+    <div class="infoDetail__groupInfo--title"><span>Pagamento:</span></div>
+    <div class="infoDetail__groupInfo--description"><span><%= t("activerecord.attributes.financial_record.statuses.#{ financial_record.status }") %></span></div>
+  </div>
+
+  <div class="infoDetail__groupInfo">
+    <div class="infoDetail__groupInfo--title"><span>Data:</span></div>
+    <div class="infoDetail__groupInfo--description">
+      <span>
+        <%= financial_record.date&.strftime('%d/%m/%Y ') %>
+      </span>
+    </div>
+  </div>
+
+  <div class="infoDetail__groupInfo">
+    <div class="infoDetail__groupInfo--title"><span>Valor:</span></div>
+    <div class="infoDetail__groupInfo--description"><span><%= financial_record.amount %></span></div>
+  </div>
+
+  <div class="infoDetail__groupInfo">
+    <div class="infoDetail__groupInfo--title"><span>Recebido por:</span></div>
+    <div class="infoDetail__groupInfo--description"><span><%= financial_record.user.name %></span></div>
+  </div>
+
+  <div class="infoDetail__groupInfo">
+    <div class="infoDetail__groupInfo--title"><span>Observações:</span></div>
+    <div class="infoDetail__groupInfo--description"><span><%= financial_record.observations %></span></div>
+  </div>
+
+  <div class="infoDetail__groupFooter">
+    <%= link_to 'Alterar', edit_financial_record_path(financial_record) %>
+    <%= link_to 'Deletar', financial_record, method: :delete, data: { confirm: 'Tem certeza?' } %>
+  </div>
+</div>

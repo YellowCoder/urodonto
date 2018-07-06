@@ -12,7 +12,7 @@ class Patient < ApplicationRecord
     using: { trigram: { threshold: 0.1 } },
     ignoring: :accents
 
-  has_many :appointments
+  has_many :appointments, dependent: :destroy
   has_many :financial_records, through: :appointments
 
   validates :name, presence: true
