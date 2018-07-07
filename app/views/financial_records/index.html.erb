@@ -10,7 +10,8 @@
         <tr>
             <th>Status</th>
             <th>Paciente</th>
-            <th>Data</th>
+            <th>Data venc</th>
+            <th>Data Pgt</th>
             <th>Valor</th>
             <th>Consulta</th>
             <th>Ações</th>
@@ -21,12 +22,13 @@
         <tr>
           <td><%= t("activerecord.attributes.financial_record.statuses.#{ financial_record.status }") %></td>
           <td><%= financial_record.appointment.patient.name %></td>
-          <td><%= financial_record.date %></td>
+          <td><%= financial_record.due_date&.strftime('%d/%m/%Y') %></td>
+          <td><%= financial_record.paid_at&.strftime('%d/%m/%Y') %></td>
           <td><%= financial_record.amount %></td>
           <td><%= link_to 'ver', appointment_path(financial_record.appointment) %></td>
           <td>
-            <%= link_to "Detalhes", financial_record_path(financial_record) %>
-            <%= link_to "Deletar", financial_record_path(financial_record), method: :delete %>
+            <button><%= link_to "Detalhes", financial_record_path(financial_record) %></button>
+            <button><%= link_to "Alterar", edit_financial_record_path(financial_record) %></button>
           </td>
         </tr>
       <% end %>

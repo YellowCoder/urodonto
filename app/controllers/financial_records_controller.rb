@@ -9,6 +9,10 @@ class FinancialRecordsController < ApplicationController
     @financial_record = FinancialRecord.new
   end
 
+  def edit
+    @financial_record = FinancialRecord.find(params[:id])
+  end
+
   def show
     @financial_record = FinancialRecord.find(params[:id])
   end
@@ -16,6 +20,15 @@ class FinancialRecordsController < ApplicationController
   def create
     @financial_record = FinancialRecord.new(financial_record_params)
     if with_current_user(@financial_record).save
+      redirect_to financial_records_path
+    else
+      render :new
+    end
+  end
+  
+  def update
+    @financial_record = FinancialRecord.find(params[:id])
+    if @financial_record.update(financial_record_params)
       redirect_to financial_records_path
     else
       render :new

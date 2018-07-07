@@ -21,9 +21,8 @@
           <td><%= patient.cell_phone %></td>
           <td><%= patient.appointments&.last&.start&.strftime('%d %b %Y - %H:%M') %></td>
           <td>
-            <%= link_to "Detalhes", patient_path(patient) %>
-            <%= link_to "Alterar", edit_patient_path(patient) %>
-            <%= link_to "Deletar", patient_path(patient), method: :delete %>
+            <button><%= link_to "Detalhes", patient_path(patient) %></button>
+            <button><%= link_to "Alterar", edit_patient_path(patient) %></button>
           </td>
         </tr>
       <% end %>

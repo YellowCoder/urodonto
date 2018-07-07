@@ -6,7 +6,8 @@ class CreateFinancialRecords < ActiveRecord::Migration[5.2]
       t.integer :status, default: 0
       t.string :title
       t.monetize :amount
-      t.date :date
+      t.datetime :paid_at
+      t.date :due_date
       t.text :observations
       
       t.datetime :deleted_at

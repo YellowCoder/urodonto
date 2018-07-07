@@ -31,6 +31,9 @@ pt-BR:
           canceled: Cancelado
       financial_record:
         appointment: Consulta
+        title: Título
+        amount: Valor
+        observations: Observações
         statuses:
           not_paid: Aberto
           paid: Pago

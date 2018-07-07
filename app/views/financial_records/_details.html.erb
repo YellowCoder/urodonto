@@ -7,10 +7,19 @@
   </div>
 
   <div class="infoDetail__groupInfo">
-    <div class="infoDetail__groupInfo--title"><span>Data:</span></div>
+    <div class="infoDetail__groupInfo--title"><span>Data do vencimento:</span></div>
     <div class="infoDetail__groupInfo--description">
       <span>
-        <%= financial_record.date&.strftime('%d/%m/%Y ') %>
+        <%= financial_record.due_date&.strftime('%d/%m/%Y') %>
+      </span>
+    </div>
+  </div>
+
+  <div class="infoDetail__groupInfo">
+    <div class="infoDetail__groupInfo--title"><span>Data do pagamento:</span></div>
+    <div class="infoDetail__groupInfo--description">
+      <span>
+        <%= financial_record.paid_at&.strftime('%d/%m/%Y') %>
       </span>
     </div>
   </div>

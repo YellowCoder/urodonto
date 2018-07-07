@@ -52,7 +52,8 @@ ActiveRecord::Schema.define(version: 8) do
     t.string "title"
     t.integer "amount_cents", default: 0, null: false
     t.string "amount_currency", default: "BRL", null: false
-    t.date "date"
+    t.datetime "paid_at"
+    t.date "due_date"
     t.text "observations"
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
