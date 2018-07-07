@@ -19,6 +19,7 @@ gem 'money-rails', '1.11.0'
 gem 'paranoia', '~> 2.2'
 gem 'pg_search', '2.1.2'
 gem 'paper_trail', '9.2.0'
+gem 'faker', '1.8.7'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false

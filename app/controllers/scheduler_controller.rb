@@ -2,7 +2,7 @@ class SchedulerController < ApplicationController
   include WithCurrentUser
 
   def index
-    @appointments = Appointment.where(start: params[:start]..params[:end])
+    @appointments = Appointment.where(start: params[:start]..params[:end]).includes(:patient)
   end
 
   def new

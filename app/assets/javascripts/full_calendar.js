@@ -5,7 +5,7 @@ initialize_calendar = function () {
     header: {
       left: 'prev,next today',
       center: 'title',
-      right: 'month,agendaWeek,agendaDay'
+      right: 'month,agendaWeek,agendaDay,listWeek'
     },
     locale: 'pt-br',
     selectable: true,

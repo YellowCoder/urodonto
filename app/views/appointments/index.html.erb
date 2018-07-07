@@ -8,13 +8,12 @@
   <table id="datatable" class="stripe">
     <thead>
         <tr>
-            <th>Cobrável</th>
-            <th>Pg. Status</th>
             <th>Status</th>
-            <th>Título</th>
             <th>Paciente</th>
+            <th>Título</th>
             <th>Data</th>
             <th>Horário</th>
+            <th>Pg. Status</th>
             <th>Pagamento</th>
             <th>Ações</th>
         </tr>
@@ -22,23 +21,22 @@
     <tbody>
       <% @appointments.each do |appointment| %>
         <tr>
-          <td><%= appointment.chargeable ? 'sim' : 'não' %></td>
-          <td><%= t("activerecord.attributes.financial_record.statuses.#{ appointment.financial_record.status }") %></td>
           <td><%= t("activerecord.attributes.appointment.statuses.#{ appointment.status }") %></td>
-          <td><%= appointment.title %></td>
           <td><%= appointment.patient.name %></td>
+          <td><%= appointment.title %></td>
           <td><%= appointment.start.strftime('%d %b %Y') %></td>
           <td>
             <%= appointment.start.strftime('%H:%M') %>
             -
             <%= appointment.end.strftime('%H:%M') %>
           </td>
+          <td><%= t("activerecord.attributes.financial_record.statuses.#{ appointment.financial_record.status }") %></td>
           <td>
             <%= link_to 'Ver', financial_record_path(appointment.financial_record) %>
           </td>
           <td>
-            <%= link_to "Detalhes", appointment_path(appointment) %>
-            <%= link_to "Alterar", edit_appointment_path(appointment, search: appointment.patient.name) %>
+            <button><%= link_to "detalhes", appointment_path(appointment) %></button>
+            <button><%= link_to "alterar", edit_appointment_path(appointment, search: appointment.patient.name) %></button>
           </td>
         </tr>
       <% end %>

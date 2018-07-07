@@ -12,30 +12,22 @@ user.save
 doctor = Doctor.new(active: true, name: 'Mônica')
 doctor.save
 
-patient = Patient.new(name: 'Adriano Tadao')
-patient.save
+700.times do
+  Patient.create(name: Faker::Name.name)
+end
 
-patient2 = Patient.new(name: 'Guilherme de Morais')
-patient2.save
+500.times do
+  payment_date = Faker::Date.between(2.months.ago, Date.today+3.months) + (1..23).to_a.sample.hours
+  appointment_date = payment_date + (1..23).to_a.sample.hours - 10.days
 
-Appointment.create(
-  financial_record: FinancialRecord.new(status: 1, amount: 100, user: user, paid_at: DateTime.now),
-  user: user, 
-  patient: patient, 
-  doctor: doctor, 
-  title: 'Orçamento',
-  start: DateTime.now,
-  end: DateTime.now + 0.5.hours,
-  color: '#429cb6'
-)
-
-Appointment.create(
-  financial_record: FinancialRecord.new(status: 1, amount: 100, user: user, paid_at: DateTime.now),
-  user: user, 
-  patient: patient2, 
-  doctor: doctor, 
-  title: 'Retorno',
-  start: DateTime.now + 2.hours,
-  end: DateTime.now + 2.5.hours,
-  color: '#495057'
-)
+  Appointment.create(
+    financial_record: FinancialRecord.new(status: [0,1,2,3].sample, amount: rand(999), user: user, paid_at: payment_date),
+    user: user, 
+    patient: Patient.all.sample, 
+    doctor: doctor, 
+    title: ['Orçamento', 'Manutenção', 'Limpeza', 'Restauração', 'Clareamento'].sample,
+    start: appointment_date,
+    end: appointment_date + 0.5.hours,
+    color: Faker::Color.hex_color
+  )
+end
