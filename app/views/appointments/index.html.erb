@@ -13,8 +13,7 @@
             <th>Título</th>
             <th>Data</th>
             <th>Horário</th>
-            <th>Pg. Status</th>
-            <th>Pagamento</th>
+            <th>Status PG.</th>
             <th>Ações</th>
         </tr>
     </thead>
@@ -22,7 +21,7 @@
       <% @appointments.each do |appointment| %>
         <tr>
           <td><%= t("activerecord.attributes.appointment.statuses.#{ appointment.status }") %></td>
-          <td><%= appointment.patient.name %></td>
+          <td><%= link_to appointment.patient.name, patient_path(appointment.patient) %></td>
           <td><%= appointment.title %></td>
           <td><%= appointment.start.strftime('%d %b %Y') %></td>
           <td>
@@ -30,10 +29,8 @@
             -
             <%= appointment.end.strftime('%H:%M') %>
           </td>
-          <td><%= t("activerecord.attributes.financial_record.statuses.#{ appointment.financial_record.status }") %></td>
           <td>
-            <%= link_to 'Ver', financial_record_path(appointment.financial_record) %>
-          </td>
+          <%= link_to t("activerecord.attributes.financial_record.statuses.#{ appointment.financial_record.status }"), financial_record_path(appointment.financial_record) %></td>
           <td>
             <button><%= link_to "detalhes", appointment_path(appointment) %></button>
             <button><%= link_to "alterar", edit_appointment_path(appointment, search: appointment.patient.name) %></button>

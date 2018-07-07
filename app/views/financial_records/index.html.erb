@@ -10,10 +10,10 @@
         <tr>
             <th>Status</th>
             <th>Paciente</th>
-            <th>Data venc</th>
             <th>Data Pgt</th>
             <th>Valor</th>
-            <th>Consulta</th>
+            <th>Título</th>
+            <th>Data venc</th>
             <th>Ações</th>
         </tr>
     </thead>
@@ -21,11 +21,11 @@
       <% @financial_records.each do |financial_record| %>
         <tr>
           <td><%= t("activerecord.attributes.financial_record.statuses.#{ financial_record.status }") %></td>
-          <td><%= financial_record.appointment.patient.name %></td>
-          <td><%= financial_record.due_date&.strftime('%d/%m/%Y') %></td>
+          <td><%= link_to financial_record.appointment.patient.name, patient_path(financial_record.appointment.patient) %></td>
           <td><%= financial_record.paid_at&.strftime('%d/%m/%Y') %></td>
           <td><%= financial_record.amount %></td>
-          <td><%= link_to 'ver', appointment_path(financial_record.appointment) %></td>
+          <td><%= financial_record.title %></td>
+          <td><%= financial_record.due_date&.strftime('%d/%m/%Y') %></td>
           <td>
             <button><%= link_to "Detalhes", financial_record_path(financial_record) %></button>
             <button><%= link_to "Alterar", edit_financial_record_path(financial_record) %></button>

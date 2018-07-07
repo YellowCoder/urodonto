@@ -11,8 +11,7 @@
         <th>Status Pgto</th>
         <th>Data Pgto</th>
         <th>Valor</th>
-        <th>Consulta</th>
-        <th>Pagamento</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -26,9 +25,6 @@
           <td><%= appointment.financial_record.amount %></td>
           <td>
             <button><%= link_to 'Detalhes', appointment_path(appointment) %></button>
-          </td>
-          <td>
-            <button><%= link_to 'Detalhes', financial_record_path(appointment.financial_record) %></button>
           </td>
         </tr>
       <% end %>

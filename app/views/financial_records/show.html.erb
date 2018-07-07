@@ -1,38 +1,4 @@
 <% page_title 'Detalhes do registro financeiro' %>
 
-<div class="financialRecord__detailsWrapper">
-  <ul>
-    <li><strong>Situação:</strong> <%= @financial_record.status %></li>
-    <li><strong>Paciente:</strong> <%= @financial_record.appointment.patient.name %></li>
-    <li><strong>Doutor:</strong> <%= @financial_record.appointment.doctor.name %></li>
-    <li><strong>Data de pagamento:</strong> <%= "@financial_record.date.strftime('%d/%m/%Y')" %></li>
-    <li><strong>Data do registro do pagamento:</strong> <%= @financial_record.created_at.strftime('%d/%m/%Y - %H:%M') %></li>
-    <li><strong>Usuário que registrou o pagamento:</strong> <%= @financial_record.user.name %></li>
-    <li><strong>valor</strong> <%= humanized_money_with_symbol(@financial_record.amount) %></li>
-    <li><strong>Observações:</strong> <%= @financial_record.observations %></li>
-    <li><strong>Referente a consulta?</strong> <%= @financial_record.appointment.present? ? 'sim' : 'não' %></li>
-
-    <% if @financial_record.appointment.present? %>
-      <div class="financialRecord__appointmentWrapper">
-        <h2>Detalhes da consulta</h2>
-        <ul>
-          <li><strong>Situação:</strong> <%= @financial_record.appointment.status %></li>
-          <li><strong>Título:</strong> <%= @financial_record.appointment.title %></li>
-          <li><strong>Paciente:</strong> <%= @financial_record.appointment.patient.name %></li>
-          <li><strong>Doutor:</strong> <%= @financial_record.appointment.doctor.name %></li>
-          <li><strong>Data de início:</strong> <%= @financial_record.appointment.start.strftime('%d/%m/%Y - %H:%M') %></li>
-          <li><strong>Data de término:</strong> <%= @financial_record.appointment.end.strftime('%d/%m/%Y - %H:%M') %></li>
-          <li><strong>Agendado por:</strong> <%= @financial_record.appointment.user.name %></li>
-          <li><strong>Data de agendamento:</strong> <%= @financial_record.appointment.created_at.strftime('%d/%m/%Y - %H:%M') %></li>
-          <li><strong>Data Da última atualização:</strong> <%= @financial_record.appointment.updated_at.strftime('%d/%m/%Y - %H:%M') %></li>
-        </ul>
-      </div>
-    <% end %>
-  </ul>
-  
-  <div class="financialRecord__buttonsWrapper">
-    <button class="red">
-      <%= link_to "Deletar", financial_record_path(@financial_record), method: :delete %>
-    </button>
-  </div>
-</div>
+<%= render partial: 'details', locals: { financial_record: @financial_record } %>
+<%= render partial: 'appointments/details', locals: { appointment: @financial_record.appointment } %>

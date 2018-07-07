@@ -2,6 +2,15 @@
   <h2>Pagamento</h2>
 
   <div class="infoDetail__groupInfo">
+    <div class="infoDetail__groupInfo--title"><span>Paciente:</span></div>
+    <div class="infoDetail__groupInfo--description">
+      <span>
+        <%= link_to financial_record.appointment.patient.name, patient_path(financial_record.appointment.patient) %>
+      </span>
+    </div>
+  </div>
+
+  <div class="infoDetail__groupInfo">
     <div class="infoDetail__groupInfo--title"><span>Pagamento:</span></div>
     <div class="infoDetail__groupInfo--description"><span><%= t("activerecord.attributes.financial_record.statuses.#{ financial_record.status }") %></span></div>
   </div>
