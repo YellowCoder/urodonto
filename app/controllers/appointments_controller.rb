@@ -2,7 +2,7 @@ class AppointmentsController < ApplicationController
   include WithCurrentUser
 
   def index
-    @appointments = Appointment.all
+    @appointments = Appointment.all.includes(:patient, :financial_record)
   end
 
   def new
