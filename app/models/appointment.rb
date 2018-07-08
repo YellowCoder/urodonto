@@ -5,7 +5,7 @@ class Appointment < ApplicationRecord
   # Extensions
   has_paper_trail
   acts_as_paranoid
-  enum status: [:scheduled, :confirmed, :missed, :canceled]
+  enum status: [:scheduled, :confirmed, :missed, :canceled, :free]
 
   pg_search_scope :search_by_title_and_patient_name,
     against: :title,

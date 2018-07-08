@@ -29,6 +29,7 @@ pt-BR:
           confirmed: Confirmado
           missed: Faltou
           canceled: Cancelado
+          free: Gratuito
       financial_record:
         appointment: Consulta
         title: Título
