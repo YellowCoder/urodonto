@@ -3,9 +3,12 @@ initialize_calendar = function () {
   var calendar = $('.full_calendar');
   calendar.fullCalendar({
     header: {
-      left: 'prev,next today',
-      center: 'title',
-      right: 'month,agendaWeek,agendaDay,listWeek'
+      right: 'today prev,next,month,agendaWeek agendaDay,listWeek,listMonth'
+    },
+    buttonText: {
+      agendaDay: 'Lista do Dia',
+      listWeek: 'Lista da Semana',
+      listMonth: 'Lista do Mês'
     },
     locale: 'pt-br',
     selectable: true,
