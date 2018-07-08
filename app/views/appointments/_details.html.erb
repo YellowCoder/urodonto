@@ -2,11 +2,6 @@
   <h2>Consulta</h2>
 
   <div class="infoDetail__groupInfo">
-    <div class="infoDetail__groupInfo--title"><span>Cobrável:</span></div>
-    <div class="infoDetail__groupInfo--description"><span><%= appointment.chargeable ? 'sim' : 'não' %></span></div>
-  </div>
-
-  <div class="infoDetail__groupInfo">
     <div class="infoDetail__groupInfo--title"><span>Status:</span></div>
     <div class="infoDetail__groupInfo--description"><span><%= t("activerecord.attributes.appointment.statuses.#{ appointment.status }") %></span></div>
   </div>
@@ -14,6 +9,11 @@
   <div class="infoDetail__groupInfo">
     <div class="infoDetail__groupInfo--title"><span>Doutor:</span></div>
     <div class="infoDetail__groupInfo--description"><span><%= appointment.doctor.name %></span></div>
+  </div>
+
+  <div class="infoDetail__groupInfo">
+    <div class="infoDetail__groupInfo--title"><span>Agendado por:</span></div>
+    <div class="infoDetail__groupInfo--description"><span><%= appointment.user.name %></span></div>
   </div>
 
   <div class="infoDetail__groupInfo">

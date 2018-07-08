@@ -24,6 +24,7 @@
           <%= f.select :status, FinancialRecord.statuses.map { |key, value| [I18n.t("activerecord.attributes.financial_record.statuses.#{ key }"), key] } %>
         </div>
       </div>
+      <%= f.association :user, include_blank: false %>
       <%= f.input :title %>
       <div>
         <label>Data do vencimento</label>

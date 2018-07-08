@@ -22,9 +22,9 @@ end
 
   Appointment.create(
     financial_record: FinancialRecord.new(status: [0,1,2,3].sample, amount: rand(999), user: user, paid_at: payment_date),
-    user: user, 
-    patient: Patient.all.sample, 
-    doctor: doctor, 
+    user: user,
+    patient: Patient.all.sample,
+    doctor: doctor,
     title: ['Orçamento', 'Manutenção', 'Limpeza', 'Restauração', 'Clareamento'].sample,
     start: appointment_date,
     end: appointment_date + 0.5.hours,

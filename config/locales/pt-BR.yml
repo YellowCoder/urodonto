@@ -1,4 +1,8 @@
 pt-BR:
+  simple_form:
+    labels:
+      financial_record:
+        user: Recebido por
   activerecord:
     models:
       patient: Paciente
