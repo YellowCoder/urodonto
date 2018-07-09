@@ -1,7 +1,7 @@
 json.array! @appointments do |appointment|
   date_format = '%Y-%m-%dT%H:%M:%S'
   json.id appointment.id
-  json.title "#{ appointment.title } - #{ appointment.patient.name }"
+  json.title "#{ appointment.title } - #{ appointment.patient.name } - (#{ t("activerecord.attributes.appointment.statuses.#{ appointment.status }") })"
   json.start appointment.start.strftime(date_format)
   json.end appointment.end.strftime(date_format)
   json.color appointment.color unless appointment.color.blank?
