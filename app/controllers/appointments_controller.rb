@@ -56,7 +56,6 @@ class AppointmentsController < ApplicationController
     params.require(:appointment).permit(
       :chargeable,
       :status,
-      :doctor_id,
       :patient_id,
       :title,
       :start,

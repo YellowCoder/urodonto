@@ -9,9 +9,6 @@
 user = User.new(name: 'Adriano Tadao', email: 'adrianotadao@gmail.com', password: '123123')
 user.save
 
-doctor = Doctor.new(active: true, name: 'Mônica')
-doctor.save
-
 700.times do
   Patient.create(name: Faker::Name.name)
 end
@@ -24,7 +21,6 @@ end
     financial_record: FinancialRecord.new(status: [0,1,2,3].sample, amount: rand(999), user: user, paid_at: payment_date),
     user: user,
     patient: Patient.all.sample,
-    doctor: doctor,
     title: ['Orçamento', 'Manutenção', 'Limpeza', 'Restauração', 'Clareamento'].sample,
     start: appointment_date,
     end: appointment_date + 0.5.hours,

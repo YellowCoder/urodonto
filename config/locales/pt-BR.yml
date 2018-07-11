@@ -25,7 +25,6 @@ pt-BR:
       appointment:
         chargeable: Será cobrado
         patient: Paciente
-        doctor: Doutor
         color: Cor
         title: Título
         statuses:

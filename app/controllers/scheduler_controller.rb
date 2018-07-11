@@ -38,7 +38,6 @@ class SchedulerController < ApplicationController
 
   def appointment_params
     params.require(:appointment).permit(
-      :doctor_id,
       :patient_id,
       :title,
       :start,

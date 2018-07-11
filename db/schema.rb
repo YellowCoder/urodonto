@@ -18,10 +18,8 @@ ActiveRecord::Schema.define(version: 8) do
   enable_extension "unaccent"
 
   create_table "appointments", force: :cascade do |t|
-    t.bigint "doctor_id", null: false
     t.bigint "patient_id"
     t.bigint "user_id"
-    t.boolean "chargeable", default: true
     t.integer "status", default: 0
     t.string "title"
     t.string "color"
@@ -31,18 +29,9 @@ ActiveRecord::Schema.define(version: 8) do
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["doctor_id"], name: "index_appointments_on_doctor_id"
     t.index ["patient_id"], name: "index_appointments_on_patient_id"
     t.index ["status"], name: "index_appointments_on_status"
     t.index ["user_id"], name: "index_appointments_on_user_id"
-  end
-
-  create_table "doctors", force: :cascade do |t|
-    t.boolean "active"
-    t.string "name", null: false
-    t.datetime "deleted_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "financial_records", force: :cascade do |t|
@@ -66,6 +55,9 @@ ActiveRecord::Schema.define(version: 8) do
     t.string "name", null: false
     t.date "birthday"
     t.integer "sex"
+    t.integer "fixed_price_cents", default: 0, null: false
+    t.string "fixed_price_currency", default: "BRL", null: false
+    t.jsonb "prices"
     t.string "phone"
     t.string "cell_phone"
     t.string "email"
@@ -108,7 +100,6 @@ ActiveRecord::Schema.define(version: 8) do
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
-  add_foreign_key "appointments", "doctors"
   add_foreign_key "appointments", "patients"
   add_foreign_key "appointments", "users"
   add_foreign_key "financial_records", "appointments"

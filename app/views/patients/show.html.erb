@@ -6,7 +6,6 @@
     <thead>
       <tr>
         <th>Status</th>
-        <th>Doutor</th>
         <th>Data</th>
         <th>Status Pgto</th>
         <th>Data Pgto</th>
@@ -18,7 +17,6 @@
       <% @patient.appointments.each do |appointment| %>
         <tr>
           <td><%= t("activerecord.attributes.appointment.statuses.#{ appointment.status }") %></td>
-          <td><%= appointment.doctor.name %></td>
           <td><%= appointment.start.strftime('%d %b %Y') %></td>
           <td><%= t("activerecord.attributes.financial_record.statuses.#{ appointment.financial_record.status }") %></td>
           <td><%= appointment.financial_record.paid? ? appointment.financial_record.paid_at.strftime('%d %b %Y') : '-' %></td>

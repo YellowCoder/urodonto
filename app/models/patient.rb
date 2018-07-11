@@ -6,6 +6,7 @@ class Patient < ApplicationRecord
   acts_as_paranoid
   has_paper_trail
   enum sex: [:male, :female]
+  serialize :prices, Array
   
   pg_search_scope :search_by_name,
     against: :name,

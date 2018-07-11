@@ -5,7 +5,7 @@ class Appointment < ApplicationRecord
   # Extensions
   has_paper_trail
   acts_as_paranoid
-  enum status: [:scheduled, :confirmed, :missed, :canceled, :free]
+  enum status: [:free, :scheduled, :confirmed, :missed, :rescheduled]
 
   pg_search_scope :search_by_title_and_patient_name,
     against: :title,
@@ -17,10 +17,9 @@ class Appointment < ApplicationRecord
 
   belongs_to :user
   belongs_to :patient
-  belongs_to :doctor
   has_one :financial_record, dependent: :destroy
 
-  validates :doctor, :patient, :user, :start, :end, presence: true
+  validates :patient, :user, :start, :end, presence: true
 
   def all_day?
     self.start == self.start.midnight && self.end == self.end.midnight ? true : false

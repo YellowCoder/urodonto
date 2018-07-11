@@ -4,7 +4,6 @@
       <li><strong>Situação:</strong> <%= @appointment.status %></li>
       <li><strong>Título:</strong> <%= @appointment.title %></li>
       <li><strong>Paciente:</strong> <%= @appointment.patient.name %></li>
-      <li><strong>Doutor:</strong> <%= @appointment.doctor.name %></li>
       <li><strong>Data de início:</strong> <%= @appointment.start.strftime('%d/%m/%Y - %H:%M') %></li>
       <li><strong>Data de término:</strong> <%= @appointment.end.strftime('%d/%m/%Y - %H:%M') %></li>
       <li><strong>Agendado por:</strong> <%= @appointment.user.name %></li>

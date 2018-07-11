@@ -4,6 +4,8 @@ class CreatePatients < ActiveRecord::Migration[5.2]
       t.string :name, null: false
       t.date :birthday
       t.integer :sex
+      t.monetize :fixed_price
+      t.jsonb :prices, default: '{}'
 
       t.string :phone
       t.string :cell_phone
