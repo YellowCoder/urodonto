@@ -30,7 +30,7 @@
             <%= appointment.end.strftime('%H:%M') %>
           </td>
           <td>
-          <%= link_to t("activerecord.attributes.financial_record.statuses.#{ appointment.financial_record.status }"), financial_record_path(appointment.financial_record) %></td>
+          <%= appointment.payment_link_or_label %></td>
           <td>
             <button><%= link_to "detalhes", appointment_path(appointment) %></button>
             <button><%= link_to "alterar", edit_appointment_path(appointment, search: appointment.patient.name) %></button>

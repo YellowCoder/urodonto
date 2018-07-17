@@ -27,12 +27,12 @@ pt-BR:
         patient: Paciente
         color: Cor
         title: Título
+        financial_record: Registro Financeiro
         statuses:
           scheduled: Agendado
           confirmed: Confirmado
           missed: Faltou
           rescheduled: Remarcado
-          free: Gratuito
       financial_record:
         appointment: Consulta
         title: Título

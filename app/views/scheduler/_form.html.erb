@@ -9,15 +9,7 @@
     </fieldset>
 
     <fieldset>
-      <div>
-        <label>Status</label>
-        <div class='appointment_selects'>
-          <%= f.select :status, Appointment.statuses.map { |key, value| [I18n.t("activerecord.attributes.appointment.statuses.#{ key }"), key] } %>
-        </div>
-      </div>
-    </fieldset>
-
-    <fieldset>
+      <%= f.input :chargeable %>
       <%= f.input :title %>
     </fieldset>
 

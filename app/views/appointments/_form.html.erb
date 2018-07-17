@@ -26,6 +26,7 @@
           <%= f.select :status, Appointment.statuses.map { |key, value| [I18n.t("activerecord.attributes.appointment.statuses.#{ key }"), key] } %>
         </div>
       </div>
+      <%= f.input :chargeable %>
       <%= f.input :title %>
       <div>
         <label>Cor</label>

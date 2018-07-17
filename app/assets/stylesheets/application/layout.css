@@ -23,3 +23,12 @@
 #error_explanation ul li {
   padding: 5px 0;
 }
+
+input.has-error {
+  border-left: 2px solid red;
+}
+
+input.has-error::before {
+  content: 'Error';
+  color: red;
+}

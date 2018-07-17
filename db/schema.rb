@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 9) do
   create_table "appointments", force: :cascade do |t|
     t.bigint "patient_id"
     t.bigint "user_id"
+    t.boolean "chargeable", default: true
     t.integer "status", default: 0
     t.string "title"
     t.string "color"

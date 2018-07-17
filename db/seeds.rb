@@ -23,7 +23,7 @@ Patient.all.each do |patient|
     start: appointment_date,
     end: appointment_date + 0.5.hours,
     color: Faker::Color.hex_color,
-    financial_record: FinancialRecord.new(status: 0, amount: rand(222), user: user, paid_at: payment_date),
+    #financial_record: FinancialRecord.new(status: 0, amount: rand(222), user: user, paid_at: payment_date),
   )
 end
 

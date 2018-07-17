@@ -9,7 +9,7 @@ class Patient < ApplicationRecord
   
   pg_search_scope :search_by_name,
     against: :name,
-    using: { trigram: { threshold: 0.1 } },
+    using: { trigram: { threshold: 0 } },
     ignoring: :accents
 
   has_many :appointments, dependent: :destroy

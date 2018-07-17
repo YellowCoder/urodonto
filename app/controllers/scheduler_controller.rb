@@ -15,7 +15,6 @@ class SchedulerController < ApplicationController
 
   def create
     @appointment = with_current_user(Appointment.new(appointment_params))
-    @appointment.extend(AppendFinancialRecord)
     unless @appointment.save
       render json: @appointment.errors, status: :unprocessable_entity
     end
@@ -39,6 +38,8 @@ class SchedulerController < ApplicationController
   def appointment_params
     params.require(:appointment).permit(
       :patient_id,
+      :chargeable,
+      :status,
       :title,
       :start,
       :end,

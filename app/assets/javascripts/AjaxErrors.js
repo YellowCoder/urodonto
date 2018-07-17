@@ -22,8 +22,7 @@ $.fn.render_form_errors = function(model_name, errors){
         return name.match(new RegExp(model_name + '\\[' + field + '\\(?'))
       }
     })[0]
-    
-    $(input).closest('fieldset').addClass('has-error')
+    $('.form-actions :submit').addClass('has-error')
     $(input).parent().append('<span class="help-block">' + $.map(messages, function(m){ return m.charAt(0).toUpperCase() + m.slice(1)}).join('<br />') + '</span>')
   })
 }
