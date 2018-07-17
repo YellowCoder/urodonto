@@ -33,6 +33,12 @@
         <input type="color" name="appointment[color]" value=<%= @appointment.color || "#429cb6" %>>
       </div>
       <div>
+        <label>Data do vencimento</label>
+        <div class='appointment_selects'>
+          <%= f.input_field :payment_due, as: :date %>
+        </div>
+      </div>
+      <div>
         <label>Começa</label>
         <div class='appointment_selects'>
           <%= f.input_field :start, as: :datetime %>

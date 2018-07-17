@@ -62,6 +62,7 @@ class PatientsController < ApplicationController
       :name,
       :birthday,
       :sex,
+      :fixed_price,
       :email,
       :phone,
       :cell_phone,

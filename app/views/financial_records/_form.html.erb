@@ -17,20 +17,15 @@
         <%= text_field_tag :search_appointment, @financial_record&.appointment&.title, name: 'financial_record[patient]', data: { field: 'financial_record_appointment_id', behavior: 'financial_record_autocomplete', autocomplete_url: search_appointments_path } %>
         <%= f.input_field :appointment_id, as: :hidden %>
       </div>
-
       <div>
-        <label>Status</label>
-        <div class='appointment_selects'>
-          <%= f.select :status, FinancialRecord.statuses.map { |key, value| [I18n.t("activerecord.attributes.financial_record.statuses.#{ key }"), key] } %>
-        </div>
+        <label>Data da consulta</label>
+        <span id="appointment_date">--</span>
       </div>
-      <%= f.input :title %>
       <div>
         <label>Data do vencimento</label>
-        <div class='financial_record_selects'>
-          <%= f.input_field :due_date, as: :date %>
-        </div>
+        <span id="payment_due">--</span>
       </div>
+      <%= f.input :title %>
       <div>
         <label>Data do pagamento</label>
         <div class='financial_record_selects'>
@@ -55,34 +50,6 @@
 
 <% content_for(:javascript) do %>
   <script type='text/javascript'>
-    $input = $("[data-behavior='financial_record_autocomplete']")
-    var field = $input.data('field')
-    var options = {
-      url: function(phrase) {
-        return $input.data().autocompleteUrl + ".json?q=" + phrase;
-      },
-      adjustWidth: false,
-      placeholder: 'Título da consulta ou nome do paciente...',
-      getValue: "title",
-      list: {	
-        match: {
-          enabled: true
-        },
-      },
-      requestDelay: 400,
-      list: {
-        onChooseEvent: function() {
-          var appointmentId = $input.getSelectedItemData().id
-          $("#" + field).val(appointmentId)
-        }
-      },
-      template: {
-        type: "description",
-        fields: {
-          description: "description"
-        }
-      }
-    }
-    $input.easyAutocomplete(options)
+    FinancialRecordAutocomplete.start()
   </script>
 <% end %>

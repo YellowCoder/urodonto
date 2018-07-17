@@ -41,6 +41,7 @@ class SchedulerController < ApplicationController
       :chargeable,
       :status,
       :title,
+      :payment_due,
       :start,
       :end,
       :color

@@ -12,7 +12,7 @@ class Appointment < ApplicationRecord
     associated_against: {
       patient: [:name]
     },
-    using: { trigram: { threshold: 0.1 } },
+    using: { trigram: { threshold: 0 } },
     ignoring: :accents
 
   belongs_to :user
@@ -21,7 +21,48 @@ class Appointment < ApplicationRecord
 
   validates :patient, :user, :start, :end, presence: true
 
+  before_validation :set_payment_due
+
+  # Scopes
+  scope :chargeables, -> { where(chargeable: true) }
+  scope :non_chargeables, -> { where(chargeable: false) }
+  scope :paid, -> { joins(:financial_record) }
+  scope :with_overdue_payments, lambda {
+    joins('FULL OUTER JOIN financial_records ON appointments.id = financial_records.appointment_id AND financial_records.deleted_at IS NULL').
+    where('appointments.id IS NULL OR financial_records.appointment_id IS NULL').
+    where('appointments.chargeable = TRUE').
+    where(["appointments.payment_due < ?", DateTime.now]).
+    where('financial_records.deleted_at IS NULL')
+  }
+  scope :without_overdue_payments, lambda {
+    joins('FULL OUTER JOIN financial_records ON appointments.id = financial_records.appointment_id AND financial_records.deleted_at IS NULL').
+    where('appointments.id IS NULL OR financial_records.appointment_id IS NULL').
+    where('appointments.chargeable = TRUE').
+    where(["appointments.payment_due > ?", DateTime.now]).
+    where('financial_records.deleted_at IS NULL')
+  }
+  scope :chargeable_without_payment, lambda {
+    joins('FULL OUTER JOIN financial_records ON appointments.id = financial_records.appointment_id AND financial_records.deleted_at IS NULL').
+    where('appointments.id IS NULL OR financial_records.appointment_id IS NULL').
+    where(['appointments.chargeable = ?', true])
+  }
+
   def all_day?
     self.start == self.start.midnight && self.end == self.end.midnight ? true : false
+  end
+
+  def delayed?
+    return false unless chargeable
+    payment_due < DateTime.now
+  end
+
+  def price
+    patient.fixed_price
+  end
+
+  private
+
+  def set_payment_due
+    self.payment_due = DateTime.now.end_of_month
   end
 end

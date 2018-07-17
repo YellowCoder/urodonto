@@ -1,5 +1,10 @@
 json.array! @appointments do |appointment|
   json.id appointment.id
-  json.title appointment.title.blank? ? 'Sem título' : appointment.title
-  json.description "#{ appointment.start.strftime('%d-%m-%Y') } | #{ appointment.patient.name } | #{ t("activerecord.attributes.appointment.statuses.#{ appointment.status }") } | #{ t("activerecord.attributes.financial_record.statuses.#{ appointment.financial_record.status }") }"
+  json.patient_name appointment.patient.name
+  json.title_description "Consulta do dia: #{ appointment.start.strftime('%d/%m/%Y') }"
+  json.date appointment.start.strftime('%d/%m/%Y')
+  json.description "#{ appointment.title || 'Sem título' }  |  #{ appointment.start.strftime('%d-%m-%Y') }  |  #{ t("activerecord.attributes.appointment.statuses.#{ appointment.status }") }"
+  json.payment_due appointment.payment_due.strftime('%d/%m/%Y')
+  json.delayed appointment.delayed?
+  json.price humanized_money(appointment.price)
 end

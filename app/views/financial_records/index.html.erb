@@ -8,7 +8,6 @@
   <table id="datatable" class="stripe">
     <thead>
         <tr>
-            <th>Status</th>
             <th>Paciente</th>
             <th>Data Pgt</th>
             <th>Valor</th>
@@ -20,7 +19,6 @@
     <tbody>
       <% @financial_records.each do |financial_record| %>
         <tr>
-          <td><%= t("activerecord.attributes.financial_record.statuses.#{ financial_record.status }") %></td>
           <td><%= link_to financial_record.appointment.patient.name, patient_path(financial_record.appointment.patient) %></td>
           <td><%= financial_record.paid_at&.strftime('%d/%m/%Y') %></td>
           <td><%= financial_record.amount %></td>

@@ -38,11 +38,6 @@ pt-BR:
         title: Título
         amount: Valor
         observations: Observações
-        statuses:
-          not_paid: Aberto
-          paid: Pago
-          overdue: Atrasado
-          free: Gratuito
       user:
         name: Nome
         password: Senha

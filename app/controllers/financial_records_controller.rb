@@ -56,6 +56,7 @@ class FinancialRecordsController < ApplicationController
       :appointment_id,
       :status,
       :title,
+      :paid_at,
       :amount,
       :date,
       :observations

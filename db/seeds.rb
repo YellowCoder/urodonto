@@ -10,7 +10,7 @@ user = User.new(name: 'Adriano Tadao', email: 'adrianotadao@gmail.com', password
 user.save
 
 10.times do
-  Patient.create(name: Faker::Name.name)
+  Patient.create(name: Faker::Name.name, fixed_price_cents: 100)
 end
 
 Patient.all.each do |patient|

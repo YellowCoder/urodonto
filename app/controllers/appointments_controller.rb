@@ -42,7 +42,7 @@ class AppointmentsController < ApplicationController
   end
 
   def search
-    @appointments = Appointment.search_by_title_and_patient_name(params[:q])
+    @appointments = Appointment.search_by_title_and_patient_name(params[:q]).chargeable_without_payment
   
     respond_to do |format|
       format.json {}
@@ -57,6 +57,7 @@ class AppointmentsController < ApplicationController
       :status,
       :patient_id,
       :title,
+      :payment_due,
       :start,
       :end,
       :color

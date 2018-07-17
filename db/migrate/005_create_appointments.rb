@@ -10,6 +10,7 @@ class CreateAppointments < ActiveRecord::Migration[5.2]
       t.text :observations
       t.datetime :start
       t.datetime :end
+      t.datetime :payment_due
 
       t.datetime :deleted_at
       t.timestamps null: false

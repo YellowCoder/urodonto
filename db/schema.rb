@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 9) do
     t.text "observations"
     t.datetime "start"
     t.datetime "end"
+    t.datetime "payment_due"
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

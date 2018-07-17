@@ -13,6 +13,7 @@
   <%= simple_form_for patient do |f| %>
     <fieldset>
       <%= f.input :name, error: false %>
+      <%= f.input :fixed_price %>
       <div>
         <label>Data de Nascimento</label>
         <div class='patient__selects'>
