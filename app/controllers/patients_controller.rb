@@ -68,7 +68,13 @@ class PatientsController < ApplicationController
       :address,
       :city,
       :state,
-      :zip_code
+      :zip_code,
+      patient_prices_attributes: [
+        :id,
+        :date,
+        :price_cents,
+        :_destroy
+      ]
     )
   end
 end

@@ -13,12 +13,17 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui/widgets/dialog
+
 //= require activestorage
 //= require turbolinks
 //= require moment
+//= require cocoon
+
 //= require fullcalendar
 //= require fullcalendar/locale-all
+
 //= require datatables/datatables.min.js
+
 //= require easy-autocomplete/jquery.easy-autocomplete.min.js
 
 //= require_tree .

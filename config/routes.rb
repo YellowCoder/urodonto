@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   resources :patients do
     get :search, on: :collection
   end
-  resources :financial_records
+  resources :financial_records do
+    get :overview, on: :collection
+  end
   resources :appointments do
     get :search, on: :collection
   end

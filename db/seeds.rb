@@ -9,11 +9,11 @@
 user = User.new(name: 'Adriano Tadao', email: 'adrianotadao@gmail.com', password: '123123')
 user.save
 
-700.times do
+10.times do
   Patient.create(name: Faker::Name.name)
 end
 
-500.times do
+10.times do
   payment_date = Faker::Date.between(2.months.ago, Date.today+3.months) + (1..23).to_a.sample.hours
   appointment_date = payment_date + (1..23).to_a.sample.hours - 10.days
 

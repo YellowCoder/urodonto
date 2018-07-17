@@ -40,6 +40,15 @@
       <%= f.input :zip_code %>
     </fieldset>
 
+    <fieldset>
+      <div id='patient_prices'>
+        <%= f.simple_fields_for :patient_prices do |patient_price| %>
+          <%= render 'patient_price_fields', f: patient_price %>
+        <% end %>
+        <%= link_to_add_association 'adicionar parcela', f, :patient_prices %>
+      </div>
+    </fieldset>
+
     <%= f.button :submit %>
 
     <% unless patient.new_record?%>

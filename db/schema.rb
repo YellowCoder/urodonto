@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 8) do
+ActiveRecord::Schema.define(version: 9) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -51,13 +51,23 @@ ActiveRecord::Schema.define(version: 8) do
     t.index ["user_id"], name: "index_financial_records_on_user_id"
   end
 
+  create_table "patient_prices", force: :cascade do |t|
+    t.bigint "patient_id", null: false
+    t.date "date", null: false
+    t.integer "price_cents", default: 0, null: false
+    t.string "price_currency", default: "BRL", null: false
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["patient_id"], name: "index_patient_prices_on_patient_id"
+  end
+
   create_table "patients", force: :cascade do |t|
     t.string "name", null: false
     t.date "birthday"
     t.integer "sex"
     t.integer "fixed_price_cents", default: 0, null: false
     t.string "fixed_price_currency", default: "BRL", null: false
-    t.jsonb "prices"
     t.string "phone"
     t.string "cell_phone"
     t.string "email"
@@ -104,4 +114,5 @@ ActiveRecord::Schema.define(version: 8) do
   add_foreign_key "appointments", "users"
   add_foreign_key "financial_records", "appointments"
   add_foreign_key "financial_records", "users"
+  add_foreign_key "patient_prices", "patients"
 end

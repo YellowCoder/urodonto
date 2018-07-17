@@ -6,7 +6,6 @@ class Patient < ApplicationRecord
   acts_as_paranoid
   has_paper_trail
   enum sex: [:male, :female]
-  serialize :prices, Array
   
   pg_search_scope :search_by_name,
     against: :name,
@@ -15,6 +14,8 @@ class Patient < ApplicationRecord
 
   has_many :appointments, dependent: :destroy
   has_many :financial_records, through: :appointments
+  has_many :patient_prices, inverse_of: :patient
+  accepts_nested_attributes_for :patient_prices, reject_if: :all_blank, allow_destroy: true
 
   validates :name, presence: true
 end
