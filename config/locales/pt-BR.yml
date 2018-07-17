@@ -31,7 +31,7 @@ pt-BR:
           scheduled: Agendado
           confirmed: Confirmado
           missed: Faltou
-          canceled: Cancelado
+          rescheduled: Remarcado
           free: Gratuito
       financial_record:
         appointment: Consulta
