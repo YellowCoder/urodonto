@@ -8,11 +8,12 @@
   <table id="datatable" class="stripe">
     <thead>
         <tr>
-            <th>Status</th>
             <th>Paciente</th>
+            <th>Status</th>
             <th>Título</th>
             <th>Data</th>
             <th>Horário</th>
+            <th>Vencimento</th>
             <th>Status PG.</th>
             <th>Ações</th>
         </tr>
@@ -20,15 +21,18 @@
     <tbody>
       <% @appointments.each do |appointment| %>
         <tr>
-          <td><%= t("activerecord.attributes.appointment.statuses.#{ appointment.status }") %></td>
-          <td><%= link_to appointment.patient.name, patient_path(appointment.patient) %></td>
+          <td class=<%= "appointment__paymentColor--#{ appointment.payment_color }" %>>
+            <%= link_to appointment.patient.name, patient_path(appointment.patient) %>
+          </td>
+          <td><%= appointment.status_humanized %></td>
           <td><%= appointment.title %></td>
-          <td><%= appointment.start.strftime('%d %b %Y') %></td>
+          <td><%= appointment.start.strftime('%d/%m/%Y') %></td>
           <td>
             <%= appointment.start.strftime('%H:%M') %>
             -
             <%= appointment.end.strftime('%H:%M') %>
           </td>
+          <td><%= appointment.payment_due.strftime('%d/%m/%Y') %></td>
           <td>
           <%= appointment.payment_link_or_label %></td>
           <td>
