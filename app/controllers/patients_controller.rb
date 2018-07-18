@@ -45,16 +45,6 @@ class PatientsController < ApplicationController
     end
   end
 
-  def search
-    @patients = Patient.search_by_name(params[:q])
-  
-    respond_to do |format|
-      format.json {
-        @patients = @patients.limit(5)
-      }
-    end
-  end
-
   private
 
   def patient_params

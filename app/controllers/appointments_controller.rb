@@ -41,14 +41,6 @@ class AppointmentsController < ApplicationController
     redirect_to appointments_path
   end
 
-  def search
-    @appointments = Appointment.search_by_title_and_patient_name(params[:q]).chargeable_without_payment
-  
-    respond_to do |format|
-      format.json {}
-    end
-  end
-
   private
 
   def appointment_params

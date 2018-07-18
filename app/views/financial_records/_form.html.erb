@@ -14,7 +14,7 @@
     <fieldset>
       <div>
         <label>Consulta</label>
-        <%= text_field_tag :search_appointment, @financial_record&.appointment&.title, name: 'financial_record[patient]', data: { field: 'financial_record_appointment_id', behavior: 'financial_record_autocomplete', autocomplete_url: search_appointments_path } %>
+        <%= text_field_tag :search_appointment, @financial_record&.appointment&.title, name: 'financial_record[patient]', data: { field: 'financial_record_appointment_id', behavior: 'financial_record_autocomplete', autocomplete_url: search_appointments_for_payments_path } %>
         <%= f.input_field :appointment_id, as: :hidden %>
       </div>
       <div>
