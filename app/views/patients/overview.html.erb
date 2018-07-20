@@ -4,6 +4,9 @@
   <thead>
     <tr>
       <th>Paciente</th>
+      <% @date_range.each do |date|%>
+        <th><%= date.strftime('%d') %></th>
+      <% end %>
     </tr>
   </thead>
 

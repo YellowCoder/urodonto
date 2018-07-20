@@ -45,10 +45,6 @@ class FinancialRecordsController < ApplicationController
     end
   end
 
-  def overview
-    @financial_record = FinancialRecord.all
-  end
-
   private
 
   def financial_record_params

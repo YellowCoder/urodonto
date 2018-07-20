@@ -45,6 +45,25 @@ class PatientsController < ApplicationController
     end
   end
 
+  def overview
+    @date_range = (DateTime.now.beginning_of_month..DateTime.now.end_of_month)
+    @overview = Patient.all.map do |patient|
+      {
+        id: patient.id,
+        appointments: foo(patient)
+      }
+    end
+  end
+
+  def foo(patient)
+    appointments = patient.appointments
+    (DateTime.now.beginning_of_month..DateTime.now.end_of_month).map do |date|
+      {
+        date: date
+      }
+    end
+  end
+
   private
 
   def patient_params

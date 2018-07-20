@@ -9,3 +9,20 @@
 .appointment_selects {
   flex-direction: row;
 }
+
+
+.appointment__paymentColor--yellow {
+  border-left: 4px solid #ffe243;
+}
+
+.appointment__paymentColor--red {
+  border-left: 4px solid #ef5350;
+}
+
+.appointment__paymentColor--green {
+  border-left: 4px solid #8cea8c;
+}
+
+.appointment__paymentColor--gray {
+  border-left: 4px solid #a6adaf;
+}

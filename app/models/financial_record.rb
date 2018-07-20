@@ -7,4 +7,7 @@ class FinancialRecord < ApplicationRecord
   # Relationships
   belongs_to :user
   belongs_to :appointment
+
+  # Validations
+  validates :amount, numericality: { greater_than: 0 }
 end
