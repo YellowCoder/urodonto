@@ -6,7 +6,7 @@ class SchedulerController < ApplicationController
   end
 
   def new
-    @appointment = Appointment.new
+    @appointment = Appointment.new(payment_due: DateTime.now.end_of_month)
   end
 
   def show

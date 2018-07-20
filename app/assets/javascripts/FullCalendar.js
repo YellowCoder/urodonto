@@ -64,6 +64,7 @@ var onSelect = function(start, end, jsEvent, view) {
       url: function(phrase) {
         return $input.data().autocompleteUrl + ".json?q=" + phrase;
       },
+      placeholder: 'Nome do paciente...',
       getValue: "name",
       list: {	
         match: {

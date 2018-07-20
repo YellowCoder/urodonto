@@ -15,6 +15,12 @@
 
     <fieldset>
       <div>
+        <label>Data do vencimento</label>
+        <div class='appointment_selects'>
+          <%= f.input_field :payment_due, as: :date %>
+        </div>
+      </div>
+      <div>
         <label>Começa</label>
         <div class='scheduler__dateSelects'>
           <%= f.input_field :start, as: :datetime %>

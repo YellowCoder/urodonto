@@ -21,8 +21,6 @@ class Appointment < ApplicationRecord
 
   validates :patient, :user, :start, :end, presence: true
 
-  before_validation :set_payment_due
-
   # Scopes
   scope :chargeables, -> { where(chargeable: true) }
   scope :non_chargeables, -> { where(chargeable: false) }
@@ -58,11 +56,5 @@ class Appointment < ApplicationRecord
 
   def price
     patient.fixed_price
-  end
-
-  private
-
-  def set_payment_due
-    self.payment_due = DateTime.now.end_of_month
   end
 end
