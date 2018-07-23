@@ -3,7 +3,7 @@ class AppointmentDecorator < Draper::Decorator
   
   def payment_status
     return :free unless object.chargeable?
-    return :overdue if object.delayed? && object.financial_record.blank? && object.status == :confirmed
+    return :overdue if object.delayed? && object.financial_record.blank? && object.status == 'confirmed'
     return :not_paid if object.chargeable? && object.financial_record.blank?
     :paid
   end

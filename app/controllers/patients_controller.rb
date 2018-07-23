@@ -46,22 +46,33 @@ class PatientsController < ApplicationController
   end
 
   def overview
-    @date_range = (DateTime.now.beginning_of_month..DateTime.now.end_of_month)
-    @overview = Patient.all.map do |patient|
+    d1 = (DateTime.now - 1.year).beginning_of_month
+    d2 = (DateTime.now + 3.months).end_of_month
+    @date_range = (d1..d2).map{ |m| m.strftime('%Y%m') }.uniq.map do |m| 
+      date = Date.parse("#{ m }01")
+      {
+        label: "#{ Date::ABBR_MONTHNAMES[ Date.strptime(m, '%Y%m').mon ] }/#{ m[0..3] }",
+        range: (date.beginning_of_month..date.end_of_month)
+      }
+    end
+
+    patients = Patient.all.map do |patient|
+      appointments = {}
+      @date_range.each do |date_range|
+        appointments[date_range[:label]] = foo(patient, date_range[:range])
+      end
       {
         id: patient.id,
-        appointments: foo(patient)
+        name: patient.name,
+        appointments: appointments
       }
     end
+
+    @overview = OverviewDecorator.decorate_collection(patients)
   end
 
-  def foo(patient)
-    appointments = patient.appointments
-    (DateTime.now.beginning_of_month..DateTime.now.end_of_month).map do |date|
-      {
-        date: date
-      }
-    end
+  def foo(patient, date_range)
+    patient.appointments.where(start: date_range)
   end
 
   private
