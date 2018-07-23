@@ -2,12 +2,13 @@ class OverviewDecorator < Draper::Decorator
   delegate_all
 
   def foo(date)
-    statuses = object[:appointments][date[:label]].map{|appointment| 
+    statuses = object[:appointments][date[:label]].map do |appointment| 
       {
+        appointment: appointment,
         label: h.t("activerecord.attributes.appointment.statuses.#{ appointment.status }"),
         color: colors[appointment_status(appointment)]
       }
-    }
+    end
     return [{ label: '--', satus: '' }] if statuses.blank?
     statuses
   end

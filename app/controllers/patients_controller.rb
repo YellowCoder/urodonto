@@ -46,7 +46,7 @@ class PatientsController < ApplicationController
   end
 
   def overview
-    d1 = (DateTime.now - 1.year).beginning_of_month
+    d1 = (DateTime.now - 1.month).beginning_of_month
     d2 = (DateTime.now + 3.months).end_of_month
     @date_range = (d1..d2).map{ |m| m.strftime('%Y%m') }.uniq.map do |m| 
       date = Date.parse("#{ m }01")

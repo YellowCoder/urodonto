@@ -34,9 +34,14 @@
           <tr class=<%= index % 2 == 0 ? 'even' : 'odd' %>>
             <% @date_range.each do |date|%>
               <td>
-                <div>
-                  <% patient.foo(date).map do |appointment| %>
-                    <span class=<%= "overview__appointment--#{ appointment[:color]}" %>><%= appointment[:label] %></span>
+                <div class="overview__appointmentItems">
+                  <% patient.foo(date).each do |appointment| %>
+                    <div class=<%= appointment[:color]? "overview__appointment--#{ appointment[:color]}" : "overview__appointmentItem" %>>
+                      <span>
+                        <%= appointment[:label] %>
+                      </span>
+                      <%= link_to 'ver', appointment_path(appointment[:appointment]), target: "_blank" if appointment[:appointment]%>
+                    </div>
                   <% end %>
                 </div>
               </td>

@@ -43,31 +43,58 @@
   border-left: 1px solid #d2cfcf;
   padding-top: 0;
   padding-bottom: 0;
+  font-size: 12px;
+  height: 53px;
 }
 
-#overview__appointmentsList td div {
+.overview__appointmentItems {
   display: flex;
+  height: 53px;
 }
 
-#overview__appointmentsList td span {
-  padding: 16px 0;
+.overview__appointmentItem {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding-top: 11px;
 }
+
 
 /*--- Colors --- */
 
 .overview__appointment--yellow {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding-top: 11px;
   background-color: #fffdcb;
 }
 
 .overview__appointment--red {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding-top: 11px;
   background-color: #ffd0cf;
 }
 
 .overview__appointment--green {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding-top: 11px;
   background-color: #e8ffb0;
 }
 
 .overview__appointment--gray {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding-top: 11px;
   background-color: #e2e2e2;
 }
