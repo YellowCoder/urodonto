@@ -2,9 +2,10 @@ class AppointmentDecorator < Draper::Decorator
   delegate_all
   
   def payment_status
-    return :free unless object.chargeable?
-    return :overdue if object.delayed? && object.financial_record.blank? && object.status == 'confirmed'
-    return :not_paid if object.chargeable? && object.financial_record.blank?
+    return :free unless appointment.chargeable?
+    return :free if ['scheduled', 'missed', 'rescheduled'].include?(appointment.status) && appointment.financial_record.blank?
+    return :overdue if appointment.delayed? && appointment.financial_record.blank? && appointment.status == 'confirmed'
+    return :not_paid if appointment.chargeable? && appointment.financial_record.blank? && appointment.status == 'confirmed'
     :paid
   end
 
@@ -20,8 +21,6 @@ class AppointmentDecorator < Draper::Decorator
   def payment_color
     statuses[payment_status][:color]
   end
-
-  private
 
   def statuses
     {
