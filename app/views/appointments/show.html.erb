@@ -1,4 +1,4 @@
 <% page_title "Detalhes da consulta: #{ @appointment.patient.name }" %>
 
 <%= render partial: 'details', locals: { appointment: @appointment } %>
-<%= render partial: 'financial_records/details', locals: { financial_record: @appointment.financial_record } %>
+<%= render partial: 'financial_records/details', locals: { financial_record: @appointment.financial_record } if @appointment.financial_record %>

@@ -3,12 +3,11 @@ Rails.application.routes.draw do
   
   root to: 'scheduler#index'
 
-  resources :patients do
-    get :overview, on: :collection
-  end
+  resources :patients
   resources :financial_records
   resources :appointments
   resources :scheduler
+  resources :overviews, only: :index
 
   scope '/search' do
     get '/appointments-to-financial-record', to: 'searchs#appointments_to_financial_record', as: :search_appointments_for_payments, defaults: { format: 'json' }

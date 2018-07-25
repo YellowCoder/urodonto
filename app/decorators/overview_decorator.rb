@@ -30,8 +30,9 @@ class OverviewDecorator < Draper::Decorator
 
   def appointment_status(appointment)
     return :free unless appointment.chargeable?
+    return :free if ['scheduled', 'missed', 'rescheduled'].include?(appointment.status) && appointment.financial_record.blank?
     return :overdue if appointment.delayed? && appointment.financial_record.blank? && appointment.status == 'confirmed'
-    return :not_paid if appointment.chargeable? && appointment.financial_record.blank?
+    return :not_paid if appointment.chargeable? && appointment.financial_record.blank? && appointment.status == 'confirmed'
     :paid
   end
 end
