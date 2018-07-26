@@ -1,7 +1,7 @@
 class OverviewDecorator < Draper::Decorator
   delegate_all
 
-  def foo(date)
+  def decorate_appointments_for(date)
     statuses = object[:appointments][date[:label]].map do |appointment| 
       AppointmentDecorator.decorate(appointment)
     end

@@ -98,3 +98,17 @@
   justify-content: center;
   background-color: #e2e2e2;
 }
+
+form.new_overview {
+  display: flex;
+  justify-content: flex-end;
+}
+
+form.new_overview .input {
+  margin-right: 10px;
+}
+
+form.new_overview input[type='submit'] {
+  height: 30px;
+  padding: 4px;
+}

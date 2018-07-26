@@ -2,8 +2,8 @@
 
 <div class="overview__wrapper">
   <%= simple_form_for @overview_date, method: :get do |f| %>
-    <%= f.input :initial_date, as: :date, order: [:month, :year] %>
-    <%= f.input :end_date, as: :date, order: [:month, :year] %>
+    <%= f.input :initial_date, label: 'de', required: false, as: :date, order: [:month, :year] %>
+    <%= f.input :end_date, label: 'até', required: false, as: :date, order: [:month, :year] %>
     <%= f.submit 'Filtrar' %>
   <% end %>
 
@@ -17,9 +17,9 @@
         </thead>
 
         <tbody>
-          <% @overview.each_with_index do |patient, index|%>
+          <% @patients_list.each_with_index do |patient, index|%>
             <tr class=<%= index % 2 == 0 ? 'even' : 'odd' %>>
-              <td><%= patient[:name] %></td>
+              <td><%= patient.name %></td>
             </tr>
           <% end %>
         </tbody>
@@ -30,19 +30,19 @@
       <table style="table-layout:fixed;" id="overview__appointmentsList">
         <thead>
           <tr>
-            <% @date_range.each do |date|%>
-              <th><%= date[:label] %></th>
+            <% @grouped_months.each do |months|%>
+              <th><%= months.label %></th>
             <% end %>
           </tr>
         </thead>
 
         <tbody>
-          <% @overview.each_with_index do |patient, index|%>
+          <% @patients_list.each_with_index do |patient, index|%>
             <tr class=<%= index % 2 == 0 ? 'even' : 'odd' %>>
-              <% @date_range.each do |date|%>
+              <% @grouped_months.each do |date|%>
                 <td>
                   <div class="overview__appointmentItems">
-                    <% patient.foo(date).each do |appointment| %>
+                    <% patient.decorate_appointments_for(date).each do |appointment| %>
                       <div class=<%= appointment.payment_color.present? ? "overview__appointment--#{ appointment.payment_color}" : "overview__appointmentItem" %>>
                         <% if appointment.id %>
                           <%= link_to appointment.status_humanized, appointment_path(appointment), target: "_blank" %>
