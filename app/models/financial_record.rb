@@ -9,5 +9,6 @@ class FinancialRecord < ApplicationRecord
   belongs_to :appointment
 
   # Validations
-  validates :amount, numericality: { greater_than: 0 }
+  validates :amount, presence: true, numericality: { greater_than: 0 }
+  validates :appointment, :user, :paid_at, presence: true
 end

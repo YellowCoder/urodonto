@@ -5,6 +5,6 @@ json.array! @appointments do |appointment|
   json.date appointment.start.strftime('%d/%m/%Y')
   json.description "#{ appointment.title || 'Sem título' }  |  #{ appointment.start.strftime('%d-%m-%Y') }  |  #{ t("activerecord.attributes.appointment.statuses.#{ appointment.status }") }"
   json.payment_due appointment.payment_due.strftime('%d/%m/%Y')
-  json.delayed appointment.delayed?
+  json.delayed appointment.payment_delayed?
   json.price humanized_money(appointment.price)
 end

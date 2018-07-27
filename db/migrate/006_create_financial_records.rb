@@ -5,9 +5,8 @@ class CreateFinancialRecords < ActiveRecord::Migration[5.2]
       t.references :appointment, index: true, foreign_key: true
       t.integer :status, default: 0
       t.string :title
-      t.monetize :amount
-      t.datetime :paid_at
-      t.date :due_date
+      t.monetize :amount, null: false
+      t.datetime :paid_at, null: false
       t.text :observations
       
       t.datetime :deleted_at

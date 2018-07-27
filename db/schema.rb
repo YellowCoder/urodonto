@@ -25,9 +25,9 @@ ActiveRecord::Schema.define(version: 9) do
     t.string "title"
     t.string "color"
     t.text "observations"
-    t.datetime "start"
-    t.datetime "end"
-    t.datetime "payment_due"
+    t.datetime "start", null: false
+    t.datetime "end", null: false
+    t.datetime "payment_due", null: false
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -43,8 +43,7 @@ ActiveRecord::Schema.define(version: 9) do
     t.string "title"
     t.integer "amount_cents", default: 0, null: false
     t.string "amount_currency", default: "BRL", null: false
-    t.datetime "paid_at"
-    t.date "due_date"
+    t.datetime "paid_at", null: false
     t.text "observations"
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
