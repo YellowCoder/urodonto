@@ -18,7 +18,9 @@ pt-BR:
         cell_phone: Celular
         address: Endereço
         state: Estado
+        city: Cidade
         zip_code: CEP
+        fixed_price: Valor fixo
         sexes:
           male: Masculino
           female: Feminino

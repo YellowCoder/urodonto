@@ -46,7 +46,9 @@
         <%= f.simple_fields_for :patient_prices do |patient_price| %>
           <%= render 'patient_price_fields', f: patient_price %>
         <% end %>
-        <%= link_to_add_association 'adicionar parcela', f, :patient_prices %>
+        <div class='patient__newPlot'>
+          <%= link_to_add_association 'adicionar parcela', f, :patient_prices %>
+        </div>
       </div>
     </fieldset>
 

@@ -54,4 +54,8 @@ class Appointment < ApplicationRecord
   def price
     patient.fixed_price
   end
+
+  def paid?
+    financial_record.present?
+  end
 end

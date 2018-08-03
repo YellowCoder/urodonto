@@ -7,7 +7,6 @@
       <tr>
         <th>Status</th>
         <th>Data</th>
-        <th>Status Pgto</th>
         <th>Data Pgto</th>
         <th>Valor</th>
         <th></th>
@@ -18,9 +17,8 @@
         <tr>
           <td><%= t("activerecord.attributes.appointment.statuses.#{ appointment.status }") %></td>
           <td><%= appointment.start.strftime('%d %b %Y') %></td>
-          <td><%= t("activerecord.attributes.financial_record.statuses.#{ appointment.financial_record.status }") %></td>
-          <td><%= appointment.financial_record.paid? ? appointment.financial_record.paid_at.strftime('%d %b %Y') : '-' %></td>
-          <td><%= appointment.financial_record.amount %></td>
+          <td><%= appointment.paid? ? appointment.financial_record.paid_at.strftime('%d %b %Y') : '-' %></td>
+          <td><%= appointment.paid? ? appointment.financial_record.amount : '0' %></td>
           <td>
             <button><%= link_to 'Detalhes', appointment_path(appointment) %></button>
           </td>
