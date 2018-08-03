@@ -13,41 +13,48 @@
   <%= simple_form_for patient do |f| %>
     <fieldset>
       <%= f.input :name, error: false %>
-      <%= f.input :fixed_price %>
-      <div>
-        <label>Data de Nascimento</label>
-        <div class='patient__selects'>
-          <%= f.input_field :birthday, as: :date, html5: true %>
+      <div class='patient__sideBySide'>
+        <div>
+          <label>Sexo</label>
+          <div class='patient__selects'>
+            <%= f.select :sex, Patient.sexes.map { |key, value| [I18n.t("activerecord.attributes.patient.sexes.#{ key }"), key] } %>
+          </div>
         </div>
-      </div>
-      <div>
-        <label>Sexo</label>
-        <div class='patient__selects'>
-          <%= f.select :sex, Patient.sexes.map { |key, value| [I18n.t("activerecord.attributes.patient.sexes.#{ key }"), key] } %>
+        <div>
+          <label>Data de Nascimento</label>
+          <div class='patient__selects'>
+            <%= f.input_field :birthday, as: :date, html5: true %>
+          </div>
         </div>
       </div>
     </fieldset>
     
     <fieldset>
       <%= f.input :email, as: :email, placeholder: 'email@exemplo.com' %>
-      <%= f.input :phone %>
-      <%= f.input :cell_phone %>
+      <div class='patient__sideBySide'>
+        <%= f.input :phone %>
+        <%= f.input :cell_phone %>
+      </div>
     </fieldset>
 
     <fieldset>
       <%= f.input :address %>
       <%= f.input :city %>
-      <%= f.input :state %>
-      <%= f.input :zip_code %>
+      <div class='patient__sideBySide'>
+        <%= f.input :state %>
+        <%= f.input :zip_code %>
+      </div>
     </fieldset>
 
     <fieldset>
-      <div id='patient_prices'>
+      <%= f.input :fixed_price %>
+      <div id='patient__prices'>
+        <label>Parcelas</label>
         <%= f.simple_fields_for :patient_prices do |patient_price| %>
           <%= render 'patient_price_fields', f: patient_price %>
         <% end %>
         <div class='patient__newPlot'>
-          <%= link_to_add_association 'adicionar parcela', f, :patient_prices %>
+          <%= link_to_add_association 'nova parcela', f, :patient_prices %>
         </div>
       </div>
     </fieldset>
@@ -55,8 +62,8 @@
     <%= f.button :submit %>
 
     <% unless patient.new_record?%>
-      <button class="red">
-        <%= link_to 'Delete', 
+      <button class='red'>
+        <%= link_to 'Deletar paciente', 
                     patient, 
                     method: :delete, 
                     data: { confirm: 'Você tem certeza?' } %>

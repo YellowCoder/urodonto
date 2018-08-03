@@ -24,6 +24,9 @@ pt-BR:
         sexes:
           male: Masculino
           female: Feminino
+      patient_price:
+        date: Data
+        price_cents: Valor
       appointment:
         chargeable: Será cobrado
         patient: Paciente

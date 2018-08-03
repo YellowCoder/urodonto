@@ -6,6 +6,60 @@
   width: 500px;
 }
 
+.patient__formWrapper input[type='submit'] {
+  margin-top: 35px;
+}
+
 .patient__selects {
   flex-direction: row;
+}
+
+#patient__prices {
+  width: 335px;
+}
+
+.patient__newPlot {
+  margin-top: 10px;
+}
+
+.patient__sideBySide {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.patient__sideBySide > div {
+  width: 48%;
+}
+
+.patient__newPlot a {
+  background-color: #5aa27a;
+  border-color: #5aa27a;
+  font-weight: 600;
+  color: #FFFFFF;
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.patient__prices--item {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.patient__prices--item input[type='number'] {
+  width: 90px;
+  text-align: center;
+}
+
+.patient__prices--item a {
+  background-color: #ef5350;
+  border-color: #ef5350;
+  font-weight: 600;
+  color: #FFFFFF;
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer; 
 }
