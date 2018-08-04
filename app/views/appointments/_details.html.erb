@@ -7,6 +7,11 @@
   </div>
 
   <div class="infoDetail__groupInfo">
+    <div class="infoDetail__groupInfo--title"><span>Data do vencimento:</span></div>
+    <div class="infoDetail__groupInfo--description"><span><%= appointment.payment_due.strftime('%d/%m/%Y') %></span></div>
+  </div>
+
+  <div class="infoDetail__groupInfo">
     <div class="infoDetail__groupInfo--title"><span>Agendado por:</span></div>
     <div class="infoDetail__groupInfo--description"><span><%= appointment.user.name %></span></div>
   </div>
