@@ -50,17 +50,4 @@ class Appointment < ApplicationRecord
   def all_day?
     self.start == self.start.midnight && self.end == self.end.midnight ? true : false
   end
-
-  def price
-    month_price&.price_cents || patient.fixed_price_cents
-  end
-
-  def month_price
-    date = payment_due.beginning_of_month
-    patient.patient_prices.find_by(date: date)
-  end
-
-  def paid?
-    financial_record.present?
-  end
 end

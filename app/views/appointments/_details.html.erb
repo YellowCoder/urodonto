@@ -8,7 +8,20 @@
 
   <div class="infoDetail__groupInfo">
     <div class="infoDetail__groupInfo--title"><span>Data do vencimento:</span></div>
-    <div class="infoDetail__groupInfo--description"><span><%= appointment.payment_due.strftime('%d/%m/%Y') %></span></div>
+    <div class="infoDetail__groupInfo--description">
+      <span style=<%= appointment.payment_delayed? ? "color:red;" : ''%>>
+        <%= appointment.payment_due.strftime('%d/%m/%Y') %>
+      </span>
+    </div>
+  </div>
+
+  <div class="infoDetail__groupInfo">
+    <div class="infoDetail__groupInfo--title"><span>Valor:</span></div>
+    <div class="infoDetail__groupInfo--description">
+      <span style=<%= appointment.payment_delayed? ? "color:red;" : ''%>>
+        <%= humanized_money(appointment.price) %>
+      </span>
+    </div>
   </div>
 
   <div class="infoDetail__groupInfo">

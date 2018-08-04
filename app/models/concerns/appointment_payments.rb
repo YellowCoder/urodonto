@@ -10,7 +10,20 @@ module AppointmentPayments
   end
 
   def payment_delayed?
-    return false unless chargeable
+    return false if !chargeable || price == 0
     payment_due < DateTime.now
+  end
+
+  def price
+    month_price&.price_cents || patient.fixed_price_cents
+  end
+
+  def month_price
+    date = payment_due.beginning_of_month
+    patient.patient_prices.find_by(date: date)
+  end
+
+  def paid?
+    financial_record.present?
   end
 end
