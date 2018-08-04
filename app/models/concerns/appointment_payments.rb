@@ -3,14 +3,14 @@ module AppointmentPayments
   CHARGEABLE_STATUSES = %w(confirmed)
 
   def payment_status
-    return :free if !self.chargeable? || NOT_CHARGEABLE_STATUSES.include?(self.status) && self.financial_record.blank?
+    return :free if !self.chargeable?
     return :overdue if payment_delayed? && self.financial_record.blank? && CHARGEABLE_STATUSES.include?(self.status)
-    return :not_paid if self.chargeable? && self.financial_record.blank? && CHARGEABLE_STATUSES.include?(self.status)
+    return :not_paid if self.chargeable? && self.financial_record.blank? && CHARGEABLE_STATUSES.include?(self.status) || NOT_CHARGEABLE_STATUSES.include?(self.status)
     :paid
   end
 
   def payment_delayed?
-    return false if !chargeable || price == 0
+    return false if !CHARGEABLE_STATUSES.include?(self.status) || !chargeable || price == 0
     payment_due < DateTime.now
   end
 

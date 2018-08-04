@@ -46,10 +46,10 @@
                       <div class=<%= appointment.payment_color.present? ? "overview__appointment--#{ appointment.payment_color}" : "overview__appointmentItem" %>>
                         <% if appointment.id %>
                           <%= link_to appointment.status_humanized, appointment_path(appointment), target: "_blank" %>
+                          (<%= appointment.payment_label %>)
                         <% else %>
-                          <span>
-                            --
-                          </span>
+                          <span> - </span>
+                          <span>( - )</span>
                         <% end %>
                       </div>
                     <% end %>

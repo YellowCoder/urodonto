@@ -2,8 +2,8 @@ class AppointmentDecorator < Draper::Decorator
   delegate_all
   
   def payment_link_or_label
-    return statuses[object.payment_status][:label] if object.financial_record.blank?
-    h.link_to statuses[object.payment_status][:label], h.financial_record_path(object.financial_record)
+    return payment_label if object.financial_record.blank?
+    h.link_to payment_label, h.financial_record_path(object.financial_record)
   end
 
   def status_humanized
@@ -12,6 +12,10 @@ class AppointmentDecorator < Draper::Decorator
 
   def payment_color
     statuses[object.payment_status][:color]
+  end
+
+  def payment_label
+    statuses[object.payment_status][:label]
   end
 
   def statuses
