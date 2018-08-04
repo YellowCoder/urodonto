@@ -52,7 +52,12 @@ class Appointment < ApplicationRecord
   end
 
   def price
-    patient.fixed_price
+    month_price&.price_cents || patient.fixed_price_cents
+  end
+
+  def month_price
+    date = payment_due.beginning_of_month
+    patient.patient_prices.find_by(date: date)
   end
 
   def paid?

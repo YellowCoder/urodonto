@@ -22,4 +22,14 @@ class Patient < ApplicationRecord
   validates :name, presence: true, uniqueness: { case_sensitive: false }
   validates :email, uniqueness: { case_sensitive: false }, email: true, allow_blank: true
   validates :fixed_price, numericality: { greater_than_or_equal_to: 0 }
+  validate :validate_duplication_on_prices
+
+  private
+
+  def validate_duplication_on_prices
+    equals = patient_prices.reject(&:marked_for_destruction?).group_by(&:date).map{ |_, prices| prices.size }.max
+    if equals > 1
+      errors.add(:base, 'Você não ter parcelas duplicadas para o mesmo mês.')
+    end
+  end
 end
