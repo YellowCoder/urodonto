@@ -14,7 +14,7 @@ class AppointmentsController < ApplicationController
   end
 
   def show
-    @appointment = Appointment.find(params[:id])
+    @appointment = Appointment.find(params[:id]).decorate
   end
 
   def create

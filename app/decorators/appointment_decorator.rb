@@ -18,6 +18,10 @@ class AppointmentDecorator < Draper::Decorator
     statuses[object.payment_status][:label]
   end
 
+  def payment_due
+    object.payment_due.strftime('%d/%m/%Y')
+  end
+
   def statuses
     {
       paid: { label: 'Pago', color: 'green' },

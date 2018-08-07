@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   root to: 'scheduler#index'
 
   resources :patients
-  resources :financial_records
+  resources :financial_records do
+    collection do
+      get '/:appointment_id/new', to: 'financial_records#new_for_appointment', as: :appointment
+    end
+  end
   resources :appointments
   resources :scheduler do
     put :change_status, as: :member

@@ -9,6 +9,10 @@ class FinancialRecordsController < ApplicationController
     @financial_record = FinancialRecord.new
   end
 
+  def new_for_appointment
+    @financial_record = Appointment.find(params[:appointment_id]).build_financial_record
+  end
+
   def edit
     @financial_record = FinancialRecord.find(params[:id])
   end
