@@ -46,8 +46,7 @@
       <%= link_to 'Delete', 
                   appointment, 
                   method: :delete, 
-                  class: 'btn btn-danger', 
-                  data: { confirm: 'Are you sure?' }, 
+                  data: { confirm: 'Tem certeza que deseja deletar?' }, 
                   remote: true unless @appointment.new_record? %>
     </div>
   <% end %>

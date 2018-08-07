@@ -1,13 +1,53 @@
 <div class="modal">
   <div class="scheduler__detailsWrapper">
-    <ul>
-      <li><strong>Situação:</strong> <%= @appointment.status %></li>
-      <li><strong>Título:</strong> <%= @appointment.title %></li>
+    <ul class="scheduler__statusChanger">
+      <li>
+        <button>
+          <%= link_to 'Agendado', scheduler_member_path(@appointment, { appointment: { status: 'scheduled' }}), 
+            method: :put, 
+            remote: true,
+            class: 'btn',
+            data: { confirm: 'Tem certeza que deseja alterar para esse status?' } 
+          %>
+        </button>
+      </li>
+      <li>
+        <button>
+          <%= link_to 'Confirmado', scheduler_member_path(@appointment, { appointment: { status: 'confirmed' }}), 
+            method: :put, 
+            remote: true, 
+            data: { confirm: 'Tem certeza que deseja alterar para esse status?' } 
+          %>
+        </button>
+      </li>
+      <li>
+        <button>
+          <%= link_to 'Faltou', scheduler_member_path(@appointment, { appointment: { status: 'missed' }}), 
+            method: :put, 
+            remote: true, 
+            data: { confirm: 'Tem certeza que deseja alterar para esse status?' } 
+          %>
+        </button>
+      </li>
+      <li>
+        <button>
+          <%= link_to 'Remarcou', scheduler_member_path(@appointment, { appointment: { status: 'rescheduled' }}), 
+            method: :put, 
+            remote: true, 
+            data: { confirm: 'Tem certeza que deseja alterar para esse status?' } 
+          %>
+        </button>
+      </li>
+    </ul>
+    
+    <ul class="scheduler__info">
+      <li><strong>Situação:</strong> <%= @appointment.status_humanized %></li>
+      <% if @appointment.title.present? %>
+        <li><strong>Título:</strong> <%= @appointment.title %></li>
+      <% end %>
       <li><strong>Paciente:</strong> <%= @appointment.patient.name %></li>
-      <li><strong>Data de início:</strong> <%= @appointment.start.strftime('%d/%m/%Y - %H:%M') %></li>
-      <li><strong>Data de término:</strong> <%= @appointment.end.strftime('%d/%m/%Y - %H:%M') %></li>
       <li><strong>Agendado por:</strong> <%= @appointment.user.name %></li>
-      <li><strong>Data de agendamento:</strong> <%= @appointment.created_at.strftime('%d/%m/%Y - %H:%M') %></li>
+      <li><strong>Agendado em:</strong> <%= @appointment.created_at.strftime('%d/%m/%Y - %H:%M') %></li>
       <li><strong>Data Da última atualização:</strong> <%= @appointment.updated_at.strftime('%d/%m/%Y - %H:%M') %></li>
     </ul>
     
@@ -16,7 +56,11 @@
         <%= link_to "Alterar", edit_appointment_path(@appointment), remote: false %>
       </button>
       <button class="red">
-        <%= link_to "Deletar", scheduler_path(@appointment), method: :delete, remote: true %>
+        <%= link_to "Deletar", scheduler_path(@appointment), 
+          method: :delete, 
+          remote: true, 
+          data: { confirm: 'Tem certeza que deseja deletar?' } 
+        %>
       </button>
     </div>
   </div>

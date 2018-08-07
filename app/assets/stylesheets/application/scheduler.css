@@ -18,3 +18,12 @@
   margin-top: 10px;
   text-align: right;
 }
+
+.scheduler__statusChanger {
+  display: flex;
+  justify-content: space-around;
+}
+
+.scheduler__info {
+  margin-top: 10px;
+}

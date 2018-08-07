@@ -10,7 +10,7 @@ class SchedulerController < ApplicationController
   end
 
   def show
-    @appointment = Appointment.find(params[:id])
+    @appointment = Appointment.find(params[:id]).decorate
   end
 
   def create
@@ -31,6 +31,12 @@ class SchedulerController < ApplicationController
   def destroy
     @appointment = Appointment.find(params[:id])
     @appointment.destroy
+  end
+
+  def change_status
+    @appointment = Appointment.find(params[:scheduler_id])
+    @appointment.status = appointment_params[:status]
+    @appointment.save
   end
 
   private

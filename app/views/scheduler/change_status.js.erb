@@ -1,0 +1,7 @@
+$('.full_calendar').fullCalendar('removeEvents', <%= [@appointment.id] %>);
+$('.full_calendar').fullCalendar(
+  'renderEvent', 
+  $.parseJSON("<%=j render(@appointment, format: :json).html_safe %>"),
+  true
+);
+$('.modal').dialog().remove()

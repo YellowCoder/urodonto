@@ -30,6 +30,10 @@ button {
   font-size: 14px;
 }
 
+button a {
+  color: #ffffff !important;
+}
+
 button:focus {
   outline: 0;
 }

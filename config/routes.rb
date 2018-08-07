@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   resources :patients
   resources :financial_records
   resources :appointments
-  resources :scheduler
+  resources :scheduler do
+    put :change_status, as: :member
+  end
   resources :overviews, only: :index
 
   scope '/search' do
