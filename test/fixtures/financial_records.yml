@@ -1,0 +1,27 @@
+paid_scheduled:
+  id: 1
+  user_id: 1
+  appointment_id: 3
+  amount_cents: 10
+  paid_at: <%= DateTime.now %>
+
+paid_confirmed:
+  id: 2
+  user_id: 1
+  appointment_id: 4
+  amount_cents: 10
+  paid_at: <%= DateTime.now %>
+
+paid_missed:
+  id: 3
+  user_id: 1
+  appointment_id: 5
+  amount_cents: 10
+  paid_at: <%= DateTime.now %>
+
+paid_rescheduled:
+  id: 4
+  user_id: 1
+  appointment_id: 6
+  amount_cents: 10
+  paid_at: <%= DateTime.now %>

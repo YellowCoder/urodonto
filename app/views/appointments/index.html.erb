@@ -11,7 +11,6 @@
             <th>Paciente</th>
             <th>Status</th>
             <th>Título</th>
-            <th>Data</th>
             <th>Horário</th>
             <th>Vencimento</th>
             <th>Status PG.</th>
@@ -26,13 +25,8 @@
           </td>
           <td><%= appointment.status_humanized %></td>
           <td><%= appointment.title %></td>
-          <td><%= appointment.start.strftime('%d/%m/%Y') %></td>
-          <td>
-            <%= appointment.start.strftime('%H:%M') %>
-            -
-            <%= appointment.end.strftime('%H:%M') %>
-          </td>
-          <td><%= appointment.payment_due.strftime('%d/%m/%Y') %></td>
+          <td><%= appointment.range_period %></td>
+          <td><%= appointment.payment_due %></td>
           <td>
           <%= appointment.payment_link_or_label %></td>
           <td>

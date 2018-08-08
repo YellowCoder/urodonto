@@ -22,6 +22,18 @@ class AppointmentDecorator < Draper::Decorator
     object.payment_due.strftime('%d/%m/%Y')
   end
 
+  def start
+    object.start.strftime('%d/%m/%Y - %H:%M')
+  end
+
+  def end
+    object.end.strftime('%d/%m/%Y - %H:%M')
+  end
+
+  def range_period
+    "#{ object.start.strftime('%d/%m/%Y') } (#{ object.start.strftime('%H:%M') } - #{ object.end.strftime('%H:%M') })"
+  end
+
   def statuses
     {
       paid: { label: 'Pago', color: 'green' },

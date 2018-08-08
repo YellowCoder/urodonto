@@ -14,6 +14,9 @@ class Appointment < ApplicationRecord
     },
     using: { trigram: { threshold: 0 } },
     ignoring: :accents
+  
+  # Aliases
+  alias :amount :price
 
   # Relationships
   belongs_to :user

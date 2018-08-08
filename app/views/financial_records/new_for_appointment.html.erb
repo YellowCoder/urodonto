@@ -13,15 +13,16 @@
   <%= simple_form_for @financial_record do |f| %>
     <fieldset>
       <div>
-        <%= f.input_field :appointment_id %>
-      </div>
-      <div>
         <label>Data da consulta</label>
-        <span id="appointment_date">--</span>
+        <span id="appointment_date">
+          <%= @financial_record.appointment.range_period %>
+        </span>
       </div>
       <div>
         <label>Data do vencimento</label>
-        <span id="payment_due">--</span>
+        <span id="payment_due">
+          <%= @financial_record.appointment.payment_due %>
+        </span>
       </div>
       <%= f.input :title %>
       <div>
@@ -32,9 +33,11 @@
       </div>
       <%= f.input :amount %>
       <%= f.input :observations, as: :text %>
+      <%= f.input_field :appointment_id, as: :hidden %>
     </fieldset>
 
     <%= f.button :submit %>
+    
     <% unless @financial_record.new_record?%>
       <button class="red">
         <%= link_to 'Delete', 

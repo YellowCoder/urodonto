@@ -1,0 +1,51 @@
+current_month:
+  id: 1
+  patient_id: 1
+  chargeable: true
+  start: <%= DateTime.now %>
+  end: <%= DateTime.now + 1.hour %>
+  payment_due: <%= DateTime.now.end_of_month %>
+
+free:
+  id: 2
+  patient_id: 1
+  chargeable: false
+  start: <%= DateTime.now %>
+  end: <%= DateTime.now + 1.hour %>
+  payment_due: <%= DateTime.now.end_of_month %>
+
+paid_scheduled:
+  id: 3
+  patient_id: 1
+  chargeable: true
+  status: 0
+  start: <%= DateTime.now %>
+  end: <%= DateTime.now + 1.hour %>
+  payment_due: <%= DateTime.now.end_of_month %>
+
+paid_confirmed:
+  id: 4
+  patient_id: 1
+  chargeable: true
+  status: 1
+  start: <%= DateTime.now %>
+  end: <%= DateTime.now + 1.hour %>
+  payment_due: <%= DateTime.now.end_of_month %>
+
+paid_missed:
+  id: 5
+  patient_id: 1
+  chargeable: true
+  status: 1
+  start: <%= DateTime.now %>
+  end: <%= DateTime.now + 1.hour %>
+  payment_due: <%= DateTime.now.end_of_month %>
+
+paid_rescheduled:
+  id: 6
+  patient_id: 1
+  chargeable: true
+  status: 1
+  start: <%= DateTime.now %>
+  end: <%= DateTime.now + 1.hour %>
+  payment_due: <%= DateTime.now.end_of_month %>

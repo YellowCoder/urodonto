@@ -51,7 +51,7 @@
   padding: 10px 0;
 }
 
-.patient__prices--item input[type='number'] {
+.patient__prices--item .patient_patient_prices_price {
   width: 90px;
   text-align: center;
 }

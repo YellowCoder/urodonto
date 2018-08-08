@@ -3,6 +3,7 @@ module AppointmentPayments
   CHARGEABLE_STATUSES = %w(confirmed)
 
   def payment_status
+    return :paid if self.financial_record.present?
     return :free if !self.chargeable?
     return :overdue if payment_delayed? && self.financial_record.blank? && CHARGEABLE_STATUSES.include?(self.status)
     return :not_paid if self.chargeable? && self.financial_record.blank? && CHARGEABLE_STATUSES.include?(self.status) || NOT_CHARGEABLE_STATUSES.include?(self.status)
@@ -15,7 +16,7 @@ module AppointmentPayments
   end
 
   def price
-    month_price&.price_cents || patient.fixed_price_cents
+    month_price&.price || patient.fixed_price
   end
 
   def month_price

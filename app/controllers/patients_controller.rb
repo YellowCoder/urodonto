@@ -63,7 +63,7 @@ class PatientsController < ApplicationController
       patient_prices_attributes: [
         :id,
         :date,
-        :price_cents,
+        :price,
         :_destroy
       ]
     )
