@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   
   root to: 'scheduler#index'
 
+  resources :users
   resources :patients
   resources :financial_records do
     collection do

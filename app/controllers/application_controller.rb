@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::Base
+  include Pundit
+  protect_from_forgery
+  
   layout :current_layout
 
   before_action :authenticate_user!, :set_paper_trail_whodunnit

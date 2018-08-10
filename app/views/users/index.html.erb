@@ -1,0 +1,33 @@
+<% page_title 'Usuários' %>
+
+<button>
+  <%= link_to "Novo usuário", new_user_path %>
+</button>
+
+<div class="patients__wrapper">
+  <table id="datatable" class="stripe">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= link_to user.name, user_path(user) %></td>
+          <td>
+            <button><%= link_to "Detalhes", user_path(user) %></button>
+            <button><%= link_to "Alterar", edit_user_path(user) %></button>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<% content_for(:javascript) do %>
+  <script type='text/javascript'>
+    InitializeDataTables({ order: [[0, 'asc']] })
+  </script>
+<% end %>

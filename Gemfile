@@ -22,6 +22,7 @@ gem 'paper_trail', '9.2.0'
 gem 'faker', '1.8.7'
 gem 'cocoon', '1.2.11'
 gem 'draper', '3.0.1'
+gem 'pundit', '2.0.0'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false

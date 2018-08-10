@@ -1,5 +1,5 @@
-user = User.new(name: 'Adriano Tadao', email: 'adrianotadao@gmail.com', password: '123123')
-user.save
+User.create(name: 'Adriano User', email: 'adriano@gmail.com', password: '123123')
+User.create(name: 'Adriano Admin', email: 'admin@gmail.com', password: '123123', role: :admin)
 
 10.times do
   patient = Patient.new(name: Faker::Name.name, fixed_price_cents: 100)
@@ -11,7 +11,7 @@ Patient.all.each do |patient|
   payment_date = appointment_date + 1.month
 
   patient.appointments.create(
-    user: user,
+    user: User.all.sample,
     title: ['Orçamento', 'Manutenção', 'Limpeza', 'Restauração', 'Clareamento'].sample,
     start: appointment_date,
     end: appointment_date + 0.5.hours,
