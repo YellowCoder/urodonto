@@ -49,3 +49,84 @@ paid_rescheduled:
   start: <%= DateTime.now %>
   end: <%= DateTime.now + 1.hour %>
   payment_due: <%= DateTime.now.end_of_month %>
+
+overdue_confirmed:
+  id: 7
+  patient_id: 1
+  chargeable: true
+  status: 1
+  start: <%= DateTime.now %>
+  end: <%= DateTime.now + 1.hour %>
+  payment_due: <%= (DateTime.now - 1.month).end_of_month %>
+
+overdue_confirmed_zero_value:
+  id: 8
+  patient_id: 2
+  chargeable: true
+  status: 1
+  start: <%= DateTime.now %>
+  end: <%= DateTime.now + 1.hour %>
+  payment_due: <%= (DateTime.now - 1.month).end_of_month %>
+
+overdue_missed:
+  id: 9
+  patient_id: 1
+  chargeable: true
+  status: 2
+  start: <%= DateTime.now %>
+  end: <%= DateTime.now + 1.hour %>
+  payment_due: <%= (DateTime.now - 1.month).end_of_month %>
+
+overdue_rescheduled:
+  id: 10
+  patient_id: 1
+  chargeable: true
+  status: 3
+  start: <%= DateTime.now %>
+  end: <%= DateTime.now + 1.hour %>
+  payment_due: <%= (DateTime.now - 1.month).end_of_month %>
+
+overdue_scheduled:
+  id: 11
+  patient_id: 1
+  chargeable: true
+  status: 0
+  start: <%= DateTime.now %>
+  end: <%= DateTime.now + 1.hour %>
+  payment_due: <%= (DateTime.now - 1.month).end_of_month %>
+
+overdue_free:
+  id: 12
+  patient_id: 1
+  chargeable: false
+  status: 1
+  start: <%= DateTime.now %>
+  end: <%= DateTime.now + 1.hour %>
+  payment_due: <%= (DateTime.now - 1.month).end_of_month %>
+
+overdue_confirmed_and_free:
+  id: 13
+  patient_id: 1
+  chargeable: false
+  status: 1
+  start: <%= DateTime.now %>
+  end: <%= DateTime.now + 1.hour %>
+  payment_due: <%= (DateTime.now - 1.month).end_of_month %>
+
+paid_not_chargeable:
+  id: 14
+  patient_id: 1
+  chargeable: false
+  status: 0
+  start: <%= DateTime.now %>
+  end: <%= DateTime.now + 1.hour %>
+  payment_due: <%= DateTime.now.end_of_month %>
+
+confirmed_not_overdue:
+  id: 15
+  patient_id: 1
+  chargeable: true
+  status: 1
+  start: <%= DateTime.now %>
+  end: <%= DateTime.now + 1.hour %>
+  payment_due: <%= (DateTime.now + 1.month).end_of_month %>

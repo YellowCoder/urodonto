@@ -25,3 +25,10 @@ paid_rescheduled:
   appointment_id: 6
   amount_cents: 10
   paid_at: <%= DateTime.now %>
+
+paid_not_chargeable:
+  id: 5
+  user_id: 1
+  appointment_id: 14
+  amount_cents: 10
+  paid_at: <%= DateTime.now %>
