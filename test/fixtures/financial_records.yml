@@ -32,3 +32,10 @@ paid_not_chargeable:
   appointment_id: 14
   amount_cents: 10
   paid_at: <%= DateTime.now %>
+
+paid:
+  id: 6
+  user_id: 1
+  appointment_id: 20
+  amount_cents: 10
+  paid_at: <%= DateTime.now %>

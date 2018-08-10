@@ -130,3 +130,48 @@ confirmed_not_overdue:
   start: <%= DateTime.now %>
   end: <%= DateTime.now + 1.hour %>
   payment_due: <%= (DateTime.now + 1.month).end_of_month %>
+
+overdue_appointment:
+  id: 16
+  patient_id: 1
+  chargeable: true
+  status: 1
+  start: <%= DateTime.now %>
+  end: <%= DateTime.now + 1.hour %>
+  payment_due: <%= (DateTime.now - 1.month).end_of_month %>
+
+not_paid_appointment:
+  id: 17
+  patient_id: 1
+  chargeable: true
+  status: 1
+  start: <%= DateTime.now %>
+  end: <%= DateTime.now + 1.hour %>
+  payment_due: <%= (DateTime.now + 1.month).end_of_month %>
+
+fixed_price_of_patient:
+  id: 18
+  patient_id: 1
+  chargeable: true
+  status: 1
+  start: <%= DateTime.now %>
+  end: <%= DateTime.now + 1.hour %>
+  payment_due: <%= DateTime.now.end_of_month %>
+
+monthly_price_of_patient:
+  id: 19
+  patient_id: 1
+  chargeable: true
+  status: 1
+  start: <%= DateTime.now %>
+  end: <%= DateTime.now + 1.hour %>
+  payment_due: <%= (DateTime.now + 1.month).end_of_month %>
+
+paid:
+  id: 20
+  patient_id: 1
+  chargeable: true
+  status: 1
+  start: <%= DateTime.now %>
+  end: <%= DateTime.now + 1.hour %>
+  payment_due: <%= (DateTime.now + 1.month).end_of_month %>

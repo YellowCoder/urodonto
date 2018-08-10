@@ -1,0 +1,4 @@
+adriano_next_month:
+  patient_id: 1
+  date: <%= (Date.today + 1.month).beginning_of_month %>
+  price_cents: 120

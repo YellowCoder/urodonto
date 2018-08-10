@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(version: 9) do
   create_table "financial_records", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "appointment_id"
-    t.integer "status", default: 0
     t.string "title"
     t.integer "amount_cents", default: 0, null: false
     t.string "amount_currency", default: "BRL", null: false
