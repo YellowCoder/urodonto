@@ -9,19 +9,15 @@
         <th>Data</th>
         <th>Data Pgto</th>
         <th>Valor</th>
-        <th></th>
       </tr>
     </thead>
     <tbody>
       <% @patient.appointments.each do |appointment| %>
         <tr>
-          <td><%= t("activerecord.attributes.appointment.statuses.#{ appointment.status }") %></td>
+          <td><%= link_to t("activerecord.attributes.appointment.statuses.#{ appointment.status }"), appointment_path(appointment) %></td>
           <td><%= appointment.start.strftime('%d %b %Y') %></td>
           <td><%= appointment.paid? ? appointment.financial_record.paid_at.strftime('%d %b %Y') : '-' %></td>
           <td><%= appointment.paid? ? appointment.financial_record.amount : '0' %></td>
-          <td>
-            <button><%= link_to 'Detalhes', appointment_path(appointment) %></button>
-          </td>
         </tr>
       <% end %>
     </tbody>
