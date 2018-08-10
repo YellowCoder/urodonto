@@ -27,6 +27,7 @@ class Patient < ApplicationRecord
   private
 
   def validate_duplication_on_prices
+    return if patient_prices.blank?
     equals = patient_prices.reject(&:marked_for_destruction?).group_by(&:date).map{ |_, prices| prices.size }.max
     if equals > 1
       errors.add(:base, 'Você não ter parcelas duplicadas para o mesmo mês.')
