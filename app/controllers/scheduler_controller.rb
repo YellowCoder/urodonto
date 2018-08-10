@@ -9,6 +9,10 @@ class SchedulerController < ApplicationController
     @appointment = Appointment.new(payment_due: DateTime.now.end_of_month)
   end
 
+  def edit
+    @appointment = Appointment.find(params[:id])
+  end
+
   def show
     @appointment = Appointment.find(params[:id]).decorate
   end

@@ -42,6 +42,7 @@
     
     <ul class="scheduler__info">
       <li><strong>Situação:</strong> <%= @appointment.status_humanized %></li>
+      <li><strong>Data:</strong> <%= @appointment.range_period %></li>
       <% if @appointment.title.present? %>
         <li><strong>Título:</strong> <%= @appointment.title %></li>
       <% end %>
@@ -53,7 +54,7 @@
     
     <div class="scheduler__buttonsWrapper">
       <button>
-        <%= link_to "Alterar", edit_appointment_path(@appointment), remote: false %>
+        <%= link_to "Alterar", edit_scheduler_path(@appointment), remote: true %>
       </button>
       <button class="red">
         <%= link_to "Deletar", scheduler_path(@appointment), 

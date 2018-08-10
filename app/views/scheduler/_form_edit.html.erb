@@ -1,0 +1,59 @@
+<div class="modal">
+  <%= simple_form_for @appointment, url: scheduler_path(@appointment), method: :put, remote: true do |f| %>
+    <fieldset>
+      <div>
+        <label>Paciente</label>
+        <%= text_field_tag :search_patient, @appointment.patient.name, name: 'appointment[patient]', data: { field: 'appointment_patient_id', behavior: 'patients_autocomplete', autocomplete_url: search_patients_path } %>
+        <%= f.input_field :patient_id, as: :hidden %>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <div>
+        <label>Status</label>
+        <div class='appointment_selects'>
+          <%= f.select :status, Appointment.statuses.map { |key, value| [I18n.t("activerecord.attributes.appointment.statuses.#{ key }"), key] } %>
+        </div>
+      </div>
+      <%= f.input :chargeable %>
+      <%= f.input :title %>
+    </fieldset>
+
+    <fieldset>
+      <div>
+        <label>Data do vencimento</label>
+        <div class='appointment_selects'>
+          <%= f.input_field :payment_due, as: :date %>
+        </div>
+      </div>
+      <div>
+        <label>Começa</label>
+        <div class='scheduler__dateSelects'>
+          <%= f.input_field :start, as: :datetime %>
+        </div>
+      </div>
+      <div>
+        <label>Termina</label>
+        <div class='scheduler__dateSelects'>
+          <%= f.input_field :end, as: :datetime %>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <div>
+        <label>Cor</label>
+        <input type="color" name="appointment[color]" value=<%= @appointment.color || "#429cb6" %>>
+      </div>
+    </fieldset>
+
+    <div class="form-actions">
+      <%= f.button :submit %>
+      <%= link_to 'Delete', 
+                  @appointment, 
+                  method: :delete, 
+                  data: { confirm: 'Tem certeza que deseja deletar?' }, 
+                  remote: true unless @appointment.new_record? %>
+    </div>
+  <% end %>
+</div>

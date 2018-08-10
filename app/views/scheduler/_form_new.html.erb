@@ -43,11 +43,6 @@
 
     <div class="form-actions">
       <%= f.button :submit %>
-      <%= link_to 'Delete', 
-                  appointment, 
-                  method: :delete, 
-                  data: { confirm: 'Tem certeza que deseja deletar?' }, 
-                  remote: true unless @appointment.new_record? %>
     </div>
   <% end %>
 </div>

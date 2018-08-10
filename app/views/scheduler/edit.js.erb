@@ -1,0 +1,9 @@
+$('.modal').dialog('destroy').remove()
+
+$('#modal_container').html('<%= j render(partial: "form_edit") %>');
+
+$(".edit_appointment").on("ajax:error", function(e, data, status, xhr) {
+  $(".edit_appointment").render_form_errors('appointment', data.responseJSON)
+})
+
+OpenModal({ title: 'Editar agendamento' })
