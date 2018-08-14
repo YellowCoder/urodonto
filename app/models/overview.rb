@@ -55,6 +55,6 @@ class Overview
 
   def second_month
     return DateTime.now unless params
-    Date.parse("#{ params['end_date(1i)'] }-#{ params['end_date(2i)'] }-01")
+    Date.parse("#{ params['end_date(1i)'] }-#{ params['end_date(2i)'] }-01").end_of_month
   end
 end
