@@ -19,7 +19,7 @@
         <tbody>
           <% @patients_list.each_with_index do |patient, index|%>
             <tr class=<%= index % 2 == 0 ? 'even' : 'odd' %>>
-              <td><%= patient.name %></td>
+              <td><%= link_to patient.name, patient_path(patient.id), target: :_blank %></td>
             </tr>
           <% end %>
         </tbody>

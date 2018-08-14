@@ -1,5 +1,6 @@
 class AppointmentDecorator < Draper::Decorator
   delegate_all
+  decorates_association :financial_record
   
   def payment_link_or_label
     return payment_label if object.financial_record.blank?
@@ -20,6 +21,10 @@ class AppointmentDecorator < Draper::Decorator
 
   def payment_due
     object.payment_due.strftime('%d/%m/%Y')
+  end
+
+  def start_date
+    object.start.strftime('%d/%m/%Y')
   end
 
   def start

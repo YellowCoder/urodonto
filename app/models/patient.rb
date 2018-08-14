@@ -24,6 +24,12 @@ class Patient < ApplicationRecord
   validates :fixed_price, numericality: { greater_than_or_equal_to: 0 }
   validate :validate_duplication_on_prices
 
+  # Scopes
+  scope :with_appointment_between, lambda { |date_range|
+    joins(:appointments).where('appointments.start' => date_range)
+  }
+  scope :ordered_by_name, -> { order(:name) }
+
   private
 
   def validate_duplication_on_prices

@@ -1,7 +1,7 @@
 User.create(name: 'Adriano User', email: 'adriano@gmail.com', password: '123123')
 User.create(name: 'Adriano Admin', email: 'admin@gmail.com', password: '123123', role: :admin)
 
-10.times do
+600.times do
   patient = Patient.new(name: Faker::Name.name, fixed_price_cents: 100)
   patient.save
 end

@@ -29,12 +29,13 @@ class Overview
   end
 
   def patients_list
-    patients = Patient.all.map do |patient|
+    patients = Patient.ordered_by_name.with_appointment_between(date_range).map do |patient|
       appointments = {}
       groupped_months.each do |date_range|
-        appointments[date_range.label] = foo(patient, date_range.range)
+        appointments[date_range.label] = appointments_for(patient, date_range.range)
       end
       OpenStruct.new(
+        id: patient.id,
         name: patient.name,
         appointments: appointments
       )
@@ -43,7 +44,7 @@ class Overview
     OverviewDecorator.decorate_collection(patients)
   end
 
-  def foo(patient, date_range)
+  def appointments_for(patient, date_range)
     patient.appointments.where(start: date_range)
   end
 

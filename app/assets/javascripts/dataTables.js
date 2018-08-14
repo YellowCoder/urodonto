@@ -1,4 +1,7 @@
 var InitializeDataTables = function(options) {
+  $.fn.dataTable.moment('DD/MM/YYY')
+  $.fn.dataTable.moment('DD/MM/YYY (HH:mm - HH:mm)')
+
   var dataTable = $('#datatable').DataTable({
     order: options.order,
     pageLength: 25,

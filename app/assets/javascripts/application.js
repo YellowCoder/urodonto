@@ -23,6 +23,7 @@
 //= require fullcalendar/locale-all
 
 //= require datatables/datatables.min.js
+//= require datatables/datetime-moment.js
 
 //= require easy-autocomplete/jquery.easy-autocomplete.min.js
 
