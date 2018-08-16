@@ -2,23 +2,22 @@
   <li class='sidebar__title'><%= link_to 'Urodonto', root_path %></li>
 
   <li class='sidebar__label'>Pacientes</li>
-  <li class='sidebar__item'><%= link_to 'Lista de pacientes', patients_path %></li>
-  <li class='sidebar__item'><%= link_to 'Novo paciente', new_patient_path %></li>
+  <li class='sidebar__item'><%= link_to 'Lista', patients_path %></li>
+  <li class='sidebar__item'><%= link_to 'Novo', new_patient_path %></li>
 
   <li class='sidebar__label'>Consultas</li>
   <li class='sidebar__item'><%= link_to 'Agenda', scheduler_index_path %></li>
-  <li class='sidebar__item'><%= link_to 'Lista de consultas', appointments_path %></li>
-  <li class='sidebar__item'><%= link_to 'Nova consulta', new_appointment_path %></li>
+  <li class='sidebar__item'><%= link_to 'Lista', appointments_path %></li>
+  <li class='sidebar__item'><%= link_to 'Nova', new_appointment_path %></li>
 
   <li class='sidebar__label'>Fluxo de caixa</li>
-  <li class='sidebar__item'><%= link_to 'Planilha de pagamentos', overviews_path %></li>
-  <li class='sidebar__item'><%= link_to 'Lista de pagamentos', financial_records_path %></li>
-  <li class='sidebar__item'><%= link_to 'Novo pagamento', new_financial_record_path %></li>
+  <li class='sidebar__item'><%= link_to 'Planilha', overviews_path %></li>
+  <li class='sidebar__item'><%= link_to 'Lista', financial_records_path %></li>
+  <li class='sidebar__item'><%= link_to 'Novo', new_financial_record_path %></li>
 
   <% if policy(User).index? %>
     <li class='sidebar__label'>Usuários</li>
-    <li class='sidebar__item'><%= link_to 'Lista de usuários', users_path %></li>
-    <li class='sidebar__item'><%= link_to 'Novo usuário', new_user_path %></li>
+    <li class='sidebar__item'><%= link_to 'Lista', users_path %></li>
   <% end %>
 
   <li class='sidebar__label'>Perfil do usuário</li>
