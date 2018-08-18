@@ -26,7 +26,7 @@ class Patient < ApplicationRecord
 
   # Scopes
   scope :with_appointment_between, lambda { |date_range|
-    joins(:appointments).where('appointments.start' => date_range)
+    joins(:appointments).where('appointments.start' => date_range).distinct
   }
   scope :ordered_by_name, -> { order(:name) }
 

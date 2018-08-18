@@ -23,7 +23,7 @@ class Overview
       date = Date.parse("#{ year_and_month }01")
       OpenStruct.new(
         label: "#{ Date::ABBR_MONTHNAMES[ Date.strptime(year_and_month, '%Y%m').mon ] }/#{ year_and_month[0..3] }",
-        range: (date.beginning_of_month..date.end_of_month)
+        range: (date.beginning_of_month.beginning_of_day..date.end_of_month.end_of_day)
       )
     end
   end
