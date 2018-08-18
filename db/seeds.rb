@@ -1,5 +1,5 @@
-User.create(name: 'Adriano User', email: 'adriano@gmail.com', password: '123123')
-User.create(name: 'Adriano Admin', email: 'admin@gmail.com', password: '123123', role: :admin)
+User.create(name: 'Usuario', email: 'usuario@gmail.com', password: '123123')
+User.create(name: 'Admin', email: 'admin@gmail.com', password: '123123', role: :admin)
 
 600.times do
   patient = Patient.new(name: Faker::Name.name, fixed_price_cents: 100)

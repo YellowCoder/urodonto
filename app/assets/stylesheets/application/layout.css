@@ -1,11 +1,9 @@
 .page__wrapper {
-  width: calc(100% - 218px);
   height: 100%;
   background-color: #fafafa;
 }
 
 .content__wrapper {
-  margin: 20px;
   padding: 20px;
   background-color: #FFFFFF;
 }

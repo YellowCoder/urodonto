@@ -2,6 +2,10 @@
   display: flex;
 }
 
+.overview__tablesWrapper table thead tr th {
+  text-align: center;
+}
+
 .overview__appointmentItem {
   display: flex;
   flex-direction: column;

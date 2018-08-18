@@ -11,39 +11,37 @@
   </div>
 
   <div class="overview__tablesWrapper">
-    <div class="overview__patientsList">
-      <table id="datatable" class="stripe">
-        <thead>
-          <tr>
-            <th></th>
-            <% @grouped_months.each do |months|%>
-              <th><%= months.key %></th>
+    <table id="datatable" class="stripe">
+      <thead>
+        <tr>
+          <th></th>
+          <% @grouped_months.each do |months|%>
+            <th><%= months.key %></th>
+          <% end %>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @patients_list.each_with_index do |patient, index|%>
+          <tr class=<%= index % 2 == 0 ? 'even' : 'odd' %>>
+            <td><%= link_to patient.name, patient_path(patient.id), target: :_blank %></td>
+            <% @grouped_months.each do |date|%>
+              <td>
+                <% patient.decorate_appointments_for(date).each do |appointment| %>
+                  <div class=<%= appointment.payment_color.present? ? "overview__appointment--#{ appointment.payment_color}" : "overview__appointmentItem" %>>
+                    <% if appointment.id %>
+                      <%= link_to "#{ appointment.status_humanized } (#{ appointment.payment_label })", appointment_path(appointment.id), target: "_blank" %>
+                    <% else %>
+                      <span> - </span>
+                    <% end %>
+                  </div>
+                <% end %>
+              </td>
             <% end %>
           </tr>
-        </thead>
-
-        <tbody>
-          <% @patients_list.each_with_index do |patient, index|%>
-            <tr class=<%= index % 2 == 0 ? 'even' : 'odd' %>>
-              <td><%= link_to patient.name, patient_path(patient.id), target: :_blank %></td>
-              <% @grouped_months.each do |date|%>
-                <td>
-                  <% patient.decorate_appointments_for(date).each do |appointment| %>
-                    <div class=<%= appointment.payment_color.present? ? "overview__appointment--#{ appointment.payment_color}" : "overview__appointmentItem" %>>
-                      <% if appointment.id %>
-                        <%= link_to "#{ appointment.status_humanized } (#{ appointment.payment_label })", appointment_path(appointment.id), target: "_blank" %>
-                      <% else %>
-                        <span> - </span>
-                      <% end %>
-                    </div>
-                  <% end %>
-                </td>
-              <% end %>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
 
