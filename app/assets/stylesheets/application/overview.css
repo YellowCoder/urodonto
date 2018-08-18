@@ -2,113 +2,51 @@
   display: flex;
 }
 
-.overview__patientsList {
-  z-index: 1;
-  box-shadow: 10px 0 5px -6px rgba(0, 0, 0, 0.1);
-}
-
-.overview__appointmentsList {
-  overflow-y: scroll;
-}
-
-#overview__patientsList {
-  width: 250px;
-  background: #FFFFFF;
-  z-index: 1;
-}
-
-#overview__patientsList tr.odd {
-  background-color: #f9f9f9;
-}
-
-#overview__appointmentsList {
-  border-collapse: collapse;
-}
-
-#overview__appointmentsList thead tr th {
-  text-align: center;
-  width: 100px;
-}
-
-#overview__appointmentsList tr.odd {
-  background-color: #f9f9f9;
-}
-
-#overview__appointmentsList td {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-align: center;
-  border-right: 1px solid #d2cfcf;
-  border-left: 1px solid #d2cfcf;
-  padding-top: 0;
-  padding-bottom: 0;
-  font-size: 12px;
-  height: 53px;
-}
-
-.overview__appointmentItems {
-  display: flex;
-  height: 53px;
-}
-
 .overview__appointmentItem {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  justify-content: center;
+  text-align: center;
 }
 
+.overview__dateFilterWrapper {
+  padding: 20px 0;
+}
+
+.overview__dateFilterWrapper form {
+  display: flex;
+}
+
+.overview__dateFilterWrapper form .input {
+  margin-right: 10px;
+}
+
+.overview__dateFilterWrapper form.new_overview input[type='submit'] {
+  height: 30px;
+  padding: 4px;
+}
 
 /*--- Colors --- */
 
 .overview__appointment--yellow {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  justify-content: center;
   background-color: #fffdcb;
+  text-align: center;
+  border: 1px solid #e0deb0;
 }
 
 .overview__appointment--red {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  justify-content: center;
   background-color: #ffd0cf;
+  text-align: center;
+  border: 1px solid #fd9e9e;
 }
 
 .overview__appointment--green {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  justify-content: center;
   background-color: #e8ffb0;
+  text-align: center;
+  border: 1px solid #b9e456;
 }
 
 .overview__appointment--gray {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  justify-content: center;
-  background-color: #e2e2e2;
-}
-
-form.new_overview {
-  display: flex;
-  justify-content: flex-end;
-}
-
-form.new_overview .input {
-  margin-right: 10px;
-}
-
-form.new_overview input[type='submit'] {
-  height: 30px;
-  padding: 4px;
+  background-color: #bdf0ff;
+  text-align: center;
+  border: 1px solid #1493b9;
 }

@@ -4,6 +4,10 @@ var InitializeDataTables = function(options) {
 
   var dataTable = $('#datatable').DataTable({
     order: options.order,
+    lengthMenu: [
+        [ 10, 25, 50, -1 ],
+        [ '10', '25', '50', 'Mostrar todos' ]
+    ],
     pageLength: 25,
     language: {
       url: '//cdn.datatables.net/plug-ins/1.10.19/i18n/Portuguese-Brasil.json'
