@@ -15,9 +15,9 @@
       <table id="datatable" class="stripe">
         <thead>
           <tr>
-            <th>Paciente</th>
+            <th></th>
             <% @grouped_months.each do |months|%>
-              <th><%= months.label %></th>
+              <th><%= months.key %></th>
             <% end %>
           </tr>
         </thead>
@@ -31,8 +31,7 @@
                   <% patient.decorate_appointments_for(date).each do |appointment| %>
                     <div class=<%= appointment.payment_color.present? ? "overview__appointment--#{ appointment.payment_color}" : "overview__appointmentItem" %>>
                       <% if appointment.id %>
-                        <%= link_to appointment.status_humanized, appointment_path(appointment), target: "_blank" %>
-                        (<%= appointment.payment_label %>)
+                        <%= link_to "#{ appointment.status_humanized } (#{ appointment.payment_label })", appointment_path(appointment.id), target: "_blank" %>
                       <% else %>
                         <span> - </span>
                       <% end %>

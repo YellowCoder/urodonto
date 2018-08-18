@@ -7,6 +7,7 @@ class FinancialRecord < ApplicationRecord
   # Relationships
   belongs_to :user
   belongs_to :appointment
+  has_one :patient, through: :appointment
 
   # Validations
   validates :amount, presence: true, numericality: { greater_than: 0 }

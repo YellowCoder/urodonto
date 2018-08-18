@@ -15,6 +15,8 @@ class CreatePatients < ActiveRecord::Migration[5.2]
       t.string :state
       t.string :zip_code
 
+      t.jsonb :grouped_appointments, default: {}
+
       t.datetime :deleted_at
 
       t.timestamps null: false

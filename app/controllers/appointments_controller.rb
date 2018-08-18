@@ -1,5 +1,6 @@
 class AppointmentsController < ApplicationController
   include WithCurrentUser
+  after_action :update_user_appointments, only: [:create, :update, :destroy]
 
   def index
     @appointments = Appointment.all.includes(:patient, :financial_record).decorate
@@ -42,6 +43,10 @@ class AppointmentsController < ApplicationController
   end
 
   private
+
+  def update_user_appointments
+    PatientAppointmentsUpdater.new(@appointment.patient).run!
+  end
 
   def appointment_params
     params.require(:appointment).permit(

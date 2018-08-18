@@ -23,7 +23,8 @@ class Overview
       date = Date.parse("#{ year_and_month }01")
       OpenStruct.new(
         label: "#{ Date::ABBR_MONTHNAMES[ Date.strptime(year_and_month, '%Y%m').mon ] }/#{ year_and_month[0..3] }",
-        range: (date.beginning_of_month.beginning_of_day..date.end_of_month.end_of_day)
+        range: (date.beginning_of_month.beginning_of_day..date.end_of_month.end_of_day),
+        key: date.strftime('%m/%Y') 
       )
     end
   end
@@ -32,7 +33,7 @@ class Overview
     patients = Patient.ordered_by_name.with_appointment_between(date_range).map do |patient|
       appointments = {}
       groupped_months.each do |date_range|
-        appointments[date_range.label] = appointments_for(patient, date_range.range)
+        appointments[date_range.label] = patient.grouped_appointments[date_range.key]
       end
       OpenStruct.new(
         id: patient.id,
@@ -42,10 +43,6 @@ class Overview
     end
 
     OverviewDecorator.decorate_collection(patients)
-  end
-
-  def appointments_for(patient, date_range)
-    patient.appointments.where(start: date_range)
   end
 
   def first_month

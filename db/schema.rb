@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 9) do
     t.string "city"
     t.string "state"
     t.string "zip_code"
+    t.jsonb "grouped_appointments", default: {}
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

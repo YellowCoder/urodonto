@@ -19,3 +19,7 @@ Patient.all.each do |patient|
     payment_due: appointment_date.end_of_month
   )
 end
+
+Patient.all.each do |patient|
+  PatientAppointmentsUpdater.new(patient).run!
+end

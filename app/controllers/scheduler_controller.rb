@@ -1,5 +1,6 @@
 class SchedulerController < ApplicationController
   include WithCurrentUser
+  after_action :update_user_appointments, only: [:create, :update, :destroy, :change_status]
 
   def index
     @appointments = Appointment.where(start: params[:start]..params[:end]).includes(:patient)
@@ -44,6 +45,10 @@ class SchedulerController < ApplicationController
   end
 
   private
+
+  def update_user_appointments
+    PatientAppointmentsUpdater.new(@appointment.patient).run!
+  end
 
   def appointment_params
     params.require(:appointment).permit(

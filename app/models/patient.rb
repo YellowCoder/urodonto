@@ -5,6 +5,7 @@ class Patient < ApplicationRecord
   # Extensions
   acts_as_paranoid
   has_paper_trail
+  serialize :grouped_appointments, Hash
   enum sex: [:male, :female]
   monetize :fixed_price_cents, with_currency: :brl
   pg_search_scope :search_by_name,

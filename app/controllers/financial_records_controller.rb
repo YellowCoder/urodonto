@@ -1,5 +1,6 @@
 class FinancialRecordsController < ApplicationController
   include WithCurrentUser
+  after_action :update_user_appointments, only: [:create, :update, :destroy]
 
   def index
     @financial_records = FinancialRecord.all.includes(appointment: :patient)
@@ -50,6 +51,10 @@ class FinancialRecordsController < ApplicationController
   end
 
   private
+
+  def update_user_appointments
+    PatientAppointmentsUpdater.new(@financial_record.patient).run!
+  end
 
   def financial_record_params
     params.require(:financial_record).permit(
