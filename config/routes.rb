@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     end
   end
   resources :appointments, path: 'consultas', path_names: { new: 'nova', edit: 'alterar' }
-  resources :scheduler, path: 'agenda' do
+  resources :scheduler, path: 'agenda', path_names: { new: 'nova', edit: 'alterar' } do
     put :change_status, as: :member
   end
   resources :overviews, path: 'planilha', only: :index

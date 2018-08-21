@@ -52,7 +52,7 @@ var onSelect = function(start, end, jsEvent, view) {
   if (view.name === 'month') {
     return
   }
-  $.getScript('/scheduler/new', function () {
+  $.getScript('/agenda/nova', function () {
     fillUpDate(start, 'start')
     fillUpDate(end, 'end')
     
