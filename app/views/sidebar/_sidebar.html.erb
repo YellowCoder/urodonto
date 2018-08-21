@@ -15,11 +15,6 @@
   <li class='sidebar__item'><%= link_to 'Lista', financial_records_path %></li>
   <li class='sidebar__item'><%= link_to 'Novo', new_financial_record_path %></li>
 
-  <% if policy(User).index? %>
-    <li class='sidebar__label'>Usuários</li>
-    <li class='sidebar__item'><%= link_to 'Lista', users_path %></li>
-  <% end %>
-
   <li class='sidebar__label'>Perfil do usuário</li>
   <li class='sidebar__item'><%= link_to 'Alterar informações', edit_user_registration_path %></li>
   <li class='sidebar__item'><%= link_to 'logout', destroy_user_session_path, method: :delete, data: { confirm: 'Você tem certeza?' } %></li>

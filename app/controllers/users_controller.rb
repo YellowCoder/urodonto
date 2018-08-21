@@ -3,4 +3,8 @@ class UsersController < ApplicationController
     @users = User.all
     authorize @users
   end
+
+  def edit
+    @user = User.find(params[:id])
+  end
 end

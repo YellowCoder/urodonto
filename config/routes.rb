@@ -4,17 +4,17 @@ Rails.application.routes.draw do
   root to: 'scheduler#index'
 
   resources :users
-  resources :patients
-  resources :financial_records do
+  resources :patients, path: 'pacientes', path_names: { new: 'novo' }
+  resources :financial_records, path: 'financeiro', path_names: { new: 'novo', edit: 'alterar' } do
     collection do
-      get '/:appointment_id/new', to: 'financial_records#new_for_appointment', as: :appointment
+      get '/:appointment_id/novo', to: 'financial_records#new_for_appointment', as: :appointment
     end
   end
-  resources :appointments
-  resources :scheduler do
+  resources :appointments, path: 'consultas', path_names: { new: 'nova', edit: 'alterar' }
+  resources :scheduler, path: 'agenda' do
     put :change_status, as: :member
   end
-  resources :overviews, only: :index
+  resources :overviews, path: 'planilha', only: :index
 
   scope '/search' do
     get '/appointments-to-financial-record', to: 'searchs#appointments_to_financial_record', as: :search_appointments_for_payments, defaults: { format: 'json' }

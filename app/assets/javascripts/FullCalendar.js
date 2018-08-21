@@ -147,7 +147,7 @@ initialize_calendar = function () {
     eventLimit: true,
     defaultView: 'agendaWeek',
     eventSources: [
-      '/scheduler.json',
+      '/agenda.json',
     ],
     eventResize: onResize,
     select: onSelect,
